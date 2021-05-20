@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity_user.WorkScheduleDetailsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="?actionBarItemBackground"
+                android:onClick="backBtn"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_keyboard_backspace_24"
+                app:tint="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/backBtn"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="50dp"
+                    android:text="কাজের সময়সূচী"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="16dp"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:elevation="4dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#000"
+        app:cardCornerRadius="10dp">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:backgroundTint="#000"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/eventImageTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/daily_work" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#802E7D32"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="16dp"
+                        android:id="@+id/subjectTitleTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="জেলা উন্নয়ন ও সমন্বয় কমিটির সভা"
+                        android:textColor="#fff"
+                        android:textSize="18sp"
+                        android:maxLines="2"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_marginTop="6dp"
+                        android:id="@+id/scheduleDateTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableTint="@color/white"
+                        android:drawableLeft="@drawable/ic_baseline_access_time_24"
+                        android:text="@string/date"
+                        android:textColor="#fff"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_marginTop="6dp"
+                        android:id="@+id/placeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="fill_horizontal"
+                        android:drawableTint="@color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableLeft="@drawable/ic_baseline_location_on_24"
+                        android:text="@string/event_location"
+                        android:textColor="#fff"
+                        android:maxLines="2"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="16dp"
+                        android:id="@+id/descriptionTV"
+                        android:drawablePadding="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="fill_horizontal"
+                        android:layout_marginBottom="10dp"
+                     android:maxLines="5"
+                        android:drawableTint="@color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableStart="@drawable/ic_baseline_description_24"
+                        android:text="সিলেটের সংস্কৃতিকর্মী অদিতি দাস করোনায় এক দিনের ব্যবধানে বাবা–মাকে হারিয়েছেন। তিনি এখন করোনার সঙ্গে লড়ছেন, এরই মধ্যে বাবা–মায়ের শেষকৃত্যও সেরেছেন।
+সিলেটের সংস্কৃতিকর্মীরা জানান, অদিতির বাবা ক্যানসারে আক্রান্ত ছিলেন। অদিতির বাবা ক্যানসারে আক্রান্ত ছিলেন। অদিতির বাবা ক্যানসারে আক্রান্ত ছিলেন।"
+                        android:textColor="#fff"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
