@@ -55,19 +55,19 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
-<!--        android:id="@+id/scheduleSwipeLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_below="@id/toolbar">-->
-
-<!--        -->
-<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scheduleRV"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/scheduleSwipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/scheduleRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
 
 

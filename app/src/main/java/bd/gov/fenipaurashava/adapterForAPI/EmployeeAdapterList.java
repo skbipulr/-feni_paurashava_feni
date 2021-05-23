@@ -42,7 +42,7 @@ public class EmployeeAdapterList extends RecyclerView.Adapter<EmployeeAdapterLis
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
        Datum employee =  employeeList.get(position);
-        String image = "http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture();
+        String image = "http://fenimayor.digiins.gov.bd/district_app/public/employee/"+employee.getPicture();
 
 //        Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture()).placeholder(R.drawable.default_icon)
 //                .into(holder.profileIV);

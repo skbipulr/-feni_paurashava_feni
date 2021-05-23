@@ -36,8 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/backBtn"
-                android:gravity="start"
-                android:layout_marginStart="24dp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -68,14 +67,13 @@
             android:layout_marginBottom="8dp"
             android:orientation="vertical">
 
-            <include
-                android:visibility="gone"
-                layout="@layout/admin_gonosunani_item_layout"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginBottom="4dp" />
+<!--            <include-->
+<!--                layout="@layout/admin_gonosunani_item_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="120dp"-->
+<!--                android:layout_marginLeft="4dp"-->
+<!--                android:layout_marginRight="4dp"-->
+<!--                android:layout_marginBottom="4dp" />-->
 
             <include
                 layout="@layout/admin_appointment_fetch_item_layout"
@@ -91,7 +89,6 @@
                 layout="@layout/admon_stuff_item_layout"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:visibility="gone"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="4dp"

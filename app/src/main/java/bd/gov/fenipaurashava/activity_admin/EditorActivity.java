@@ -185,7 +185,7 @@ public class EditorActivity extends AppCompatActivity {
             int use_id = Integer.parseInt(user_id);
             int em_id = Integer.parseInt(employee_id);
 
-            if (use_id ==12){
+            if (use_id ==Common.ADMIN_USER_ID){
                 final ProgressDialog mDialog = new ProgressDialog(EditorActivity.this);
                 mDialog.setMessage("Please waiting...");
                 mDialog.show();
@@ -200,7 +200,7 @@ public class EditorActivity extends AppCompatActivity {
                         if (response.code() == 200) {
                             AppointmentSubjectSaveResponse serverResponse = response.body();
                             Toast.makeText(EditorActivity.this, "" + serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            startActivity(new Intent(EditorActivity.this, AppoimentFatchAllActivity.class));
                             mDialog.dismiss();
                         } else if (response.code() == 203) {
                             Toast.makeText(EditorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -256,6 +256,7 @@ public class EditorActivity extends AppCompatActivity {
 
                     if (response.code()==200){
                         Toast.makeText(EditorActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(EditorActivity.this, AppoimentFatchAllActivity.class));
                         progressDialog.dismiss();
                     }
                 }
@@ -276,7 +277,6 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     private void deleteData( final int id) {
-
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String user_id = sharedpreferences.getString(USER_ID,"");
         String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
@@ -298,15 +298,14 @@ public class EditorActivity extends AppCompatActivity {
 
                     if (response.code() == 200) {
                         Toast.makeText(EditorActivity.this, "" + response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(EditorActivity.this, AppoimentFatchAllActivity.class));
                     }else {
                         Toast.makeText(EditorActivity.this, "problem", Toast.LENGTH_SHORT).show();
                     }
-
                 }
 
                 @Override
                 public void onFailure(Call<AppointmentSubjectDeleteResponse> call, Throwable t) {
-
                     Toast.makeText(EditorActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
@@ -316,16 +315,12 @@ public class EditorActivity extends AppCompatActivity {
         }else {
             Toast.makeText(this, "Your are not authorize person", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     @SuppressLint("RestrictedApi")
     void readMode(){
-
         mName.setFocusableInTouchMode(false);
         mName.setFocusable(false);
-
     }
 
     private void editMode()

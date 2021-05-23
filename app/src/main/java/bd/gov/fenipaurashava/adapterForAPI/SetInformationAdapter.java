@@ -72,7 +72,7 @@ public class SetInformationAdapter extends RecyclerView.Adapter<SetInformationAd
         holder.descriptionTV.setText(info.getDescription());
 
 
-        String uri = "http://apis.digiins.gov.bd/district_app/public/information/"+info.getPicture();
+        String uri = "http://fenimayor.digiins.gov.bd/district_app/public/information/"+info.getPicture();
 
         Picasso.get().load(uri).placeholder(R.drawable.placeholder).into(holder.imageViewIV);
 
@@ -80,7 +80,6 @@ public class SetInformationAdapter extends RecyclerView.Adapter<SetInformationAd
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SendMessageForSetInformationActivity.class);
-
                 intent.putExtra("info", info);
                 context.startActivity(intent);
             }

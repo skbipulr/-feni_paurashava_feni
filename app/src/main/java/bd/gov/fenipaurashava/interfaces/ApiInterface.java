@@ -232,8 +232,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("complain/save")
     Call<ComplainSaveResponse> setComplain(@Header("app-key") String appKey,
-                                           @Field("employee_id") int employee_id,
-                                           @Field("subject_id") String subject_id,
+                                           @Field("employee_id") String employee_id,
+                                           @Field("subject_id") int subject_id,
                                            @Field("complainant_name") String complainant_name,
                                            @Field("defendant_name") String defendant_name,
                                            @Field("mobile_no") String mobile_no,

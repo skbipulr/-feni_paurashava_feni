@@ -34,7 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/backBtn"
-                android:gravity="center"
+                android:gravity="start"
+                android:layout_marginStart="24dp"
                 android:orientation="horizontal">
 
                 <TextView

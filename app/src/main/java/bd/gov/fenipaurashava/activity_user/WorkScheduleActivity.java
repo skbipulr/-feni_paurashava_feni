@@ -165,7 +165,7 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
             int user_id = Integer.parseInt(u_id);
             int employee_id = Integer.parseInt(e_id);
 
-            if (user_id==12 && employee_id==26){
+            if (user_id==Common.ADMIN_USER_ID && employee_id==Common.ADMIN_EMP_ID){
 
                 Call<WorkScheduleSaveResponse> call = apiService.setWorkScheduleSaveResponse(Common.APP_KEY, user_id, employee_id, workSubject, date, workPlace, workDetails);
 
@@ -174,8 +174,6 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
                     public void onResponse(Call<WorkScheduleSaveResponse> call, Response<WorkScheduleSaveResponse> response) {
                         if (response.code() == 200) {
                             WorkScheduleSaveResponse meg = response.body();
-
-                            // Toast.makeText(SignInActivity.this, ""+userAssessToken, Toast.LENGTH_LONG).show();
                             Toast.makeText(WorkScheduleActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
                             mDialog.dismiss();
 

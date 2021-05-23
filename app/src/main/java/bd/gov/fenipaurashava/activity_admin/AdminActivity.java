@@ -169,12 +169,12 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-        adminGonosunaniCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, PublicHeadingActivity.class));
-            }
-        });
+//        adminGonosunaniCV.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(AdminActivity.this, PublicHeadingActivity.class));
+//            }
+//        });
 
         adminStuffCV.setOnClickListener(new View.OnClickListener() {
             @Override

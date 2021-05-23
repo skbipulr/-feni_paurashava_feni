@@ -71,6 +71,7 @@ public class AppointmentOfDCActivity extends AppCompatActivity implements DatePi
                     List<Datum> datas = complainOfDivisionsResponse.getData();
                     complainDivisionsSpinnerItems = new ArrayList<>();
 
+
                     for (int i = 0; i < datas.size(); i++) {
 
                         complainDivisionsSpinnerItems.add(new ComplainDivisionsSpinnerItem(datas.get(i).getName()));
@@ -86,7 +87,6 @@ public class AppointmentOfDCActivity extends AppCompatActivity implements DatePi
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                             String place = adapterView.getItemAtPosition(i).toString();
-
                             subjectId = datas.get(i).getId();
 
                         }

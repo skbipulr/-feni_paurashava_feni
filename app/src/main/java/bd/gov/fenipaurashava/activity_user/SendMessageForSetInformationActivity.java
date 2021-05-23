@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
 import bd.gov.fenipaurashava.modelForSMSSendPOST.SMSSendResponse;
 import bd.gov.fenipaurashava.modelForSetInformationFetchGET.Datum;
@@ -104,7 +105,7 @@ public class SendMessageForSetInformationActivity extends AppCompatActivity {
             mDialog.setMessage("Please waiting...");
             mDialog.show();
 
-            if(use_id==12){
+            if(use_id== Common.ADMIN_USER_ID){
                 Call<SMSSendResponse> call = apiInterface.setSMSSendResponse("A1b1C2d32564kjhkjadu", use_id,phoneNumber,message);
 
                 call.enqueue(new Callback<SMSSendResponse>() {

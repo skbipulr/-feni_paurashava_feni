@@ -33,6 +33,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
@@ -41,6 +42,7 @@ import bd.gov.fenipaurashava.modelEmployeeUpdatePOST.EmployeeUpdateResponse;
 import bd.gov.fenipaurashava.modelForAppoinmentSubjectSavePOST.AppointmentSubjectSaveResponse;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
+
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -64,7 +66,6 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
     private FloatingActionButton selectedIV;
 
 
-
     private ApiInterface apiInterface;
 
     private LinearLayout selectedForDateIV, l1;
@@ -72,11 +73,11 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
             userNameET, passwordET, orderET, facebookIdET, tweeterIdET;
     private TextView pictureTextTV, dateTxt;
 
-    private File uploadFile,file;
+    private File uploadFile, file;
     private String name, email, mobileNo, designation, bcsBatch, userName,
-            password,  facebookId, tweeterId, dataAndTime,picture;
+            password, facebookId, tweeterId, dataAndTime, picture;
 
-    private int order,itemId;
+    private int order, itemId;
 
     public static final String MyPREFERENCES = "MyPrefs";
     private SharedPreferences sharedpreferences;
@@ -149,6 +150,7 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
         userName = (String) employee.getUsername();
         password = passwordET.getText().toString().trim();
         order = employee.getOrderNo();
+
         facebookId = (String) employee.getFbId();
         tweeterId = (String) employee.getTweeterId();
         dataAndTime = (String) employee.getJoiningDate();
@@ -175,7 +177,7 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
             tweeterIdET.setText(tweeterId);
             dateTxt.setText(dataAndTime);
 
-            Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture())
+            Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
                     .placeholder(R.drawable.placeholder).into(getImageIV);
         } else {
             getSupportActionBar().setTitle("Add");
@@ -324,7 +326,7 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
         }
     }
 
-    private void updateData( int id_t) {
+    private void updateData(int id_t) {
         name = nameET.getText().toString().trim();
         email = emailET.getText().toString().trim();
         mobileNo = mobileNoET.getText().toString().trim();
@@ -334,29 +336,29 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
         password = passwordET.getText().toString().trim();
         String orderString = orderET.getText().toString().trim();
 
-        String datee  = dateTxt.getText().toString().trim();
+        String datee = dateTxt.getText().toString().trim();
 
         facebookId = facebookIdET.getText().toString().trim();
         tweeterId = tweeterIdET.getText().toString().trim();
 
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String user_id = sharedpreferences.getString(USER_ID,"");
-        String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
+        String user_id = sharedpreferences.getString(USER_ID, "");
+        String employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
 
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
-        if (use_id==Common.ADMIN_USER_ID && em_id==Common.ADMIN_EMP_ID){
+        if (use_id == Common.ADMIN_USER_ID && em_id == Common.ADMIN_EMP_ID) {
 
-            String e_id,f_id,t_id;
-            if (file!=null || employee_id!=null || facebookId != null || tweeterId != null){
-                file=uploadFile;
+            String e_id, f_id, t_id;
+            if (file != null || employee_id != null || facebookId != null || tweeterId != null) {
+                file = uploadFile;
                 e_id = employee_id;
                 f_id = facebookId;
                 t_id = tweeterId;
 
-            }else {
+            } else {
                 file = null;
                 e_id = "";
                 f_id = "";
@@ -389,9 +391,9 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
             apiInterface = RetrofitClient.getRetrofit().create(ApiInterface.class);
 
-            Call<EmployeeUpdateResponse> call = apiInterface.setEmployeeUpdateUpdateResponse("A1b1C2d32564kjhkjadu",id_t,_userId,_name
-                    ,_employee_id,_designation,_mobileNo,_email,_uploadFile,_bcsBatch,_dateAndTime,_facebookId,_tweeterId
-                    ,_order,_userName,_password);
+            Call<EmployeeUpdateResponse> call = apiInterface.setEmployeeUpdateUpdateResponse("A1b1C2d32564kjhkjadu", id_t, _userId, _name
+                    , _employee_id, _designation, _mobileNo, _email, _uploadFile, _bcsBatch, _dateAndTime, _facebookId, _tweeterId
+                    , _order, _userName, _password);
 
 
             call.enqueue(new Callback<EmployeeUpdateResponse>() {
@@ -403,8 +405,7 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
                     if (response.code() == 200) {
                         Toast.makeText(AdminCurdEditorActivity.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
-                    }
-                    else if (response.code() == 203) {
+                    } else if (response.code() == 203) {
                         Toast.makeText(AdminCurdEditorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     } else if (response.code() == 401) {
@@ -422,22 +423,22 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
                     Toast.makeText(AdminCurdEditorActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
+        } else {
             Toast.makeText(this, "Your are not authorize person", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void deleteData( int id_t) {
+    private void deleteData(int id_t) {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String user_id = sharedpreferences.getString(USER_ID,"");
-        String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
+        String user_id = sharedpreferences.getString(USER_ID, "");
+        String employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
 
         // Toast.makeText(this, "user "+user_id+" employee"+employee_id, Toast.LENGTH_SHORT).show();
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
-        if (use_id==Common.ADMIN_USER_ID){
+        if (use_id == Common.ADMIN_USER_ID) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Deleting...");
             progressDialog.show();
@@ -472,7 +473,7 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
             });
 
             progressDialog.dismiss();
-        }else {
+        } else {
             Toast.makeText(this, "Your are not authorize person", Toast.LENGTH_SHORT).show();
         }
 

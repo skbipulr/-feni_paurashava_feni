@@ -2,7 +2,9 @@ package bd.gov.fenipaurashava.activity_user;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +19,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem3;
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.adapter.ComplainDivisionsSpinnerAdapter3;
@@ -41,15 +41,17 @@ public class ComplainActivity extends AppCompatActivity {
     private ImageView getImageIV;
     private LinearLayout selectedIV;
     private int subjectId;
-    private FloatingActionButton floating_action_button,floating_action;
 
-    String complainType;
+    public static final String MyPREFERENCES = "MyPrefs";
+    private SharedPreferences sharedpreferences;
+    public static final String USER_ID = "USER_ID";
+    public static final String EMPLOYEE_ID = "EMPLOYEE_ID";
 
-    EditText subjectET, complainDetailsET, nameOneET, addressOneET, nameTwoET, addressTwoET, phoneNumberET,complainTypeET;
+    EditText subjectET, complainDetailsET, nameOneET, addressOneET, nameTwoET, addressTwoET, phoneNumberET;
     String subject, complainDetails, nameOne, addressOne, nameTwo, addressTwo, phoneNumber;
     private ApiInterface apiInterface;
     private Spinner complainOfDivisionsSpinner;
-    private LinearLayout complainSpeenerLL;
+    private String employee_id;
 
     private ArrayList<ComplainDivisionsSpinnerItem3> complainDivisionsSpinnerItems;
     private ComplainDivisionsSpinnerAdapter3 complainDivisionsSpinnerAdapter;
@@ -59,8 +61,12 @@ public class ComplainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complain);
-        initField();
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String user_id = sharedpreferences.getString(USER_ID,"");
+        employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
+
+        initField();
         fetchComplainOfDivisions();
     }
 
@@ -76,14 +82,10 @@ public class ComplainActivity extends AppCompatActivity {
                     complainDivisionsSpinnerItems = new ArrayList<>();
 
                     for (int i = 0; i < datas.size(); i++) {
-
                         subjectId = datas.get(i).getId();
-                       complainType =  datas.get(i).getName();
                         complainDivisionsSpinnerItems.add(new bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem3(datas.get(i).getName()));
-
                     }
 
-                    //Toast.makeText(ComplainActivity.this, "dadadad"+ datas.get(i).getId(), Toast.LENGTH_SHORT).show();
                     complainDivisionsSpinnerAdapter = new ComplainDivisionsSpinnerAdapter3(ComplainActivity.this, complainDivisionsSpinnerItems);
                     complainOfDivisionsSpinner.setAdapter(complainDivisionsSpinnerAdapter);
 
@@ -128,32 +130,6 @@ public class ComplainActivity extends AppCompatActivity {
         nameTwoET = findViewById(R.id.nameTwoET);
         addressTwoET = findViewById(R.id.addressTwoET);
         phoneNumberET = findViewById(R.id.phoneNumberET);
-        complainTypeET = findViewById(R.id.complainTypeET);
-
-        complainSpeenerLL = findViewById(R.id.complainSpeenerLL);
-        floating_action_button = findViewById(R.id.floating_action_button);
-        floating_action = findViewById(R.id.floating_action);
-
-        floating_action_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                complainTypeET.setVisibility(View.VISIBLE);
-                complainSpeenerLL.setVisibility(View.GONE);
-                floating_action_button.setVisibility(View.GONE);
-                floating_action.setVisibility(View.VISIBLE);
-            }
-        });
-
-        floating_action.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                complainTypeET.setVisibility(View.GONE);
-                complainSpeenerLL.setVisibility(View.VISIBLE);
-                floating_action_button.setVisibility(View.VISIBLE);
-                floating_action.setVisibility(View.GONE);
-            }
-        });
 
         selectedIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,7 +173,6 @@ public class ComplainActivity extends AppCompatActivity {
         nameTwo = nameTwoET.getText().toString().trim();
         addressTwo = addressTwoET.getText().toString().trim();
         phoneNumber = phoneNumberET.getText().toString().trim();
-        complainType = complainTypeET.getText().toString().trim();
 
         if (complainDetails.isEmpty()) {
             complainDetailsET.setError("required");
@@ -221,7 +196,7 @@ public class ComplainActivity extends AppCompatActivity {
             mDialog.show();
             apiInterface = RetrofitClient.getRetrofit().create(ApiInterface.class);
             //   int id = Integer.parseInt(Common.USER_ID);
-            Call<ComplainSaveResponse> call = apiInterface.setComplain(Common.APP_KEY, 221212121, complainType, nameOne
+            Call<ComplainSaveResponse> call = apiInterface.setComplain(Common.APP_KEY, employee_id, subjectId, nameOne
                     , nameTwo, phoneNumber, complainDetails, addressOne,
                     addressTwo, "");
 
@@ -232,7 +207,7 @@ public class ComplainActivity extends AppCompatActivity {
                     if (response.code() == 200) {
                         ComplainSaveResponse meg = response.body();
 
-                       // Toast.makeText(ComplainActivity.this, "subject Id: "+subjectId, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ComplainActivity.this, "subject Id: "+subjectId, Toast.LENGTH_SHORT).show();
 
                         // Toast.makeText(SignInActivity.this, ""+userAssessToken, Toast.LENGTH_LONG).show();
                         Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();

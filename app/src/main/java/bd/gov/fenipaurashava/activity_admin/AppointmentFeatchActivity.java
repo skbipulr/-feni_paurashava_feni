@@ -51,36 +51,37 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
     }
 
     private void loadDataFromAPI() {
-
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String user_id = sharedpreferences.getString(USER_ID,"");
-        String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
+        String user_id = sharedpreferences.getString(USER_ID, "");
+        String employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
+
+        Toast.makeText(AppointmentFeatchActivity.this, " user id " + user_id + "employee id: " + employee_id, Toast.LENGTH_SHORT).show();
+
 
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
-        if (use_id==Common.ADMIN_USER_ID){
+        if (use_id == Common.ADMIN_USER_ID) {
 
             int e = 0;
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-            apiService.getAppointment(Common.APP_KEY,0,use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
+            apiService.getAppointment(Common.APP_KEY, 0, use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
                 @Override
                 public void onResponse(Call<AppointmentFeatchResponse> call, Response<AppointmentFeatchResponse> response) {
 
                     AppointmentFeatchResponse appointmentFeatchResponse = response.body();
-                    if (response.code()==200) {
+                    if (response.code() == 200) {
 
                         appointmentList = appointmentFeatchResponse.getData();
                         init();
                         swipeRefreshLayout.setRefreshing(false);
-                    }
-                    else if (response.code() == 203) {
+                    } else if (response.code() == 203) {
                         Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
-                    }else if (response.code() == 401){
+                    } else if (response.code() == 401) {
                         Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
-                    }else if (response.code() == 422){
+                    } else if (response.code() == 422) {
                         Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -92,28 +93,27 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
                 }
             });
 
-        }else {
+        } else {
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-            apiService.getAppointment(Common.APP_KEY,em_id,use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
+            apiService.getAppointment(Common.APP_KEY, em_id, use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
                 @Override
                 public void onResponse(Call<AppointmentFeatchResponse> call, Response<AppointmentFeatchResponse> response) {
 
                     AppointmentFeatchResponse appointmentFeatchResponse = response.body();
-                    if (response.code()==200) {
+                    if (response.code() == 200) {
 
                         appointmentList = appointmentFeatchResponse.getData();
                         init();
                         swipeRefreshLayout.setRefreshing(false);
 
-                       // Toast.makeText(AppointmentFeatchActivity.this, " u "+use_id+"e "+em_id, Toast.LENGTH_SHORT).show();
-                    }
-                    else if (response.code() == 203) {
+                        Toast.makeText(AppointmentFeatchActivity.this, " u " + use_id + "e " + em_id, Toast.LENGTH_SHORT).show();
+                    } else if (response.code() == 203) {
                         Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
-                    }else if (response.code() == 401){
+                    } else if (response.code() == 401) {
                         Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
-                    }else if (response.code() == 422){
+                    } else if (response.code() == 422) {
                         Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
@@ -121,12 +121,12 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<AppointmentFeatchResponse> call, Throwable t) {
+                    Toast.makeText(AppointmentFeatchActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             });
 
         }
-
 
 
     }

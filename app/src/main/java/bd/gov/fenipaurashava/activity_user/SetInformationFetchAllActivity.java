@@ -48,8 +48,6 @@ public class SetInformationFetchAllActivity extends AppCompatActivity {
         loadDataFromAPI();
     }
 
-
-
     private void loadDataFromAPI() {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);

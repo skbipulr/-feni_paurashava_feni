@@ -59,7 +59,7 @@ public class ComplainFeatchActivity extends AppCompatActivity {
             }
         });
         listener = (view, position) -> {
-            Intent intent = new Intent(ComplainFeatchActivity.this, EditorActivity.class);
+            Intent intent = new Intent(ComplainFeatchActivity.this, ComplainSubjectEditorActivity.class);
             intent.putExtra("id", list.get(position).getId());
             intent.putExtra("name", list.get(position).getName());
             startActivity(intent);

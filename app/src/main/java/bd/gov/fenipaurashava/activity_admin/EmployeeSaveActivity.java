@@ -193,10 +193,10 @@ public class EmployeeSaveActivity extends AppCompatActivity implements DatePicke
             designationET.setError("required");
             designationET.requestFocus();
         }
-        else if (bcsBatch.isEmpty()) {
-            bcsBatchET.setError("required");
-            bcsBatchET.requestFocus();
-        }
+//        else if (bcsBatch.isEmpty()) {
+//            bcsBatchET.setError("required");
+//            bcsBatchET.requestFocus();
+//        }
         else if (userName.isEmpty()) {
             userNameET.setError("required");
             userNameET.requestFocus();
@@ -230,7 +230,7 @@ public class EmployeeSaveActivity extends AppCompatActivity implements DatePicke
                 RequestBody _email = RequestBody.create(MediaType.parse("text/plain"), email);
                 RequestBody _mobileNo = RequestBody.create(MediaType.parse("text/plain"), mobileNo);
                 RequestBody _designation = RequestBody.create(MediaType.parse("text/plain"), designation);
-                RequestBody _bcsBatch = RequestBody.create(MediaType.parse("text/plain"), bcsBatch);
+                RequestBody _bcsBatch = RequestBody.create(MediaType.parse("text/plain"), "11");
                 RequestBody _dateAndTime = RequestBody.create(MediaType.parse("text/plain"), date);
                 RequestBody _userName = RequestBody.create(MediaType.parse("text/plain"), userName);
                 RequestBody _password = RequestBody.create(MediaType.parse("text/plain"), password);

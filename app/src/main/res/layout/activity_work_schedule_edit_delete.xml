@@ -24,7 +24,7 @@
                 android:id="@+id/picture"
                 android:layout_width="140dp"
                 android:layout_height="140dp"
-                android:src="@drawable/main_logo" />
+                android:src="@drawable/feni_logo" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fabChoosePic"

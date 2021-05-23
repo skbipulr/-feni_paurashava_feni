@@ -33,8 +33,8 @@ public class UnoMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uno_message);
 
-        initSwipeLayout();
-        loadDataFromAPI();
+       // initSwipeLayout();
+       // loadDataFromAPI();
     }
 
     private void loadDataFromAPI() {
@@ -72,32 +72,32 @@ public class UnoMessageActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    private void initSwipeLayout() {
-        //view
-        swipeRefreshLayout = findViewById(R.id.employeeSwipeLayout);
-        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
-                android.R.color.holo_green_dark,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_blue_dark);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                //  initSwipeLayout();
-                loadDataFromAPI();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
-
-
-        //Default, load for first time
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                loadDataFromAPI();
-                swipeRefreshLayout.setRefreshing(true);
-            }
-
-        });
-
-    }
+//    private void initSwipeLayout() {
+//        //view
+//        swipeRefreshLayout = findViewById(R.id.employeeSwipeLayout);
+//        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+//                android.R.color.holo_green_dark,
+//                android.R.color.holo_orange_dark,
+//                android.R.color.holo_blue_dark);
+//        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                //  initSwipeLayout();
+//                loadDataFromAPI();
+//                swipeRefreshLayout.setRefreshing(false);
+//            }
+//        });
+//
+//
+//        //Default, load for first time
+//        swipeRefreshLayout.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                loadDataFromAPI();
+//                swipeRefreshLayout.setRefreshing(true);
+//            }
+//
+//        });
+//
+//    }
 }

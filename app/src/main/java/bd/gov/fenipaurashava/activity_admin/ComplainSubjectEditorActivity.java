@@ -200,7 +200,7 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
                         if (response.code() == 200) {
                             ComplainSubjectSaveResponse serverResponse = response.body();
                             Toast.makeText(ComplainSubjectEditorActivity.this, "" + serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainFeatchActivity.class));
                             mDialog.dismiss();
                         } else if (response.code() == 203) {
                             Toast.makeText(ComplainSubjectEditorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -212,7 +212,6 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
                             Toast.makeText(ComplainSubjectEditorActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
-
                     }
 
                     @Override
@@ -220,14 +219,12 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
                         mDialog.dismiss();
                     }
                 });
-
             }
 
         }
     }
 
     private void updateData(final String key, final int id) {
-
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         String user_id = sharedpreferences.getString(USER_ID,"");
         String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
@@ -255,7 +252,8 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
                     Log.i(ComplainSubjectEditorActivity.class.getSimpleName(), response.toString());
 
                     if (response.code()==200){
-                        Toast.makeText(ComplainSubjectEditorActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ComplainSubjectEditorActivity.this, "bipul : "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainFeatchActivity.class));
                         progressDialog.dismiss();
                     }
                 }
@@ -298,6 +296,9 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
 
                     if (response.code() == 200) {
                         Toast.makeText(ComplainSubjectEditorActivity.this, "" + response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainFeatchActivity.class));
+
                     }else {
                         Toast.makeText(ComplainSubjectEditorActivity.this, "problem", Toast.LENGTH_SHORT).show();
                     }

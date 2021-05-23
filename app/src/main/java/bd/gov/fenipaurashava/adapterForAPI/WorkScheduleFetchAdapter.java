@@ -49,7 +49,7 @@ public class WorkScheduleFetchAdapter extends RecyclerView.Adapter<WorkScheduleF
        holder.scheduleDateTV.setText(data.getScheduleDate());
        holder.placeTV.setText(data.getPlace());
 
-       holder.eventImageTV.setImageResource(data.getImage());
+       //holder.eventImageTV.setImageResource(data.getImage());
 
         String dtStart = data.getScheduleDate();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -91,7 +91,7 @@ public class WorkScheduleFetchAdapter extends RecyclerView.Adapter<WorkScheduleF
             subjectTitleTV = itemView.findViewById(R.id.subjectTitleTV);
             placeTV = itemView.findViewById(R.id.placeTV);
             scheduleDateTV = itemView.findViewById(R.id.scheduleDateTV);
-            eventImageTV = itemView.findViewById(R.id.eventImageTV);
+           // eventImageTV = itemView.findViewById(R.id.eventImageTV);
         }
     }
 }
