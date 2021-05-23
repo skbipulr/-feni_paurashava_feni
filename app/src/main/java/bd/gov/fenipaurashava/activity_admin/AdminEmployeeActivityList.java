@@ -31,7 +31,6 @@ public class AdminEmployeeActivityList extends AppCompatActivity {
     private List<Datum> employeeList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ApiInterface apiService;
-
     public static final String MyPREFERENCES = "MyPrefs";
 
     @Override

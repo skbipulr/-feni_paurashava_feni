@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 
@@ -40,10 +42,9 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Datum employee = employeeList.get(position);
-        String image = "http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture();
 
-//        Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture()).placeholder(R.drawable.default_icon)
-//                .into(holder.profileIV);
+        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture()).placeholder(R.drawable.default_icon)
+                .into(holder.profileIV);
 
         holder.profileIV.setImageResource(employee.getImage());
         holder.nameTV.setText(employee.getName());

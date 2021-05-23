@@ -27,7 +27,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:src="@drawable/stuff1"
+            android:src="@drawable/default_icon"
             app:cardCornerRadius="75dp">
 
         </de.hdodenhof.circleimageview.CircleImageView>

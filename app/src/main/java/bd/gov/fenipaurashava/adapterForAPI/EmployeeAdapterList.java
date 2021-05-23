@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_user.ProfileActivity;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
@@ -32,34 +34,32 @@ public class EmployeeAdapterList extends RecyclerView.Adapter<EmployeeAdapterLis
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.employee_item_layout,
-                        parent,false);
+                        parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-       Datum employee =  employeeList.get(position);
-        String image = "http://fenimayor.digiins.gov.bd/district_app/public/employee/"+employee.getPicture();
-
-//        Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture()).placeholder(R.drawable.default_icon)
-//                .into(holder.profileIV);
+        Datum employee = employeeList.get(position);
+        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture()).placeholder(R.drawable.default_icon)
+                .into(holder.profileIV);
         holder.profileIV.setImageResource(employee.getImage());
-       holder.nameTV.setText(employee.getName());
-       holder.phoneNumberTV.setText(employee.getMobileNo());
-       holder.mailTV.setText(employee.getEmail());
-       holder.designationTV.setText(employee.getDesignation());
+        holder.nameTV.setText(employee.getName());
+        holder.phoneNumberTV.setText(employee.getMobileNo());
+        holder.mailTV.setText(employee.getEmail());
+        holder.designationTV.setText(employee.getDesignation());
 
-       holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(context, ProfileActivity.class);
-               intent.putExtra("employee", employee);
-               context.startActivity(intent);
-           }
-       });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProfileActivity.class);
+                intent.putExtra("employee", employee);
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -70,7 +70,8 @@ public class EmployeeAdapterList extends RecyclerView.Adapter<EmployeeAdapterLis
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView profileIV;
-        TextView nameTV,phoneNumberTV,designationTV,mailTV;
+        TextView nameTV, phoneNumberTV, designationTV, mailTV;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

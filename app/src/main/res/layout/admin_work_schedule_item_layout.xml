@@ -21,20 +21,19 @@
         android:weightSum="10">
 
         <ImageView
-            android:layout_width="60dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_weight="2"
             android:layout_gravity="center"
-            android:layout_marginStart="20dp"
             android:src="@drawable/ic_baseline_date_range_24"
             app:tint="@color/white" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="20dp"
-            android:layout_weight="2"
-            android:text="কাজের সময়সূচী"
+            android:layout_weight="6"
+            android:text="মেয়রের দৈনন্দিন কর্মসূচী"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -42,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="6"
+            android:layout_weight="2"
             android:gravity="end"
             android:orientation="vertical">
 
