@@ -9,119 +9,79 @@
     tools:context=".activity_user.DemoDashboardActivity">
 
 
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <include-->
-<!--            android:id="@+id/t"-->
-<!--            layout="@layout/toolbar"/>-->
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:background="@drawable/dashboard_shape"
             android:orientation="horizontal">
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="start"
-                android:layout_marginTop="24dp"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RelativeLayout
-                        android:id="@+id/rl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_centerHorizontal="true"
-                        android:background="@drawable/circle_border">
-
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/profileImageIV"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_centerInParent="true"
-                            android:layout_margin="6dp"
-                            android:background="@drawable/circle"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/feni_logo" />
-
-
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:id="@+id/l1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:layout_marginStart="12dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/profile_nameTV"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginTop="8dp"
-                            android:text="ফেনীর মেয়র"
-                            android:textColor="@color/white"
-                            android:textSize="18dp" />
-
-                        <!--                    <TextView-->
-                        <!--                        android:id="@+id/profileDesignationTV"-->
-                        <!--                        android:layout_width="match_parent"-->
-                        <!--                        android:layout_height="wrap_content"-->
-                        <!--                        android:layout_below="@id/profile_nameTV"-->
-                        <!--                        android:layout_centerInParent="true"-->
-                        <!--                        android:layout_marginTop="2dp"-->
-                        <!--                        android:text="User designation"-->
-                        <!--                        android:textColor="@color/white"-->
-                        <!--                        android:textSize="14dp" />-->
-
-
-                    </LinearLayout>
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:id="@+id/adminCV"
+                <RelativeLayout
+                    android:id="@+id/rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16dp"
-                    android:padding="10dp"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/circle_border">
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImageIV"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="6dp"
+                        android:background="@drawable/circle"
+                        android:padding="3dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_icon" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/l1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/ic_admin_icon"/>
-
                     <TextView
+                        android:id="@+id/profile_nameTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="User name"
                         android:textColor="@color/white"
-                        android:text="অ্যাডমিন "/>
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/profileDesignationTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profile_nameTV"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="2dp"
+                        android:text="User designation"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+
                 </LinearLayout>
 
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -129,8 +89,8 @@
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="120dp"
+            android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="2dp"
             app:cardBackgroundColor="@color/grey_5"
@@ -178,7 +138,6 @@
 
 
                             <androidx.cardview.widget.CardView
-                                android:onClick="three_three_three"
                                 android:layout_width="65dp"
                                 android:layout_height="65dp"
                                 android:layout_marginTop="8dp"
@@ -188,7 +147,6 @@
                                 app:backgroundTint="@color/swipe_4"
                                 app:cardCornerRadius="360dp"
                                 app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 app:fabCustomSize="65dp">
 
                                 <LinearLayout
@@ -231,13 +189,11 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
-                                android:onClick="nine_nine_nine"
                                 android:layout_width="65dp"
                                 android:layout_height="65dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
                                 android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 android:scaleType="centerCrop"
                                 app:backgroundTint="@color/swipe_4"
                                 app:cardCornerRadius="360dp"
@@ -259,6 +215,22 @@
 
                             </androidx.cardview.widget.CardView>
 
+                            <!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+                            <!--                            android:id="@+id/tripleNine"-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="65dp"-->
+                            <!--                            android:layout_marginTop="8dp"-->
+                            <!--                            android:layout_marginBottom="4dp"-->
+                            <!--                            android:clickable="true"-->
+                            <!--                            app:backgroundTint="@color/red"-->
+                            <!--                            app:elevation="2dp"-->
+                            <!--                            app:fabCustomSize="65dp"-->
+                            <!--                            app:fabSize="normal"-->
+                            <!--                            app:maxImageSize="50dp"-->
+                            <!--                            app:rippleColor="@android:color/white"-->
+                            <!--                            app:srcCompat="@drawable/triple_999_transperent"-->
+                            <!--                            app:tint="@color/white"-->
+                            <!--                            tools:ignore="VectorDrawableCompat" />-->
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -283,7 +255,6 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
-                                android:onClick="one_zero_nine"
                                 android:layout_width="65dp"
                                 android:layout_height="65dp"
                                 android:layout_marginTop="8dp"
@@ -293,7 +264,6 @@
                                 app:backgroundTint="@color/swipe_4"
                                 app:cardCornerRadius="360dp"
                                 app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 app:fabCustomSize="65dp">
 
                                 <LinearLayout
@@ -343,17 +313,15 @@
 
 
                             <androidx.cardview.widget.CardView
-                                android:id="@+id/one_six_zero"
-                                android:onClick="one_six_zero"
                                 android:layout_width="65dp"
                                 android:layout_height="65dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
+                                android:clickable="true"
                                 android:scaleType="centerCrop"
                                 app:backgroundTint="@color/swipe_4"
                                 app:cardCornerRadius="360dp"
                                 app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 app:fabCustomSize="65dp">
 
                                 <LinearLayout
@@ -371,6 +339,23 @@
 
                             </androidx.cardview.widget.CardView>
 
+
+                            <!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+                            <!--                            android:id="@+id/dudokCall"-->
+                            <!--                            android:layout_width="wrap_content"-->
+                            <!--                            android:layout_height="65dp"-->
+                            <!--                            android:layout_marginTop="8dp"-->
+                            <!--                            android:layout_marginBottom="4dp"-->
+                            <!--                            android:clickable="true"-->
+                            <!--                            android:scaleType="centerCrop"-->
+                            <!--                            app:backgroundTint="@color/swipe_4"-->
+                            <!--                            app:elevation="2dp"-->
+                            <!--                            app:fabCustomSize="65dp"-->
+                            <!--                            app:fabSize="normal"-->
+                            <!--                            app:maxImageSize="40dp"-->
+                            <!--                            app:rippleColor="@android:color/white"-->
+                            <!--                            app:srcCompat="@drawable/dudok_icon_transperent"-->
+                            <!--                            app:tint="@color/white" />-->
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -396,7 +381,6 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
-                                android:onClick="one_zeri_nine_zero"
                                 android:layout_width="65dp"
                                 android:layout_height="65dp"
                                 android:layout_marginTop="8dp"
@@ -406,7 +390,6 @@
                                 app:backgroundTint="@color/swipe_4"
                                 app:cardCornerRadius="360dp"
                                 app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 app:fabCustomSize="65dp">
 
                                 <LinearLayout
@@ -464,7 +447,6 @@
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
-                                android:id="@+id/one_zero_nine_eight"
                                 android:layout_width="65dp"
                                 android:layout_height="65dp"
                                 android:layout_marginTop="8dp"
@@ -474,7 +456,6 @@
                                 app:backgroundTint="@color/swipe_4"
                                 app:cardCornerRadius="360dp"
                                 app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
                                 app:fabCustomSize="65dp">
 
                                 <LinearLayout
@@ -532,73 +513,73 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
+            android:layout_below="@id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/card_view"
             android:layout_marginBottom="16dp"
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
                 android:layout_marginEnd="12dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/appointmentCV"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
                     android:background="@drawable/grad"
-                    android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_meet" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_meet"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="সাক্ষাৎকার "
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="সাক্ষাৎকার "/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/complainCV"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/grad1"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/grad1"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_complaint" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_complaint"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="অভিযোগ"
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="অভিযোগ"/>
 
                 </LinearLayout>
 
@@ -613,57 +594,57 @@
 
                 <LinearLayout
                     android:id="@+id/setInfoCV"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
                     android:background="@drawable/grad2"
-                    android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_information" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_information"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="তথ্য দিন  "
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="তথ্য দিন  "/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/dailtWorkCV"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/grad3"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/grad3"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_event" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_event"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="মেয়রের দৈনন্দিন কর্মসুচি"
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="মেয়রের দৈনন্দিন কর্মসুচি"/>
 
                 </LinearLayout>
 
@@ -678,57 +659,57 @@
 
                 <LinearLayout
                     android:id="@+id/stuffCV"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
                     android:background="@drawable/grad4"
-                    android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_employee" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_employee"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="কর্মকর্তা গণ"
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="কর্মকর্তা গণ"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/unoMessageCV"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/grad6"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/grad6"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_comment" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_comment"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="ফেনীর মেয়রের বার্তা"
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="ফেনীর মেয়রের বার্তা"/>
 
                 </LinearLayout>
 
@@ -743,61 +724,63 @@
 
                 <LinearLayout
                     android:id="@+id/aboutCV"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
                     android:background="@drawable/grad7"
-                    android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_about" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_about"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="ফেনীর পৌরসভার সম্পর্কে"
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="ফেনীর পৌরসভার সম্পর্কে"/>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:onClick="service"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/grad8"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:background="@drawable/grad3"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_service" />
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_comment"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginEnd="8dp"
-                        android:gravity="center"
-                        android:text="নাগরিক সেবা"
                         android:textColor="@color/grey_80"
-                        android:textSize="16dp" />
+                        android:layout_marginEnd="8dp"
+                        android:textSize="16dp"
+                        android:gravity="center"
+                        android:layout_marginStart="6dp"
+                        android:text="ফেনীর মেয়রের বার্তা"/>
 
                 </LinearLayout>
 
             </LinearLayout>
+
+
+
 
 
         </LinearLayout>
@@ -806,108 +789,3 @@
 
 
 </androidx.core.widget.NestedScrollView>
-
-    <!--    <androidx.core.widget.NestedScrollView-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginLeft="8dp"-->
-    <!--            android:layout_marginRight="8dp"-->
-    <!--            android:layout_marginTop="8dp"-->
-    <!--            android:layout_marginBottom="8dp"-->
-    <!--            android:orientation="vertical">-->
-
-    <!--            <include-->
-    <!--                android:visibility="gone"-->
-    <!--                layout="@layout/gonosunani_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/appointment_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/complain_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/setinfo_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/daily_activitys_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/stuff_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/uno_message_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-
-    <!--            <include-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/about_jela_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-
-    <!--            <include-->
-    <!--                android:visibility="gone"-->
-    <!--                android:layout_marginTop="8dp"-->
-    <!--                layout="@layout/admin_item_layout"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="120dp"-->
-    <!--                android:layout_marginLeft="4dp"-->
-    <!--                android:layout_marginRight="4dp"-->
-    <!--                android:layout_marginBottom="4dp"/>-->
-
-
-    <!--        </LinearLayout>-->
-
-    <!--    </androidx.core.widget.NestedScrollView>-->
-
-

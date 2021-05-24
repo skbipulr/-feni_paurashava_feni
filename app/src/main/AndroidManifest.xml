@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -17,28 +18,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApnarJelaProsasok"
         android:usesCleartextTraffic="true">
-
-        <activity android:name="bd.gov.fenipaurashava.activity_admin.WorkScheduleEditDeleteActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/EditorTheme"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
-
-
+        <activity android:name=".activity_user.DemoDashboardActivity">
 
         </activity>
-
-
-
-        <activity android:name="bd.gov.fenipaurashava.activity_admin.EditorWorkScheduleActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/EditorTheme"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
-
-
-        </activity>
-
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.SplashActivity"
+            android:name=".activity_admin.WorkScheduleEditDeleteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/EditorTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".activity_admin.EditorWorkScheduleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/EditorTheme"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".activity_user.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar">
 
@@ -47,199 +41,196 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.WorkScheduleShowActivity"
+            android:name=".activity_admin.WorkScheduleShowActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.WorkScheduleDetailsActivity"
+            android:name=".activity_user.WorkScheduleDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AppointmentFeatchActivity"
+            android:name=".activity_admin.AppointmentFeatchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminCurdEmployeeActivity"
+            android:name=".activity_admin.AdminCurdEmployeeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.ComplainFeatchActivity"
+            android:name=".activity_admin.ComplainFeatchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.ComplainSubjectEditorActivity"
+            android:name=".activity_admin.ComplainSubjectEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminCurdEditorActivity"
+            android:name=".activity_admin.AdminCurdEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.SendMessageForAppintmentActivity"
+            android:name=".activity_admin.SendMessageForAppintmentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminEmployeeForAppoinmentActivity"
+            android:name=".activity_admin.AdminEmployeeForAppoinmentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminEmployeeActivity"
+            android:name=".activity_admin.AdminEmployeeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.SetInformationFetchAllActivity"
+            android:name=".activity_user.SetInformationFetchAllActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.SendMessageForSetInformationActivity"
+            android:name=".activity_user.SendMessageForSetInformationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.SetInformationDetailsActivity"
+            android:name=".activity_user.SetInformationDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.PublicHearingDetailsActivity"
+            android:name=".activity_user.PublicHearingDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.SendMessageActivity"
+            android:name=".activity_user.SendMessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.WorkScheduleActivity"
+            android:name=".activity_user.WorkScheduleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminEmployeeActivityForComplainRef"
+            android:name=".activity_admin.AdminEmployeeActivityForComplainRef"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.SendMessageForComplainActivity"
+            android:name=".activity_admin.SendMessageForComplainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminEmployeeActivityForSetInformationRef"
+            android:name=".activity_admin.AdminEmployeeActivityForSetInformationRef"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.EditorActivity"
+            android:name=".activity_admin.EditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.PublicHearingEditorActivity"
+            android:name=".activity_user.PublicHearingEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.ComplainFetchAllActivity"
+            android:name=".activity_admin.ComplainFetchAllActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AppoimentFatchAllActivity"
+            android:name=".activity_admin.AppoimentFatchAllActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-        <activity android:name="bd.gov.fenipaurashava.activity_admin.ASubjectSaveActivity" />
+        <activity android:name=".activity_admin.ASubjectSaveActivity" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.AppointmentSaveSubjectActivityAM"
+            android:name=".activity_user.AppointmentSaveSubjectActivityAM"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.EmployeeSaveActivity"
+            android:name=".activity_admin.EmployeeSaveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.PublicHeadingActivity"
+            android:name=".activity_user.PublicHeadingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminActivity"
+            android:name=".activity_admin.AdminActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.AdminLoginActivity"
+            android:name=".activity_user.AdminLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.AppinmentOfOtherStuffActivity"
+            android:name=".activity_user.AppinmentOfOtherStuffActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.AppointmentOfDCActivity"
+            android:name=".activity_user.AppointmentOfDCActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.ProfileActivity"
+            android:name=".activity_user.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.StuffActivity"
+            android:name=".activity_user.StuffActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.UnoMessageActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-
-        <activity
-            android:name="bd.gov.fenipaurashava.activity_user.HomeActivity"
+            android:name=".activity_user.UnoMessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.AboutJelaActivity"
+            android:name=".activity_user.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.PublicHeadingSaveActivity"
+            android:name=".activity_user.AboutJelaActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".activity_user.PublicHeadingSaveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.DailyWorkActivity"
+            android:name=".activity_user.DailyWorkActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.SetInformationActivity"
+            android:name=".activity_user.SetInformationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.AppointmentActivity"
+            android:name=".activity_user.AppointmentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.ComplainActivity"
+            android:name=".activity_user.ComplainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.EmployeeActivity"
+            android:name=".activity_user.EmployeeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_admin.AdminEmployeeActivityList"
+            android:name=".activity_admin.AdminEmployeeActivityList"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name="bd.gov.fenipaurashava.activity_user.MainActivity"
+            android:name=".activity_user.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
     </application>

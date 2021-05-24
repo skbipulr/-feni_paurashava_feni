@@ -33,19 +33,19 @@ public class SliderAdapterExample extends SliderViewAdapter<SliderAdapterExample
 
         switch (position) {
             case 0:
-                viewHolder.imageViewBackground.setImageResource(R.drawable.slider1);
+                viewHolder.imageViewBackground.setImageResource(R.drawable.ic_mobile_icon);
                 viewHolder.titleTV.setText("হারানো ফোনের ডাটা মুছে ফেলার উপায়");
                 break;
             case 1:
-                viewHolder.imageViewBackground.setImageResource(R.drawable.slider2);
+                viewHolder.imageViewBackground.setImageResource(R.drawable.ic_mobile_icon);
                 viewHolder.titleTV.setText("হারানো ফোনের ডাটা মুছে ফেলার উপায়");
                 break;
             case 2:
-                viewHolder.imageViewBackground.setImageResource(R.drawable.slider3);
+                viewHolder.imageViewBackground.setImageResource(R.drawable.ic_mobile_icon);
                 viewHolder.titleTV.setText("হারানো ফোনের ডাটা মুছে ফেলার উপায়");
                 break;
             default:
-                viewHolder.imageViewBackground.setImageResource(R.drawable.slider4);
+                viewHolder.imageViewBackground.setImageResource(R.drawable.ic_mobile_icon);
                 viewHolder.titleTV.setText("হারানো ফোনের ডাটা মুছে ফেলার উপায়");
                 break;
         }

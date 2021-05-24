@@ -134,4 +134,8 @@ public class AdminLoginActivity extends AppCompatActivity {
         createLogin();
     }
 
+    public void backBtn(View view) {
+        onBackPressed();
+        finish();
+    }
 }

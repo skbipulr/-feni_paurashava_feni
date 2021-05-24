@@ -9,6 +9,16 @@
     tools:context=".activity_user.AdminLoginActivity">
 
 
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="?actionBarItemBackground"
+        android:onClick="backBtn"
+        android:padding="20dp"
+        android:src="@drawable/ic_baseline_keyboard_backspace_24"
+        app:tint="@color/grey_80" />
 
     <LinearLayout
        android:gravity="center"

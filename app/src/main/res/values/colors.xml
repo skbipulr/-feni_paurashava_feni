@@ -69,14 +69,44 @@
     <color name="shadow">#8A000000</color>
     <color name="text1_color">#006C05</color>
     <color name="text2_color">#90DBED</color>
-    <color name="text3_color">#F84B99</color>
+    <color name="text3_color">#EA605D</color>
     <color name="text4_color">#AEEA00</color>
     <color name="text5_color">#E6C100</color>
     <color name="green">#006C05</color>
+    <color name="red">#F3025A</color>
 
 
     <color name="colorPrimaryEditor">#009cfd</color>
     <color name="colorPrimaryDarkEditor">#1284ca</color>
     <color name="colorAccentEditor">#e24000</color>
+
+    <color name="gradEnd">#B367EFC8</color>
+    <color name="gradStart">#B363C9FF</color>
+
+    <color name="gradEnd1">#B3FF6D00</color>
+    <color name="gradStart1">#B3C51162</color>
+
+    <color name="gradEnd2">#DE9DEF</color>
+    <color name="gradStart2">#B38E24AA</color>
+
+    <color name="gradEnd3">#B3F9A825</color>
+    <color name="gradStart3">#B39E9D24</color>
+
+    <color name="gradEnd4">#B300897B</color>
+    <color name="gradStart4">#B39E9D24</color>
+
+    <color name="gradEnd5">#999027C5</color>
+    <color name="gradStart5">#99EACB2A</color>
+
+    <color name="gradEnd6">#B3B3BD4B</color>
+    <color name="gradStart6">#B340C4FF</color>
+
+    <color name="gradEnd8">#B3F4511E</color>
+    <color name="gradStart8">#B33949AB</color>
+
+    <color name="gradEnd7">#B3FB8C00</color>
+    <color name="gradStart7">#B340C4FF</color>
+
+    <color name="solidCircle">#AAFFFFFF</color>
 
 </resources>

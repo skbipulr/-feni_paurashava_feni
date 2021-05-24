@@ -20,7 +20,7 @@
             android:layout_height="70dp"
             android:id="@+id/employeeImageIV"
             android:layout_gravity="center"
-            android:src="@drawable/stuff1"
+            android:src="@drawable/default_icon"
             app:cardCornerRadius="75dp">
 
         </de.hdodenhof.circleimageview.CircleImageView>
