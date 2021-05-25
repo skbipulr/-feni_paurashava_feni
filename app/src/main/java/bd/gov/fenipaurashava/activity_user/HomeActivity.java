@@ -110,12 +110,23 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (Common.USER_ID==null){
-                    startActivity(new Intent(HomeActivity.this, AdminLoginActivity.class));
+//                if (Common.USER_ID==null){
+//                    startActivity(new Intent(HomeActivity.this, AdminLoginActivity.class));
+//
+//                }else {
+//                    startActivity(new Intent(HomeActivity.this, AdminActivity.class));
+//
+//                }
 
-                }else {
+                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                boolean login = sharedpreferences.getBoolean("login", false);
+                boolean signIn = sharedpreferences.getBoolean("signIn", false);
+
+                if (login) {
                     startActivity(new Intent(HomeActivity.this, AdminActivity.class));
-
+                    finish();
+                } else {
+                    startActivity(new Intent(HomeActivity.this, AdminLoginActivity.class));
                 }
 
             }

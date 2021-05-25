@@ -77,17 +77,17 @@ public class AdminLoginActivity extends AppCompatActivity {
                     if (response.code() == 200) {
                         LoginResponse meg = response.body();
 
-                        int id = meg.getData().getId();
+                        String id = meg.getData().getId();
 
-                        int employee_id = meg.getData().getEmployeeId();
-                      //  Toast.makeText(AdminLoginActivity.this, "", Toast.LENGTH_SHORT).show();
-
-                       // Toast.makeText(AdminLoginActivity.this, "user id: "+id+" employee id:"+employee_id, Toast.LENGTH_LONG).show();
+                        String employee_id = meg.getData().getEmployeeId();
 
                         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putString(USER_ID, String.valueOf(id));
                         editor.putString(EMPLOYEE_ID, String.valueOf(employee_id));
+                        editor.putString(Common.USER_NAME, String.valueOf(meg.getData().getName()));
+                        editor.putString(Common.USER_DESIGNATION, String.valueOf(meg.getData().getDesignation()));
+                        editor.putString(Common.USER_PICTURE, String.valueOf(meg.getData().getPicture()));
                         editor.apply();
 
                         editor.putBoolean("login", true).apply();

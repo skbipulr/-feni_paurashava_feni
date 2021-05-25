@@ -55,15 +55,10 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
         String user_id = sharedpreferences.getString(USER_ID, "");
         String employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
 
-        Toast.makeText(AppointmentFeatchActivity.this, " user id " + user_id + "employee id: " + employee_id, Toast.LENGTH_SHORT).show();
-
-
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
         if (use_id == Common.ADMIN_USER_ID) {
-
-            int e = 0;
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
             apiService.getAppointment(Common.APP_KEY, 0, use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
                 @Override
@@ -71,7 +66,6 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
 
                     AppointmentFeatchResponse appointmentFeatchResponse = response.body();
                     if (response.code() == 200) {
-
                         appointmentList = appointmentFeatchResponse.getData();
                         init();
                         swipeRefreshLayout.setRefreshing(false);

@@ -8,16 +8,9 @@
     android:orientation="vertical"
     tools:context=".activity_user.DemoDashboardActivity">
 
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-<!--        <include-->
-<!--            android:id="@+id/t"-->
-<!--            layout="@layout/toolbar"/>-->
         <LinearLayout
 
             android:layout_width="match_parent"

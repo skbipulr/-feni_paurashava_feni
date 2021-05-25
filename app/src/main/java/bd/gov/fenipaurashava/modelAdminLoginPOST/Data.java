@@ -8,19 +8,22 @@ public class Data {
 
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private String id;
     @SerializedName("employee_id")
     @Expose
-    private Integer employeeId;
+    private String employeeId;
     @SerializedName("username")
     @Expose
     private String username;
+    @SerializedName("password")
+    @Expose
+    private String password;
     @SerializedName("is_admin")
     @Expose
-    private Object isAdmin;
+    private String isAdmin;
     @SerializedName("created_by")
     @Expose
-    private Integer createdBy;
+    private String createdBy;
     @SerializedName("updated_by")
     @Expose
     private Object updatedBy;
@@ -35,24 +38,39 @@ public class Data {
     private Object deletedAt;
     @SerializedName("created_at")
     @Expose
-    private String createdAt;
+    private Object createdAt;
     @SerializedName("updated_at")
     @Expose
-    private String updatedAt;
+    private Object updatedAt;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("mobile_no")
+    @Expose
+    private String mobileNo;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("designation")
+    @Expose
+    private String designation;
+    @SerializedName("picture")
+    @Expose
+    private Object picture;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -64,19 +82,27 @@ public class Data {
         this.username = username;
     }
 
-    public Object getIsAdmin() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(Object isAdmin) {
+    public void setIsAdmin(String isAdmin) {
         this.isAdmin = isAdmin;
     }
 
-    public Integer getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -112,20 +138,61 @@ public class Data {
         this.deletedAt = deletedAt;
     }
 
-    public String getCreatedAt() {
+    public Object getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Object createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Object getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Object updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public Object getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Object picture) {
+        this.picture = picture;
+    }
+
 
 }
