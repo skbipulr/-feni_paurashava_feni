@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AppointmentFeatchActivity extends AppCompatActivity {
+public class AppointmentListFetchActivity extends AppCompatActivity {
 
 
     private RecyclerView appointmentRV;
@@ -70,13 +70,13 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
                         init();
                         swipeRefreshLayout.setRefreshing(false);
                     } else if (response.code() == 203) {
-                        Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     } else if (response.code() == 401) {
-                        Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     } else if (response.code() == 422) {
-                        Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
@@ -100,22 +100,22 @@ public class AppointmentFeatchActivity extends AppCompatActivity {
                         init();
                         swipeRefreshLayout.setRefreshing(false);
 
-                        Toast.makeText(AppointmentFeatchActivity.this, " u " + use_id + "e " + em_id, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, " u " + use_id + "e " + em_id, Toast.LENGTH_SHORT).show();
                     } else if (response.code() == 203) {
-                        Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     } else if (response.code() == 401) {
-                        Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     } else if (response.code() == 422) {
-                        Toast.makeText(AppointmentFeatchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentListFetchActivity.this, appointmentFeatchResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<AppointmentFeatchResponse> call, Throwable t) {
-                    Toast.makeText(AppointmentFeatchActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AppointmentListFetchActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             });

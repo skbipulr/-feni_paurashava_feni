@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.adapterForAPI.PublicHeadingAdapter;
+import bd.gov.fenipaurashava.adapterForAPI.SetInformationAdapter;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
-import bd.gov.fenipaurashava.modelPublicHeadingGET.Datum;
-import bd.gov.fenipaurashava.modelPublicHeadingGET.PublicHearingResponse;
+import bd.gov.fenipaurashava.modelForSetInformationFetchGET.Datum;
+import bd.gov.fenipaurashava.modelForSetInformationFetchGET.InformationGetResponse;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
 
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PublicHeadingActivity extends AppCompatActivity {
+public class SetInformationListFetchActivity extends AppCompatActivity {
 
     private RecyclerView publicHearingRV;
-    private PublicHeadingAdapter publicHeadingAdapter;
+    private SetInformationAdapter publicHeadingAdapter;
     private List<Datum> publicHearingList = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ApiInterface apiService;
@@ -42,11 +42,10 @@ public class PublicHeadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_public_heading);
+        setContentView(R.layout.activity_set_information_fetch_all);
 
         initSwipeLayout();
         loadDataFromAPI();
-
     }
 
     private void loadDataFromAPI() {
@@ -55,78 +54,78 @@ public class PublicHeadingActivity extends AppCompatActivity {
         String user_id = sharedpreferences.getString(USER_ID,"");
         String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
 
-        // Toast.makeText(this, "user "+user_id+" employee"+employee_id, Toast.LENGTH_SHORT).show();
-
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
-        if (use_id!=Common.ADMIN_USER_ID){
+       // Toast.makeText(this, "user id "+use_id, Toast.LENGTH_SHORT).show();
+
+        if (use_id==Common.ADMIN_USER_ID){
 
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-            apiService.getPublicHearingResponse(Common.APP_KEY,em_id,use_id).enqueue(new Callback<PublicHearingResponse>() {
+            apiService.getInformationGetResponse(Common.APP_KEY,use_id,0).enqueue(new Callback<InformationGetResponse>() {
                 @Override
-                public void onResponse(Call<PublicHearingResponse> call, Response<PublicHearingResponse> response) {
+                public void onResponse(Call<InformationGetResponse> call, Response<InformationGetResponse> response) {
 
-                    PublicHearingResponse publicHearingResponse = response.body();
+                    InformationGetResponse publicHearingResponse = response.body();
                     if (response.code()==200) {
 
                         publicHearingList = publicHearingResponse.getData();
                         init();
                         swipeRefreshLayout.setRefreshing(false);
+                        // Toast.makeText(SetInformationFetchAllActivity.this, ""+publicHearingList.get(0).getName(), Toast.LENGTH_SHORT).show();
 
                     }
                     else if (response.code() == 203) {
-                        Toast.makeText(PublicHeadingActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetInformationListFetchActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }else if (response.code() == 401){
-                        Toast.makeText(PublicHeadingActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetInformationListFetchActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }else if (response.code() == 422){
-                        Toast.makeText(PublicHeadingActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetInformationListFetchActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<PublicHearingResponse> call, Throwable t) {
+                public void onFailure(Call<InformationGetResponse> call, Throwable t) {
                     swipeRefreshLayout.setRefreshing(false);
                 }
             });
 
         }else {
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-            apiService.getPublicHearingResponse(Common.APP_KEY,0,Common.ADMIN_USER_ID).enqueue(new Callback<PublicHearingResponse>() {
+            apiService.getInformationGetResponse(Common.APP_KEY,use_id,em_id).enqueue(new Callback<InformationGetResponse>() {
                 @Override
-                public void onResponse(Call<PublicHearingResponse> call, Response<PublicHearingResponse> response) {
+                public void onResponse(Call<InformationGetResponse> call, Response<InformationGetResponse> response) {
 
-                    PublicHearingResponse publicHearingResponse = response.body();
+                    InformationGetResponse publicHearingResponse = response.body();
                     if (response.code()==200) {
 
                         publicHearingList = publicHearingResponse.getData();
                         init();
                         swipeRefreshLayout.setRefreshing(false);
+                        // Toast.makeText(SetInformationFetchAllActivity.this, ""+publicHearingList.get(0).getName(), Toast.LENGTH_SHORT).show();
 
                     }
                     else if (response.code() == 203) {
-                        Toast.makeText(PublicHeadingActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetInformationListFetchActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }else if (response.code() == 401){
-                        Toast.makeText(PublicHeadingActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetInformationListFetchActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }else if (response.code() == 422){
-                        Toast.makeText(PublicHeadingActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SetInformationListFetchActivity.this, publicHearingResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
 
                 @Override
-                public void onFailure(Call<PublicHearingResponse> call, Throwable t) {
+                public void onFailure(Call<InformationGetResponse> call, Throwable t) {
                     swipeRefreshLayout.setRefreshing(false);
                 }
             });
-
         }
-
     }
 
     public void backBtn(View view) {
@@ -138,7 +137,7 @@ public class PublicHeadingActivity extends AppCompatActivity {
         publicHearingRV = findViewById(R.id.publicHearingRV);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        publicHeadingAdapter = new PublicHeadingAdapter(this, publicHearingList);
+        publicHeadingAdapter = new SetInformationAdapter(this, publicHearingList);
         publicHearingRV.setLayoutManager(layoutManager);
         publicHearingRV.setAdapter(publicHeadingAdapter);
         swipeRefreshLayout.setRefreshing(false);
@@ -175,4 +174,5 @@ public class PublicHeadingActivity extends AppCompatActivity {
         });
 
     }
+
 }

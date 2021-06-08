@@ -84,12 +84,9 @@ public class AppointmentFetchAdapter extends RecyclerView.Adapter<AppointmentFet
         holder.deleteIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(context, PublicHearingEditorActivity.class);
-//                intent.putExtra("allData", info);
-//                context.startActivity(intent);
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(context);
-                dialog.setMessage("Delete this item?");
+                dialog.setMessage("Are you delete this item?");
                 dialog.setPositiveButton("Yes" ,new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -107,15 +104,12 @@ public class AppointmentFetchAdapter extends RecyclerView.Adapter<AppointmentFet
             }
         });
 
-
         holder.referringIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(context, AdminEmployeeForAppoinmentActivity.class);
                 intent.putExtra("allInfo", data);
                 context.startActivity(intent);
-
             }
         });
 
@@ -138,7 +132,7 @@ public class AppointmentFetchAdapter extends RecyclerView.Adapter<AppointmentFet
             //readMode();
             //delete operation
 
-            apiService.appointmentDeleteResponse(Common.APP_KEY, id, "1").enqueue(new Callback<AppointmentDeleteResponse>() {
+            apiService.appointmentDeleteResponse(Common.APP_KEY, id, user_id).enqueue(new Callback<AppointmentDeleteResponse>() {
                 @Override
                 public void onResponse(Call<AppointmentDeleteResponse> call, Response<AppointmentDeleteResponse> response) {
 
@@ -150,13 +144,11 @@ public class AppointmentFetchAdapter extends RecyclerView.Adapter<AppointmentFet
                         Toast.makeText(context, "problem", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
-
                 }
 
                 @Override
                 public void onFailure(Call<AppointmentDeleteResponse> call, Throwable t) {
                     Log.d("error: ",t.getMessage());
-                    // Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             });

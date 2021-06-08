@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem3;
+import bd.gov.fenipaurashava.ComplainSpinnerItem;
 import bd.gov.fenipaurashava.R;
 
 import java.util.ArrayList;
 
-public class ComplainDivisionsSpinnerAdapter3 extends ArrayAdapter<ComplainDivisionsSpinnerItem3> {
+public class ComplainSubjectSpinnerAdapter extends ArrayAdapter<ComplainSpinnerItem> {
 
-    public ComplainDivisionsSpinnerAdapter3(@NonNull Context context, ArrayList<ComplainDivisionsSpinnerItem3> items) {
+    public ComplainSubjectSpinnerAdapter(@NonNull Context context, ArrayList<ComplainSpinnerItem> items) {
         super(context, 0,items);
     }
 
@@ -39,7 +39,7 @@ public class ComplainDivisionsSpinnerAdapter3 extends ArrayAdapter<ComplainDivis
         }
 
         TextView itemTxt = convertView.findViewById(R.id.itemTxt);
-        bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem3 item = getItem(position);
+        ComplainSpinnerItem item = getItem(position);
         if (item != null) {
             itemTxt.setText(item.getItem());
         }

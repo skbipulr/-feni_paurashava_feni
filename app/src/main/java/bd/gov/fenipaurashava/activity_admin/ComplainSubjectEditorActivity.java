@@ -200,7 +200,7 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
                         if (response.code() == 200) {
                             ComplainSubjectSaveResponse serverResponse = response.body();
                             Toast.makeText(ComplainSubjectEditorActivity.this, "" + serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainFeatchActivity.class));
+                            startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainSubjectListFetchActivity.class));
                             mDialog.dismiss();
                         } else if (response.code() == 203) {
                             Toast.makeText(ComplainSubjectEditorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -253,7 +253,7 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
 
                     if (response.code()==200){
                         Toast.makeText(ComplainSubjectEditorActivity.this, "bipul : "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainFeatchActivity.class));
+                        startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainSubjectListFetchActivity.class));
                         progressDialog.dismiss();
                     }
                 }
@@ -297,7 +297,7 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
                     if (response.code() == 200) {
                         Toast.makeText(ComplainSubjectEditorActivity.this, "" + response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
 
-                        startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainFeatchActivity.class));
+                        startActivity(new Intent(ComplainSubjectEditorActivity.this, ComplainSubjectListFetchActivity.class));
 
                     }else {
                         Toast.makeText(ComplainSubjectEditorActivity.this, "problem", Toast.LENGTH_SHORT).show();

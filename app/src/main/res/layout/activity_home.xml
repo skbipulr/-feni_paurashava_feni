@@ -6,11 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity_user.DemoDashboardActivity">
+    tools:context=".activity_user.UserDashboardActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
 
             android:layout_width="match_parent"
@@ -22,8 +23,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="start"
                 android:layout_marginTop="24dp"
+                android:gravity="start"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -35,9 +36,9 @@
                         android:id="@+id/rl"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="6dp"
-                        android:layout_centerHorizontal="true"
                         android:background="@drawable/circle_border">
 
 
@@ -50,7 +51,7 @@
                             android:background="@drawable/circle"
                             android:padding="3dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/feni_logo" />
+                            android:src="@drawable/main_feni_logo" />
 
 
                     </RelativeLayout>
@@ -59,8 +60,8 @@
                         android:id="@+id/l1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:gravity="center_vertical"
                         android:layout_marginStart="12dp"
+                        android:gravity="center_vertical"
                         android:orientation="vertical">
 
                         <TextView
@@ -89,28 +90,27 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
                     android:id="@+id/adminCV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="16dp"
-                    android:padding="10dp"
                     android:layout_centerInParent="true"
-                    android:orientation="vertical">
+                    android:layout_marginEnd="16dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
                     <ImageView
                         android:layout_width="45dp"
                         android:layout_height="45dp"
-                        android:src="@drawable/ic_admin_icon"/>
+                        android:src="@drawable/ic_admin_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="অ্যাডমিন "/>
+                        android:text="অ্যাডমিন "
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
 
@@ -170,34 +170,18 @@
                             android:orientation="vertical">
 
 
-                            <androidx.cardview.widget.CardView
-                                android:onClick="three_three_three"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
-                                android:clickable="true"
-                                android:scaleType="centerCrop"
-                                app:backgroundTint="@color/swipe_4"
-                                app:cardCornerRadius="360dp"
-                                app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                app:fabCustomSize="65dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/thripple_333_transperent" />
-
-                                </LinearLayout>
-
-
-                            </androidx.cardview.widget.CardView>
+                                android:onClick="three_three_three"
+                                app:backgroundTint="@color/white"
+                                app:fabCustomSize="65dp"
+                                app:maxImageSize="50dp"
+                                app:srcCompat="@drawable/thripple_333_transperent"
+                                app:tint="@null"
+                                card_view:ignore="OnClick" />
 
 
                             <TextView
@@ -223,34 +207,19 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <androidx.cardview.widget.CardView
-                                android:onClick="nine_nine_nine"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
-                                android:clickable="true"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:scaleType="centerCrop"
-                                app:backgroundTint="@color/swipe_4"
-                                app:cardCornerRadius="360dp"
-                                app:elevation="2dp"
-                                app:fabCustomSize="65dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/triple_999_transperent" />
-
-                                </LinearLayout>
-
-
-                            </androidx.cardview.widget.CardView>
+                                android:onClick="nine_nine_nine"
+                                app:backgroundTint="@color/white"
+                                app:fabCustomSize="65dp"
+                                app:maxImageSize="50dp"
+                                app:srcCompat="@drawable/triple_999_transperent"
+                                app:tint="@null"
+                                card_view:ignore="OnClick" />
 
 
                             <TextView
@@ -275,34 +244,18 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <androidx.cardview.widget.CardView
-                                android:onClick="one_zero_nine"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
-                                android:clickable="true"
-                                android:scaleType="centerCrop"
-                                app:backgroundTint="@color/swipe_4"
-                                app:cardCornerRadius="360dp"
-                                app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                app:fabCustomSize="65dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/one_zero_none_109_transfer" />
-
-                                </LinearLayout>
-
-
-                            </androidx.cardview.widget.CardView>
+                                android:onClick="one_zero_nine"
+                                app:backgroundTint="@color/white"
+                                app:fabCustomSize="65dp"
+                                app:maxImageSize="50dp"
+                                app:srcCompat="@drawable/one_zero_none_109_transfer"
+                                app:tint="@null"
+                                card_view:ignore="OnClick" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -335,34 +288,18 @@
                             android:orientation="vertical">
 
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/one_six_zero"
-                                android:onClick="one_six_zero"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
-                                android:scaleType="centerCrop"
-                                app:backgroundTint="@color/swipe_4"
-                                app:cardCornerRadius="360dp"
-                                app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                app:fabCustomSize="65dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/dudok_icon_transperent" />
-
-                                </LinearLayout>
-
-
-                            </androidx.cardview.widget.CardView>
+                                android:onClick="one_six_zero"
+                                app:backgroundTint="@color/white"
+                                app:fabCustomSize="65dp"
+                                app:maxImageSize="45dp"
+                                app:srcCompat="@drawable/dudok_icon_transperent"
+                                app:tint="@null"
+                                card_view:ignore="OnClick" />
 
 
                             <TextView
@@ -388,57 +325,26 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <androidx.cardview.widget.CardView
-                                android:onClick="one_zeri_nine_zero"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
-                                android:clickable="true"
-                                android:scaleType="centerCrop"
-                                app:backgroundTint="@color/swipe_4"
-                                app:cardCornerRadius="360dp"
-                                app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                app:fabCustomSize="65dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/one_zeri_nine_zero_1090_transperent" />
-
-                                </LinearLayout>
-
-
-                            </androidx.cardview.widget.CardView>
-
-                            <!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-                            <!--                            android:id="@+id/durjogAgamBarta"-->
-                            <!--                            android:layout_width="wrap_content"-->
-                            <!--                            android:layout_height="wrap_content"-->
-                            <!--                            android:layout_marginTop="8dp"-->
-                            <!--                            android:layout_marginBottom="4dp"-->
-                            <!--                            android:clickable="true"-->
-                            <!--                            app:backgroundTint="@color/swipe_2"-->
-                            <!--                            app:elevation="2dp"-->
-                            <!--                            app:fabCustomSize="65dp"-->
-                            <!--                            app:fabSize="normal"-->
-                            <!--                            app:maxImageSize="50dp"-->
-                            <!--                            app:rippleColor="@android:color/white"-->
-                            <!--                            app:srcCompat="@drawable/one_zeri_nine_zero_1090_transperent"-->
-                            <!--                            app:tint="@color/white"-->
-                            <!--                            />-->
+                                android:onClick="one_zeri_nine_zero"
+                                app:backgroundTint="@color/white"
+                                app:fabCustomSize="65dp"
+                                app:maxImageSize="40dp"
+                                app:srcCompat="@drawable/ambulance_blood"
+                                app:tint="@null"
+                                card_view:ignore="OnClick" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="দুর্যোগের আগাম বার্তা"
+                                android:paddingStart="1dp"
+                                android:paddingEnd="1dp"
+                                android:text="ব্লাড ব্যাংক ও এম্বুলেন্স সার্ভিস"
                                 android:textColor="@color/grey_80"
                                 android:textSize="@dimen/flotingText_size" />
 
@@ -456,52 +362,19 @@
                             android:gravity="center"
                             android:orientation="vertical">
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/one_zero_nine_eight"
-                                android:layout_width="65dp"
-                                android:layout_height="65dp"
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginBottom="4dp"
-                                android:clickable="true"
-                                android:scaleType="centerCrop"
-                                app:backgroundTint="@color/swipe_4"
-                                app:cardCornerRadius="360dp"
-                                app:elevation="2dp"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                app:fabCustomSize="65dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center">
-
-                                    <ImageView
-                                        android:layout_width="45dp"
-                                        android:layout_height="45dp"
-                                        android:src="@drawable/one_zero_nine_1098_okok" />
-
-                                </LinearLayout>
-
-
-                            </androidx.cardview.widget.CardView>
-
-
-                            <!--                        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-                            <!--                            android:id="@+id/nariAndchild"-->
-                            <!--                            android:layout_width="wrap_content"-->
-                            <!--                            android:layout_height="65dp"-->
-                            <!--                            android:layout_marginTop="8dp"-->
-                            <!--                            android:layout_marginBottom="4dp"-->
-                            <!--                            android:clickable="true"-->
-                            <!--                            android:scaleType="centerCrop"-->
-                            <!--                            app:backgroundTint="@color/swipe_4"-->
-                            <!--                            app:elevation="2dp"-->
-                            <!--                            app:fabCustomSize="65dp"-->
-                            <!--                            app:fabSize="normal"-->
-                            <!--                            app:maxImageSize="30dp"-->
-                            <!--                            app:rippleColor="@android:color/white"-->
-                            <!--                           android:src="@drawable/one_zero_nine_1098_okok"-->
-                            <!--                            app:tint="@color/white" />-->
+                                android:onClick="one_zero_nine_eight"
+                                app:backgroundTint="@color/white"
+                                app:fabCustomSize="65dp"
+                                app:maxImageSize="45dp"
+                                app:srcCompat="@drawable/one_zero_nine_1098_okok"
+                                app:tint="@null"
+                                card_view:ignore="OnClick" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -763,12 +636,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:onClick="service"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_weight="1"
                     android:background="@drawable/grad8"
                     android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="service"
                     android:orientation="horizontal">
 
                     <ImageView

@@ -18,9 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApnarJelaProsasok"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity_user.DemoDashboardActivity">
-
-        </activity>
         <activity
             android:name=".activity_admin.WorkScheduleEditDeleteActivity"
             android:screenOrientation="portrait"
@@ -51,7 +48,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".activity_admin.AppointmentFeatchActivity"
+            android:name=".activity_admin.AppointmentListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -60,7 +57,7 @@
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".activity_admin.ComplainFeatchActivity"
+            android:name=".activity_admin.ComplainSubjectListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -83,11 +80,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".activity_admin.AdminEmployeeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activity_user.SetInformationFetchAllActivity"
+            android:name=".activity_user.SetInformationListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -96,14 +89,6 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".activity_user.SetInformationDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activity_user.PublicHearingDetailsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activity_user.SendMessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -127,21 +112,16 @@
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".activity_admin.EditorActivity"
+            android:name=".activity_admin.AppointmentSubjectEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".activity_user.PublicHearingEditorActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/EditorTheme"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity
-            android:name=".activity_admin.ComplainFetchAllActivity"
+            android:name=".activity_admin.ComplainListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".activity_admin.AppoimentFatchAllActivity"
+            android:name=".activity_admin.AppointmentSubjectListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity android:name=".activity_admin.ASubjectSaveActivity" />
@@ -156,11 +136,7 @@
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".activity_user.PublicHeadingActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activity_admin.AdminActivity"
+            android:name=".activity_admin.AdminDashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -169,12 +145,7 @@
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
-            android:name=".activity_user.AppinmentOfOtherStuffActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity
-            android:name=".activity_user.AppointmentOfDCActivity"
+            android:name=".activity_user.AppointmentOfMayorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
@@ -183,15 +154,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".activity_user.StuffActivity"
+            android:name=".activity_user.MayorMessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".activity_user.UnoMessageActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activity_user.HomeActivity"
+            android:name=".activity_user.UserDashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -199,12 +166,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".activity_user.PublicHeadingSaveActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity
-            android:name=".activity_user.DailyWorkActivity"
+            android:name=".activity_user.WorkScheduleUserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
@@ -212,10 +174,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
-        <activity
-            android:name=".activity_user.AppointmentActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
         <activity
             android:name=".activity_user.ComplainActivity"
             android:screenOrientation="portrait"
@@ -227,10 +185,6 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".activity_admin.AdminEmployeeActivityList"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".activity_user.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
     </application>

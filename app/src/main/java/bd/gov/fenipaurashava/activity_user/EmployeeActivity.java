@@ -1,10 +1,17 @@
 package bd.gov.fenipaurashava.activity_user;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -43,7 +50,11 @@ public class EmployeeActivity extends AppCompatActivity {
         initSwipeLayout();
         loadDataFromAPI();
 
+
+
     }
+
+
 
     private void loadDataFromAPI() {
         apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);

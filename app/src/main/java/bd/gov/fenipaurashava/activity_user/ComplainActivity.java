@@ -19,9 +19,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem3;
+
+import bd.gov.fenipaurashava.ComplainSpinnerItem;
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.adapter.ComplainDivisionsSpinnerAdapter3;
+import bd.gov.fenipaurashava.adapter.ComplainSubjectSpinnerAdapter;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
 import bd.gov.fenipaurashava.modelForComplainSavePOST.ComplainSaveResponse;
@@ -53,8 +54,8 @@ public class ComplainActivity extends AppCompatActivity {
     private Spinner complainOfDivisionsSpinner;
     private String employee_id;
 
-    private ArrayList<ComplainDivisionsSpinnerItem3> complainDivisionsSpinnerItems;
-    private ComplainDivisionsSpinnerAdapter3 complainDivisionsSpinnerAdapter;
+    private ArrayList<ComplainSpinnerItem> complainDivisionsSpinnerItems;
+    private ComplainSubjectSpinnerAdapter complainSubjectSpinnerAdapter;
     private ApiInterface apiService;
 
     @Override
@@ -63,8 +64,8 @@ public class ComplainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_complain);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        String user_id = sharedpreferences.getString(USER_ID,"");
-        employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
+        String user_id = sharedpreferences.getString(USER_ID, "");
+        employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
 
         initField();
         fetchComplainOfDivisions();
@@ -83,21 +84,15 @@ public class ComplainActivity extends AppCompatActivity {
 
                     for (int i = 0; i < datas.size(); i++) {
                         subjectId = datas.get(i).getId();
-                        complainDivisionsSpinnerItems.add(new bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem3(datas.get(i).getName()));
+                        complainDivisionsSpinnerItems.add(new ComplainSpinnerItem(datas.get(i).getName()));
                     }
 
-                    complainDivisionsSpinnerAdapter = new ComplainDivisionsSpinnerAdapter3(ComplainActivity.this, complainDivisionsSpinnerItems);
-                    complainOfDivisionsSpinner.setAdapter(complainDivisionsSpinnerAdapter);
+                    complainSubjectSpinnerAdapter = new ComplainSubjectSpinnerAdapter(ComplainActivity.this, complainDivisionsSpinnerItems);
+                    complainOfDivisionsSpinner.setAdapter(complainSubjectSpinnerAdapter);
 
                     complainOfDivisionsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            //fetchDistricts(i + 1);
-                            String place = adapterView.getItemAtPosition(i).toString();
-//                            fetchComplainOfTypes(i + 1);
-//                            complainOfDivisions = i + 1;
-                            // Toast.makeText(ComplainActivity.this, "position: "+place, Toast.LENGTH_SHORT).show();
-                            //Toast.makeText(ComplainActivity.this, "dadadad" + datas.get(i).getId(), Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -115,7 +110,6 @@ public class ComplainActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 
@@ -181,15 +175,20 @@ public class ComplainActivity extends AppCompatActivity {
         } else if (nameOne.isEmpty()) {
             nameOneET.setError("required");
             nameOneET.requestFocus();
-        }
-        else if (addressOne.isEmpty()) {
+        } else if (addressOne.isEmpty()) {
             addressOneET.setError("required");
             addressOneET.requestFocus();
-        }
-        else if (phoneNumber.isEmpty()) {
+        } else if (phoneNumber.isEmpty()) {
             phoneNumberET.setError("required");
             phoneNumberET.requestFocus();
-        }else {
+        } else if(nameTwo.isEmpty()){
+            nameTwoET.setError("required");
+            nameTwoET.requestFocus();
+        }else if(addressTwo.isEmpty()){
+            addressTwoET.setError("required");
+            addressTwoET.requestFocus();
+        }
+        else {
 
             final ProgressDialog mDialog = new ProgressDialog(ComplainActivity.this);
             mDialog.setMessage("Please waiting...");
@@ -204,13 +203,10 @@ public class ComplainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ComplainSaveResponse> call, Response<ComplainSaveResponse> response) {
 
-                    if (response.code() == 200) {
+                    if (response.isSuccessful() && response.body()!=null) {
                         ComplainSaveResponse meg = response.body();
 
-                        Toast.makeText(ComplainActivity.this, "subject Id: "+subjectId, Toast.LENGTH_SHORT).show();
-
-                        // Toast.makeText(SignInActivity.this, ""+userAssessToken, Toast.LENGTH_LONG).show();
-                        Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার অভিযোগটি জমা হয়েছে", Toast.LENGTH_LONG).show();
                         mDialog.dismiss();
 
                         nameOneET.setText("");
@@ -219,7 +215,6 @@ public class ComplainActivity extends AppCompatActivity {
                         addressTwoET.setText("");
                         phoneNumberET.setText("");
                         complainDetailsET.setText("");
-
 
                     } else if (response.code() == 203) {
                         Toast.makeText(ComplainActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -242,7 +237,6 @@ public class ComplainActivity extends AppCompatActivity {
             });
 
         }
-
 
 
 //       if (complainDetails.isEmpty()) {

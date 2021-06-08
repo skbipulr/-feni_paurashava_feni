@@ -8,8 +8,8 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,26 +21,23 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.developer.kalert.KAlertDialog;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.activity_user.HomeActivity;
-import bd.gov.fenipaurashava.activity_user.SetInformationFetchAllActivity;
+import bd.gov.fenipaurashava.activity_user.UserDashboardActivity;
+import bd.gov.fenipaurashava.activity_user.SetInformationListFetchActivity;
 import bd.gov.fenipaurashava.common.Common;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminDashboardActivity extends AppCompatActivity {
     private static final int REQUEST_CALL = 1;
-    LinearLayout aboutCV, appointmentCV, complainCV, dailyWorkCV, adminGonosunaniCV,
-            setInfoCV, adminStuffCV, unoMessageCV, adminCV, adminAppointmentSubjectCV,
+    LinearLayout
+            setInfoCV, adminStuffCV, adminAppointmentSubjectCV,
             adminComplainsCV, adminAppointmentFetchCV, adminComplainSubjectCV, adminStuffListCV,
             workScheduleCV, logoutLL;
 
-    private String userName, userDesgination,picture;
-
-    private CardView one_zero_nine_eight;
-    private ImageView saveIV, updateIV, deleteIV, workScheduleSaveIV;
-
+    private String userName, userDesignation, picture;
     private TextView userNameTV, userDesignationTV;
     private CircleImageView profileImageIV;
 
@@ -53,34 +50,16 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
 
         init();
+        getDataFromSharePreference();
+        clickEvent();
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    }
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        userName = sharedpreferences.getString(Common.USER_NAME,"");
-        userDesgination = sharedpreferences.getString(Common.USER_DESIGNATION,"");
-        picture = sharedpreferences.getString(Common.USER_PICTURE,"");
-
-        userNameTV.setText(userName);
-        userDesignationTV.setText(userDesgination);
-
-        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" +picture).placeholder(R.drawable.default_icon)
-                .into(profileImageIV);
-
-        one_zero_nine_eight = findViewById(R.id.one_zero_nine_eight);
-
-        one_zero_nine_eight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callButton("1098");
-            }
-        });
-
+    private void clickEvent() {
         logoutLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new KAlertDialog(AdminActivity.this, KAlertDialog.WARNING_TYPE)
+                new KAlertDialog(AdminDashboardActivity.this, KAlertDialog.WARNING_TYPE)
                         .setTitleText("Logout")
                         .setContentText("Are you sure want to logout?")
                         .setConfirmText("Yes")
@@ -88,12 +67,12 @@ public class AdminActivity extends AppCompatActivity {
                             @Override
                             public void onClick(KAlertDialog sDialog) {
                                 //delete operation
-                                sharedpreferences = AdminActivity.this.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+                                sharedpreferences = AdminDashboardActivity.this.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.clear();
                                 editor.apply();
                                 finish();
-                                Intent intent = new Intent(AdminActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(AdminDashboardActivity.this, UserDashboardActivity.class);
                                 startActivity(intent);
                                 sDialog.dismissWithAnimation();
                             }
@@ -110,10 +89,21 @@ public class AdminActivity extends AppCompatActivity {
         });
     }
 
+    private void getDataFromSharePreference() {
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        userName = sharedpreferences.getString(Common.USER_NAME, "");
+        userDesignation = sharedpreferences.getString(Common.USER_DESIGNATION, "");
+        picture = sharedpreferences.getString(Common.USER_PICTURE, "");
+        userNameTV.setText(userName);
+        userDesignationTV.setText(userDesignation);
+        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + picture).placeholder(R.drawable.default_icon)
+                .into(profileImageIV);
+    }
+
     private void callButton(String mobileNumber) {
         if (mobileNumber.length() > 0) {
-            if (ContextCompat.checkSelfPermission(AdminActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) AdminActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            if (ContextCompat.checkSelfPermission(AdminDashboardActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions((Activity) AdminDashboardActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
             } else {
                 String dail = "tel:" + mobileNumber;
                 startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dail)));
@@ -121,10 +111,7 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
-    public void one_zeri_nine_zero(View view) {
-        callButton("1090");
-    }
-
+    //=============================call start==================================
     public void one_six_zero(View view) {
         callButton("106");
     }
@@ -141,6 +128,15 @@ public class AdminActivity extends AppCompatActivity {
         callButton("333");
     }
 
+    public void one_zero_nine_eight(View view) {
+        callButton("1098");
+    }
+
+    public void one_zeri_nine_zero(View view) {
+        callDialogOpen();
+    }
+    //=============================call start==================================
+
     public void service(View view) {
         String url = "http://fenipaurashava.gov.bd/";
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
@@ -150,14 +146,9 @@ public class AdminActivity extends AppCompatActivity {
 
 
     private void init() {
-        //adminGonosunaniCV = findViewById(R.id.adminGonoSunaniCV);
         setInfoCV = findViewById(R.id.setInfoCV);
         adminStuffCV = findViewById(R.id.adminStuffCV);
         adminAppointmentSubjectCV = findViewById(R.id.adminAppointmentSubjectCV);
-        saveIV = findViewById(R.id.saveIV);
-       // updateIV = findViewById(R.id.updateIV);
-        deleteIV = findViewById(R.id.deleteIV);
-        workScheduleSaveIV = findViewById(R.id.workScheduleSaveIV);
         adminComplainsCV = findViewById(R.id.adminComplainsCV);
         adminAppointmentFetchCV = findViewById(R.id.adminAppointmentFetchCV);
         adminComplainSubjectCV = findViewById(R.id.adminComplainSubjectCV);
@@ -169,54 +160,45 @@ public class AdminActivity extends AppCompatActivity {
         userDesignationTV = findViewById(R.id.userDesignationTV);
         profileImageIV = findViewById(R.id.profileImageIV);
 
-
-
         adminStuffListCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, AdminEmployeeActivityList.class));
+                startActivity(new Intent(AdminDashboardActivity.this, AdminEmployeeActivityList.class));
             }
         });
 
         workScheduleCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, WorkScheduleShowActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, WorkScheduleShowActivity.class));
             }
         });
 
         adminComplainSubjectCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, ComplainFeatchActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, ComplainSubjectListFetchActivity.class));
             }
         });
 
         adminAppointmentFetchCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, AppointmentFeatchActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, AppointmentListFetchActivity.class));
             }
         });
 
         setInfoCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, SetInformationFetchAllActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, SetInformationListFetchActivity.class));
             }
         });
-
-//        workScheduleSaveIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(AdminActivity.this, WorkScheduleActivity.class));
-//            }
-//        });
 
         adminComplainsCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, ComplainFetchAllActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, ComplainListFetchActivity.class));
             }
         });
 
@@ -224,35 +206,61 @@ public class AdminActivity extends AppCompatActivity {
         adminAppointmentSubjectCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, AppoimentFatchAllActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, AppointmentSubjectListFetchActivity.class));
             }
         });
-
-//        updateIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(AdminActivity.this, AppoimentFatchAllActivity.class));
-//            }
-//        });
-
 
         adminStuffCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminActivity.this, AdminCurdEmployeeActivity.class));
+                startActivity(new Intent(AdminDashboardActivity.this, AdminCurdEmployeeActivity.class));
             }
         });
 
-//        saveIV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(AdminActivity.this, EditorActivity.class));
-//            }
-//        });
-
     }
 
+    //================================calling dialog start============================
+    private void callDialogOpen() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        CardView cancelCV;
+        View view = LayoutInflater.from(AdminDashboardActivity.this).inflate(R.layout.ambulance_and_blood_bank_call_dialog, null);
+        builder.setView(view);
+
+        final androidx.appcompat.app.AlertDialog dialog = builder.create();
+        dialog.show();
+
+        FloatingActionButton bloodBankFT = view.findViewById(R.id.bloodBankFT);
+        FloatingActionButton ambulanceServiceFT = view.findViewById(R.id.ambulanceServiceFT);
+        cancelCV = view.findViewById(R.id.cancelCV);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        bloodBankFT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callButton("01842307080");
+            }
+        });
+
+        ambulanceServiceFT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callButton("01842307080");
+            }
+        });
+
+
+        cancelCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+    }
+    //================================calling dialog end============================
+
     public void backBtn(View view) {
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, UserDashboardActivity.class));
     }
 }

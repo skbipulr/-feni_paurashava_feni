@@ -1,6 +1,7 @@
 package bd.gov.fenipaurashava.activity_admin;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,11 +13,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.adapterForAPI.AppointmentFetchAllAdapter;
-import bd.gov.fenipaurashava.common.Common;
+import bd.gov.fenipaurashava.adapterForAPI.ComplainSubjectFetchAllAdapter;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
-import bd.gov.fenipaurashava.modelForAppointmentSubjectFetchAllGET.AppointmentSubjectFetchAllResponse;
-import bd.gov.fenipaurashava.modelForAppointmentSubjectFetchAllGET.Datum;
+import bd.gov.fenipaurashava.modelForComplainSubjectFetchGET.ComplainSubjectFetchResponse;
+import bd.gov.fenipaurashava.modelForComplainSubjectFetchGET.Datum;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
 
 import java.util.ArrayList;
@@ -26,21 +26,27 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AppoimentFatchAllActivity extends AppCompatActivity {
+public class ComplainSubjectListFetchActivity extends AppCompatActivity {
 
 
     private RecyclerView appointmentFetchAllRV;
-    private AppointmentFetchAllAdapter appointmentFetchAllAdapter;
+    private ComplainSubjectFetchAllAdapter complainSubjectFetchAllAdapter;
     private List<Datum> list = new ArrayList<>();
     private SwipeRefreshLayout swipeRefreshLayout;
     private ApiInterface apiService;
 
-    AppointmentFetchAllAdapter.RecyclerViewClickListener listener;
+    ComplainSubjectFetchAllAdapter.RecyclerViewComplainSubjectClickListener listener;
+
+    public static final String MyPREFERENCES = "MyPrefs";
+    private SharedPreferences sharedpreferences;
+    public static final String USER_ID = "USER_ID";
+    public static final String EMPLOYEE_ID = "EMPLOYEE_ID";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appoiment_fatch_all);
+        setContentView(R.layout.activity_complain_featch);
 
         initSwipeLayout();
         loadDataFromAPI();
@@ -49,31 +55,26 @@ public class AppoimentFatchAllActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AppoimentFatchAllActivity.this, EditorActivity.class));
+                startActivity(new Intent(ComplainSubjectListFetchActivity.this, ComplainSubjectEditorActivity.class));
             }
         });
-        listener = new AppointmentFetchAllAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onRowClick(View view, final int position) {
-
-                Intent intent = new Intent(AppoimentFatchAllActivity.this, EditorActivity.class);
-                intent.putExtra("id", list.get(position).getId());
-                intent.putExtra("name", list.get(position).getName());
-                startActivity(intent);
-            }
+        listener = (view, position) -> {
+            Intent intent = new Intent(ComplainSubjectListFetchActivity.this, ComplainSubjectEditorActivity.class);
+            intent.putExtra("id", list.get(position).getId());
+            intent.putExtra("name", list.get(position).getName());
+            startActivity(intent);
         };
-
 
     }
 
     private void loadDataFromAPI() {
         apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
 
-        apiService.getAppointmentSubjectFetchResponse(Common.APP_KEY).enqueue(new Callback<AppointmentSubjectFetchAllResponse>() {
+        apiService.getComplainSubjectFetchResponse("A1b1C2d32564kjhkjadu").enqueue(new Callback<ComplainSubjectFetchResponse>() {
             @Override
-            public void onResponse(Call<AppointmentSubjectFetchAllResponse> call, Response<AppointmentSubjectFetchAllResponse> response) {
+            public void onResponse(Call<ComplainSubjectFetchResponse> call, Response<ComplainSubjectFetchResponse> response) {
                 if (response.code()==200) {
-                    AppointmentSubjectFetchAllResponse fetchAllResponse = response.body();
+                    ComplainSubjectFetchResponse fetchAllResponse = response.body();
 
                     assert fetchAllResponse != null;
                     list = fetchAllResponse.getData();
@@ -82,13 +83,13 @@ public class AppoimentFatchAllActivity extends AppCompatActivity {
 
                 }
                 else if (response.code() == 203) {
-                    Toast.makeText(AppoimentFatchAllActivity.this, "server problem", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ComplainSubjectListFetchActivity.this, "server problem", Toast.LENGTH_SHORT).show();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }
 
             @Override
-            public void onFailure(Call<AppointmentSubjectFetchAllResponse> call, Throwable t) {
+            public void onFailure(Call<ComplainSubjectFetchResponse> call, Throwable t) {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -125,11 +126,11 @@ public class AppoimentFatchAllActivity extends AppCompatActivity {
         appointmentFetchAllRV = findViewById(R.id.appointmentFetchAllRV);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        appointmentFetchAllAdapter = new AppointmentFetchAllAdapter(this, list,listener);
+        complainSubjectFetchAllAdapter = new ComplainSubjectFetchAllAdapter(this, list,listener);
         appointmentFetchAllRV.setLayoutManager(layoutManager);
-        appointmentFetchAllRV.setAdapter(appointmentFetchAllAdapter);
+        appointmentFetchAllRV.setAdapter(complainSubjectFetchAllAdapter);
         swipeRefreshLayout.setRefreshing(false);
-        appointmentFetchAllAdapter.notifyDataSetChanged();
+        complainSubjectFetchAllAdapter.notifyDataSetChanged();
     }
 
     public void backBtn(View view) {

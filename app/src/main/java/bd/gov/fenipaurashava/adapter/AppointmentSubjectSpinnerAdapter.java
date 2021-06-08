@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import bd.gov.fenipaurashava.AppointmentSpinnerItem;
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 
 import java.util.ArrayList;
 
-public class ComplainDivisionsSpinnerAdapter2 extends ArrayAdapter<Datum> {
+public class AppointmentSubjectSpinnerAdapter extends ArrayAdapter<AppointmentSpinnerItem> {
 
-    public ComplainDivisionsSpinnerAdapter2(@NonNull Context context, ArrayList<Datum> items) {
+    public AppointmentSubjectSpinnerAdapter(@NonNull Context context, ArrayList<AppointmentSpinnerItem> items) {
         super(context, 0,items);
     }
 
@@ -39,9 +39,9 @@ public class ComplainDivisionsSpinnerAdapter2 extends ArrayAdapter<Datum> {
         }
 
         TextView itemTxt = convertView.findViewById(R.id.itemTxt);
-        Datum item = getItem(position);
+        AppointmentSpinnerItem item = getItem(position);
         if (item != null) {
-            itemTxt.setText(item.getName());
+            itemTxt.setText(item.getItem());
         }
         return convertView;
     }

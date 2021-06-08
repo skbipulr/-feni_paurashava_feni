@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".activity_user.AppointmentOfDCActivity">
+    tools:context=".activity_user.AppointmentOfMayorActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -113,7 +113,8 @@
                                 android:layout_gravity="center_vertical"
                                 android:id="@+id/appointmentSubjectSpinner"
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
+                                android:gravity="center"
+                                android:layout_height="55dp"
                                 />
 
                         </LinearLayout>

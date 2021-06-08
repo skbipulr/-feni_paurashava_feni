@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         employee = (Datum) i.getSerializableExtra("employee");
 
-        Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
+        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
                 .into(stuffImageIV);
         nameTV.setText(employee.getName());
         phoneNumberTV.setText(employee.getMobileNo());
@@ -71,7 +71,7 @@ public class ProfileActivity extends AppCompatActivity {
         sendIntent.setType("text/plain");
         startActivity(sendIntent);*/
 
-        openTab("https://chat.whatsapp.com/JNZT1EYn6WYBZJJ9J0UITM");
+        openTab("https://chat.whatsapp.com/");
 
     }
 

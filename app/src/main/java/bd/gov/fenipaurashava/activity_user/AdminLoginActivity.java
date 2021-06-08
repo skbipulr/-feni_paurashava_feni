@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.activity_admin.AdminActivity;
+import bd.gov.fenipaurashava.activity_admin.AdminDashboardActivity;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
 import bd.gov.fenipaurashava.modelAdminLoginPOST.LoginResponse;
@@ -102,7 +102,7 @@ public class AdminLoginActivity extends AppCompatActivity {
                         Toast.makeText(AdminLoginActivity.this, "Congratulations!! Login successfully", Toast.LENGTH_LONG).show();
                         mDialog.dismiss();
 
-                        Intent intent = new Intent(AdminLoginActivity.this, AdminActivity.class);
+                        Intent intent = new Intent(AdminLoginActivity.this, AdminDashboardActivity.class);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         startActivity(intent);
                         finish();

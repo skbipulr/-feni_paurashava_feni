@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DailyWorkActivity extends AppCompatActivity {
+public class WorkScheduleUserActivity extends AppCompatActivity {
 
     private RecyclerView scheduleRV;
     private WorkScheduleFetchAdapter scheduleFetchAdapter;
@@ -62,12 +62,12 @@ public class DailyWorkActivity extends AppCompatActivity {
                     //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();
 
                     if (scheduleList.size()==0){
-                        Toast.makeText(DailyWorkActivity.this, "No more schedule for today.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WorkScheduleUserActivity.this, "No more schedule for today.", Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 else if (response.code() == 203) {
-                    Toast.makeText(DailyWorkActivity.this, "server problem", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WorkScheduleUserActivity.this, "server problem", Toast.LENGTH_SHORT).show();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }

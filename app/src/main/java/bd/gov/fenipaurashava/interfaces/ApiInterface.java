@@ -25,9 +25,6 @@ import bd.gov.fenipaurashava.modelForEmployeeGET.EmployeeResponse;
 import bd.gov.fenipaurashava.modelForEmployeeSavePOST.EmployeeSaveResponse;
 import bd.gov.fenipaurashava.modelForInformationDeletePOST.InformationDeleteResponse;
 import bd.gov.fenipaurashava.modelForInformationReferringPOST.InformationReferringResponse;
-import bd.gov.fenipaurashava.modelForPublicHearingDeletePOST.SetPublicHearingDeleteResponse;
-import bd.gov.fenipaurashava.modelForPublicHearingReferringPOST.PublicHearingReferringResponse;
-import bd.gov.fenipaurashava.modelForPublicHearingViewFetchGET.GetPublicHearingViewResponse;
 import bd.gov.fenipaurashava.modelForSMSSendPOST.SMSSendResponse;
 import bd.gov.fenipaurashava.modelForSetInformationFetchGET.InformationGetResponse;
 import bd.gov.fenipaurashava.modelForSetInformationPOST.SetInformationSaveResponse;
@@ -35,8 +32,7 @@ import bd.gov.fenipaurashava.modelForWorkScheduleDeletePOST.WorkScheduleDeleteRe
 import bd.gov.fenipaurashava.modelForWorkSchedulePOST.WorkScheduleSaveResponse;
 import bd.gov.fenipaurashava.modelForWorkScheduleUpdatePOST.WorkScheduleUpdateResponse;
 import bd.gov.fenipaurashava.modelForWrokScheduleFetchGET.WorkScheduleFetchResponse;
-import bd.gov.fenipaurashava.modelPublicHeadingGET.PublicHearingResponse;
-import bd.gov.fenipaurashava.modelPublicHeadingPOST.PublicHearingSaveResponse;
+
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -56,41 +52,14 @@ public interface ApiInterface {
     @GET("employee")
     Call<EmployeeResponse> getEmployeeResponse(@Header("app-key") String appKey);
 
-
     @GET("dc/message")
     Call<DCMessageResponse> getDCMessageResponse(@Header("app-key") String appKey);
-
-
-   /* @GET("district/save")
-    Call<DCMessageResponse> getDCMessageResponse(@Header("app-key") String appKey);*/
 
     @FormUrlEncoded
     @POST("login")
     Call<LoginResponse> setUserInfoForLogin(@Header("app-key") String appKey,
                                             @Field("username") String usename,
                                             @Field("password") String password);
-
-    @FormUrlEncoded
-    @POST("public_hearing/save")
-    Call<PublicHearingSaveResponse> setPublicHearing(@Header("app-key") String appKey,
-                                                     @Field("name") String name,
-                                                     @Field("subject") String subject,
-                                                     @Field("mobile_no") String mobileNo,
-                                                     @Field("address") String address,
-                                                     @Field("description") String description,
-                                                     @Field("user_id") int user_id);
-
-
-    @GET("public_hearing/")
-    Call<PublicHearingResponse> getPublicHearingResponse(@Header("app-key") String appKey,
-                                                         @Query("employee_id") int employee_id,
-                                                         @Query("user_id") int user_id);
-
-    @GET("public_hearing/view/{id}")
-    Call<GetPublicHearingViewResponse> getPublicHearingViewResponse(@Header("app-key") String appKey,
-                                                                    @Path("id") int id,
-                                                                    @Query("user_id") int user_id);
-
 
     @FormUrlEncoded
     @POST("appointment/subject/save")
@@ -103,8 +72,6 @@ public interface ApiInterface {
     @GET("appointment/subject")
     Call<AppointmentSubjectFetchAllResponse> getAppointmentSubjectFetchResponse(@Header("app-key") String appKey);
 
-    //appointment/subject/delete/
-
     @FormUrlEncoded
     @POST("appointment/subject/delete/{id}")
     Call<AppointmentSubjectDeleteResponse> setAppointmentSubjectDeleteResponse(
@@ -113,15 +80,12 @@ public interface ApiInterface {
             @Field("user_id") String user_id);
 
     //work/schedule/delete/1
-
     @FormUrlEncoded
     @POST("work/schedule/delete/{id}")
     Call<WorkScheduleDeleteResponse> setWorkScheduleDeleteResponse(
             @Header("app-key") String appKey,
             @Path("id") int id,
             @Field("user_id") String user_id);
-
-    //work/schedule/delete/1
 
     //complain/subject/save
     @FormUrlEncoded
@@ -155,17 +119,6 @@ public interface ApiInterface {
             @Path("id") int id,
             @Field("user_id") String user_id,
             @Field("name") String name);
-
-
-    //public_hearing/delete/2
-
-    @FormUrlEncoded
-    @POST("public_hearing/delete/{id}")
-    Call<SetPublicHearingDeleteResponse> setPublicHearingDeleteResponse(
-            @Header("app-key") String appKey,
-            @Path("id") int id,
-            @Field("user_id") String user_id);
-
 
     @FormUrlEncoded
     @POST("information/delete/{id}")
@@ -228,7 +181,6 @@ public interface ApiInterface {
                                                      @Field("address") String address,
                                                      @Field("description") String description);
 
-
     @FormUrlEncoded
     @POST("complain/save")
     Call<ComplainSaveResponse> setComplain(@Header("app-key") String appKey,
@@ -248,7 +200,6 @@ public interface ApiInterface {
 
                                                @Query("employee_id") int employee_id,
                                                @Query("user_id") int user_id);
-
 
     @FormUrlEncoded
     @POST("work/schedule/save")
@@ -270,7 +221,6 @@ public interface ApiInterface {
                                                                  @Query("from_date") String from_date,
                                                                  @Query("to_date") String to_date);
 
-
     @FormUrlEncoded
     @POST("sms")
     Call<SMSSendResponse> setSMSSendResponse(
@@ -278,15 +228,6 @@ public interface ApiInterface {
             @Field("user_id") int user_id,
             @Field("mobile_no") String mobile_no,
             @Field("message") String message);
-
-    // public_hearing/refer?id=1&user_id=1&employee_id=21
-    @FormUrlEncoded
-    @POST("public_hearing/refer")
-    Call<PublicHearingReferringResponse> setPublicHearingReferringResponse(
-            @Header("app-key") String appKey,
-            @Field("user_id") int user_id,
-            @Field("id") int id,
-            @Field("employee_id") int employee_id);
 
     @FormUrlEncoded
     @POST("complain/refer")
@@ -312,7 +253,6 @@ public interface ApiInterface {
             @Field("id") int id,
             @Field("employee_id") int employee_id);
 
-
     @Multipart
     @POST("information/save")
     Call<SetInformationSaveResponse> setInformationSaveResponse(
@@ -323,7 +263,6 @@ public interface ApiInterface {
             @Part("mobile_no") RequestBody mobile_no,
             @Part("description") RequestBody description,
             @Part MultipartBody.Part picture);
-
 
     @Multipart
     @POST("employee/save")
@@ -343,7 +282,6 @@ public interface ApiInterface {
             @Part("order_no") RequestBody order_no,
             @Part("username") RequestBody username,
             @Part("password") RequestBody password);
-
 
     @Multipart
     @POST("employee/update/{id}")
@@ -370,7 +308,6 @@ public interface ApiInterface {
     Call<InformationGetResponse> getInformationGetResponse(@Header("app-key") String appKey,
                                                            @Query("user_id") int user_id,
                                                            @Query("employee_id") int employee_i);
-
 
     //appointment/?employee_id&user_id=1
     @GET("appointment/")

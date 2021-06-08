@@ -72,8 +72,7 @@ public class ComplainFetchAllAdapter extends RecyclerView.Adapter<ComplainFetchA
         holder.mobileNumberTV.setText(data.getMobileNo());
         holder.complainDetailsTV.setText(data.getComplain());
 
-
-        String photo = "http://apis.digiins.gov.bd/district_app/public/complain/" + data.getPicture();
+        String photo = "http://fenimayor.digiins.gov.bd/district_app/public/complain/" + data.getPicture();
 
         Picasso.get().load(photo).placeholder(R.drawable.placeholder).into(holder.imageViewIV);
 

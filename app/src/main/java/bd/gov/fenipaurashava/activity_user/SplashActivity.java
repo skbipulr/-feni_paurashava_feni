@@ -43,23 +43,11 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-//                sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-//                boolean login = sharedpreferences.getBoolean("login",false);
-//                if (login) {
-//                    startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-//                    finish();
-//                }else {
-//                    startActivity(new Intent(SplashActivity.this, HomeActivity.class));
-//                    finish();
-//                }
-
-                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                startActivity(new Intent(SplashActivity.this, UserDashboardActivity.class));
                 finish();
 
             }
         }, 2000);
 
     }
-
-
 }

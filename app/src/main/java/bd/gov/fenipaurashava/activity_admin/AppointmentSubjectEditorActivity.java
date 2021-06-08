@@ -33,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditorActivity extends AppCompatActivity {
+public class AppointmentSubjectEditorActivity extends AppCompatActivity {
 
 
     private EditText mName;
@@ -147,7 +147,7 @@ public class EditorActivity extends AppCompatActivity {
                 }
                 return true;
             case R.id.menu_delete:
-                AlertDialog.Builder dialog = new AlertDialog.Builder(EditorActivity.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AppointmentSubjectEditorActivity.this);
                 dialog.setMessage("Delete this item?");
                 dialog.setPositiveButton("Yes" ,new DialogInterface.OnClickListener() {
                     @Override
@@ -186,7 +186,7 @@ public class EditorActivity extends AppCompatActivity {
             int em_id = Integer.parseInt(employee_id);
 
             if (use_id ==Common.ADMIN_USER_ID){
-                final ProgressDialog mDialog = new ProgressDialog(EditorActivity.this);
+                final ProgressDialog mDialog = new ProgressDialog(AppointmentSubjectEditorActivity.this);
                 mDialog.setMessage("Please waiting...");
                 mDialog.show();
 
@@ -199,17 +199,17 @@ public class EditorActivity extends AppCompatActivity {
                     public void onResponse(Call<AppointmentSubjectSaveResponse> call, Response<AppointmentSubjectSaveResponse> response) {
                         if (response.code() == 200) {
                             AppointmentSubjectSaveResponse serverResponse = response.body();
-                            Toast.makeText(EditorActivity.this, "" + serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(EditorActivity.this, AppoimentFatchAllActivity.class));
+                            Toast.makeText(AppointmentSubjectEditorActivity.this, "" + serverResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(AppointmentSubjectEditorActivity.this, AppointmentSubjectListFetchActivity.class));
                             mDialog.dismiss();
                         } else if (response.code() == 203) {
-                            Toast.makeText(EditorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppointmentSubjectEditorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         } else if (response.code() == 401) {
-                            Toast.makeText(EditorActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppointmentSubjectEditorActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         } else if (response.code() == 422) {
-                            Toast.makeText(EditorActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AppointmentSubjectEditorActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
                             mDialog.dismiss();
                         }
 
@@ -252,11 +252,11 @@ public class EditorActivity extends AppCompatActivity {
 
                     progressDialog.dismiss();
 
-                    Log.i(EditorActivity.class.getSimpleName(), response.toString());
+                    Log.i(AppointmentSubjectEditorActivity.class.getSimpleName(), response.toString());
 
                     if (response.code()==200){
-                        Toast.makeText(EditorActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(EditorActivity.this, AppoimentFatchAllActivity.class));
+                        Toast.makeText(AppointmentSubjectEditorActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AppointmentSubjectEditorActivity.this, AppointmentSubjectListFetchActivity.class));
                         progressDialog.dismiss();
                     }
                 }
@@ -264,7 +264,7 @@ public class EditorActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<AppointmentSubjectUpdateResponse> call, Throwable t) {
                     progressDialog.dismiss();
-                    Toast.makeText(EditorActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AppointmentSubjectEditorActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -297,16 +297,16 @@ public class EditorActivity extends AppCompatActivity {
                 public void onResponse(Call<AppointmentSubjectDeleteResponse> call, Response<AppointmentSubjectDeleteResponse> response) {
 
                     if (response.code() == 200) {
-                        Toast.makeText(EditorActivity.this, "" + response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(EditorActivity.this, AppoimentFatchAllActivity.class));
+                        Toast.makeText(AppointmentSubjectEditorActivity.this, "" + response.body().getMessage()+"", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AppointmentSubjectEditorActivity.this, AppointmentSubjectListFetchActivity.class));
                     }else {
-                        Toast.makeText(EditorActivity.this, "problem", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentSubjectEditorActivity.this, "problem", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<AppointmentSubjectDeleteResponse> call, Throwable t) {
-                    Toast.makeText(EditorActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AppointmentSubjectEditorActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             });

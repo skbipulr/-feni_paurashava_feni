@@ -423,22 +423,9 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
         RangeTimePickerDialog timePickerDialog = new RangeTimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minutes) {
-//                String amPm;
-//                if (hourOfDay>=12){
-//                    amPm = "PM";
-//                }else {
-//                    amPm = "AM";
-//                }
-
                 hour1 = hourOfDay;
                 minute1 = minutes;
-
                 updateTime(hour1, minute1);
-
-//                String dateTime = date + "  " + hourOfDay+":"+minute+amPm;
-//                dateTV.setText(dateTime);
-//                Toast.makeText(WorkScheduleActivity.this, ""+dateTime, Toast.LENGTH_LONG).show();
-//
             }
         }, hour , minute, false);
         // timePickerDialog.setMin(hour + 1, minute);

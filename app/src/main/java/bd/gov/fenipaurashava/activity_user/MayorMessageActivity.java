@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UnoMessageActivity extends AppCompatActivity {
+public class MayorMessageActivity extends AppCompatActivity {
 
     private TextView messageTV;
     private ApiInterface apiService;
@@ -52,7 +52,7 @@ public class UnoMessageActivity extends AppCompatActivity {
                     //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();
                 }
                 else if (response.code() == 203) {
-                    Toast.makeText(UnoMessageActivity.this, "server problem", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MayorMessageActivity.this, "server problem", Toast.LENGTH_SHORT).show();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }

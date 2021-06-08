@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:background="@drawable/feni_logo" />
+                android:background="@drawable/daily_work" />
 
             <LinearLayout
                 android:layout_width="match_parent"

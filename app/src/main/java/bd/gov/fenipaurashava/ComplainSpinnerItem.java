@@ -1,10 +1,10 @@
 package bd.gov.fenipaurashava;
 
-public class ComplainDivisionsSpinnerItem3 {
+public class ComplainSpinnerItem {
 
     private String item;
 
-    public ComplainDivisionsSpinnerItem3(String item) {
+    public ComplainSpinnerItem(String item) {
         this.item = item;
     }
 

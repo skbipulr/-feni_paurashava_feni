@@ -14,16 +14,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import bd.gov.fenipaurashava.ComplainDivisionsSpinnerItem;
+import bd.gov.fenipaurashava.AppointmentSpinnerItem;
 import bd.gov.fenipaurashava.R;
-import bd.gov.fenipaurashava.adapter.ComplainDivisionsSpinnerAdapter;
-import bd.gov.fenipaurashava.adapter.ComplainDivisionsSpinnerAdapter2;
+import bd.gov.fenipaurashava.adapter.AppointmentSubjectSpinnerAdapter;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
 import bd.gov.fenipaurashava.modelForAppointmentSubjectGET.AppointmentSubjecResponse;
 import bd.gov.fenipaurashava.modelForAppointmentSubjectGET.Datum;
 import bd.gov.fenipaurashava.modelForDCAppointmentSavePOST.AppointmentSaveResponse;
-import bd.gov.fenipaurashava.modelForEmployeeGET.EmployeeResponse;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
 
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener{
+public class AppointmentOfMayorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
     private LinearLayout selectedForDateIV, l1;
     private TextView dateTxt, text1;
@@ -43,30 +41,26 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
     String subject, details, name, address, mobileNo, referring, date;
     private ApiInterface apiInterface;
 
-    private Spinner appointmentSubjectSpinner,employeeSpinner;
-    private ArrayList<ComplainDivisionsSpinnerItem> complainDivisionsSpinnerItems;
-    private ComplainDivisionsSpinnerAdapter complainDivisionsSpinnerAdapter;
-
-    private ComplainDivisionsSpinnerAdapter2 employeeItemsAdapter;
-    private ArrayList<bd.gov.fenipaurashava.modelForEmployeeGET.Datum> employeeItems;
-
+    private Spinner appointmentSubjectSpinner;
+    private ArrayList<AppointmentSpinnerItem> complainDivisionsSpinnerItems;
+    private AppointmentSubjectSpinnerAdapter appointmentSubjectSpinnerAdapter;
     private ApiInterface apiService;
-    private int subjectId,employee_id;
+    private int subjectId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appinment_of_other_stuff);
+        setContentView(R.layout.activity_appointment_of_d_c);
 
         initField();
 
         fieldInit();
 
-        fetchComplainOfDivisions();
-        fetchComplainOfDivisions2();
+        fetchAppointmentSpinner();
     }
 
-    private void fetchComplainOfDivisions() {
+
+    private void fetchAppointmentSpinner() {
         apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
         apiService.getComplainOfDivisions(Common.APP_KEY).enqueue(new Callback<AppointmentSubjecResponse>() {
             @Override
@@ -78,28 +72,19 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
                     complainDivisionsSpinnerItems = new ArrayList<>();
 
                     for (int i = 0; i < datas.size(); i++) {
-
-                        complainDivisionsSpinnerItems.add(new ComplainDivisionsSpinnerItem(datas.get(i).getName()));
-
+                        complainDivisionsSpinnerItems.add(new AppointmentSpinnerItem(datas.get(i).getName()));
                     }
-
-                    complainDivisionsSpinnerAdapter = new ComplainDivisionsSpinnerAdapter(AppinmentOfOtherStuffActivity.this, complainDivisionsSpinnerItems);
-
-                    appointmentSubjectSpinner.setAdapter(complainDivisionsSpinnerAdapter);
+                    appointmentSubjectSpinnerAdapter = new AppointmentSubjectSpinnerAdapter(AppointmentOfMayorActivity.this, complainDivisionsSpinnerItems);
+                    appointmentSubjectSpinner.setAdapter(appointmentSubjectSpinnerAdapter);
 
                     appointmentSubjectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            String place = adapterView.getItemAtPosition(i).toString();
-
                             subjectId = datas.get(i).getId();
-
                         }
 
                         @Override
                         public void onNothingSelected(AdapterView<?> adapterView) {
-
                         }
                     });
 
@@ -108,58 +93,6 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
 
             @Override
             public void onFailure(Call<AppointmentSubjecResponse> call, Throwable t) {
-
-            }
-        });
-
-
-    }
-
-
-    private void fetchComplainOfDivisions2() {
-        apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-        apiService.getEmployeeResponse(Common.APP_KEY).enqueue(new Callback<EmployeeResponse>() {
-            @Override
-            public void onResponse(Call<EmployeeResponse> call, Response<EmployeeResponse> response) {
-                if (response.isSuccessful()) {
-
-                    EmployeeResponse employeeResponse = response.body();
-                    List<bd.gov.fenipaurashava.modelForEmployeeGET.Datum> datas = employeeResponse.getData();
-                    employeeItems = new ArrayList<>();
-
-                    for (int i = 0; i < datas.size(); i++) {
-
-                        employeeItems.add(new bd.gov.fenipaurashava.modelForEmployeeGET.Datum(datas.get(i).getName()));
-
-                    }
-
-                    employeeItemsAdapter = new ComplainDivisionsSpinnerAdapter2(AppinmentOfOtherStuffActivity.this, employeeItems);
-
-                    employeeSpinner.setAdapter(employeeItemsAdapter);
-
-                    employeeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            String place = adapterView.getItemAtPosition(i).toString();
-
-                            employee_id = datas.get(i).getId();
-
-                          //  Toast.makeText(AppinmentOfOtherStuffActivity.this, "employee_id: "+employee_id, Toast.LENGTH_SHORT).show();
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<EmployeeResponse> call, Throwable t) {
 
             }
         });
@@ -234,12 +167,11 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
         mobileNoET = findViewById(R.id.mobileNoET);
         referringET = findViewById(R.id.referringET);
         appointmentSubjectSpinner = findViewById(R.id.appointmentSubjectSpinner);
-        employeeSpinner = findViewById(R.id.employeeSpinner);
         apiInterface = RetrofitClient.getRetrofit().create(ApiInterface.class);
     }
 
     private void createDCAppoinment() {
-        // subject = subjectET.getText().toString().trim();
+       // subject = subjectET.getText().toString().trim();
         details = detailsET.getText().toString().trim();
         name = nameET.getText().toString().trim();
         address = addressET.getText().toString().trim();
@@ -263,14 +195,14 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
             referringET.requestFocus();
         }
         else {
-            final ProgressDialog mDialog = new ProgressDialog(this);
+            final ProgressDialog mDialog = new ProgressDialog(AppointmentOfMayorActivity.this);
             mDialog.setMessage("Please waiting...");
             mDialog.show();
 
             int employeeId=0;
             //   int id = Integer.parseInt(Common.USER_ID);
             Call<AppointmentSaveResponse> call = apiInterface.setAppointmentSave("A1b1C2d32564kjhkjadu",
-                    employee_id,subjectId,name,mobileNo,date,referring,address,details);
+                   0,subjectId,name,mobileNo,date,referring,address,details);
 
             call.enqueue(new Callback<AppointmentSaveResponse>() {
                 @Override
@@ -279,25 +211,25 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
                     if (response.code() == 200) {
                         AppointmentSaveResponse meg = response.body();
 
-                        // subjectET.setText(null);
+                       // subjectET.setText(null);
                         detailsET.setText(null);
                         nameET.setText(null);
                         mobileNoET.setText(null);
                         addressET.setText(null);
                         referringET.setText(null);
                         // Toast.makeText(SignInActivity.this, ""+userAssessToken, Toast.LENGTH_LONG).show();
-                        Toast.makeText(AppinmentOfOtherStuffActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                        Toast.makeText(AppointmentOfMayorActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
                         mDialog.dismiss();
 
 
                     } else if (response.code() == 203) {
-                        Toast.makeText(AppinmentOfOtherStuffActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentOfMayorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                         mDialog.dismiss();
                     } else if (response.code() == 401) {
-                        Toast.makeText(AppinmentOfOtherStuffActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentOfMayorActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
                         mDialog.dismiss();
                     } else if (response.code() == 422) {
-                        Toast.makeText(AppinmentOfOtherStuffActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentOfMayorActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
                         mDialog.dismiss();
                     }
                 }
@@ -305,7 +237,7 @@ public class AppinmentOfOtherStuffActivity extends AppCompatActivity implements 
                 @Override
                 public void onFailure(Call<AppointmentSaveResponse> call, Throwable t) {
 
-                    Toast.makeText(AppinmentOfOtherStuffActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AppointmentOfMayorActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     mDialog.dismiss();
                 }
             });

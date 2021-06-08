@@ -8,10 +8,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,33 +32,29 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
         this.context = context;
         this.employeeList = employeeList;
         this.mListener = listener;
-
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.admin_curd_employee_item_layout,
-                        parent,false);
-        return new ViewHolder(view,mListener);
+                        parent, false);
+        return new ViewHolder(view, mListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-       Datum employee =  employeeList.get(position);
-        String image = "http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture();
+        Datum employee = employeeList.get(position);
+        String image = "http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture();
 
-        Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/"+employee.getPicture()).placeholder(R.drawable.default_icon)
+        Picasso.get().load(image).placeholder(R.drawable.default_icon)
                 .into(holder.profileIV);
-       holder.nameTV.setText(employee.getName());
-       holder.phoneNumberTV.setText(employee.getMobileNo());
-       holder.mailTV.setText(employee.getEmail());
-       holder.designationTV.setText(employee.getDesignation());
-
-
-
+        holder.nameTV.setText(employee.getName());
+        holder.phoneNumberTV.setText(employee.getMobileNo());
+        holder.mailTV.setText(employee.getEmail());
+        holder.designationTV.setText(employee.getDesignation());
     }
 
     @Override
@@ -64,12 +62,12 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
         return employeeList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         CircleImageView profileIV;
-        TextView nameTV,phoneNumberTV,designationTV,mailTV;
+        TextView nameTV, phoneNumberTV, designationTV, mailTV;
 
         private RecyclerViewCurdClickListener mListener;
-        private RelativeLayout mRowContainer;
+        private CardView mRowContainer;
 
         public ViewHolder(@NonNull View itemView, RecyclerViewCurdClickListener listener) {
             super(itemView);
@@ -86,7 +84,6 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
         }
 
 
-
         @Override
         public void onClick(View v) {
             if (v.getId() == R.id.row_container) {
@@ -95,7 +92,6 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
         }
 
     }
-
 
     public interface RecyclerViewCurdClickListener {
         void onRowClick(View view, int position);

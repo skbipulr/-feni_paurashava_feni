@@ -177,7 +177,7 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
             tweeterIdET.setText(tweeterId);
             dateTxt.setText(dataAndTime);
 
-            Picasso.get().load("http://apis.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
+            Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
                     .placeholder(R.drawable.placeholder).into(getImageIV);
         } else {
             getSupportActionBar().setTitle("Add");

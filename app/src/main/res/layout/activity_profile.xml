@@ -83,7 +83,7 @@
                     android:layout_height="35dp"
                     android:layout_below="@+id/facebookIV"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
                     android:src="@drawable/twitter_icon"
                     app:tint="@color/white" />
@@ -95,7 +95,7 @@
                     android:layout_height="35dp"
                     android:layout_below="@+id/twitterIV"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
                     android:src="@drawable/whatsapp"
                     app:tint="@color/white" />
@@ -236,6 +236,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="6dp"
                         android:layout_width="match_parent"

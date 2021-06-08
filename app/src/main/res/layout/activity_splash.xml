@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:paddingTop="32dp"
-        android:background="@color/grey_60"
+        android:background="@color/colorAccent"
         android:paddingBottom="32dp">
 
         <LinearLayout
@@ -49,6 +49,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -74,17 +76,16 @@
                     android:gravity="start"
                     android:justificationMode="inter_word"
                     android:lines="1"
-                    android:text="নজরুল ইসলাম স্বপন মিয়াজী মেয়র"
+                    android:text="মোঃ নজরুল ইসলাম স্বপন"
                     android:textColor="@color/swipe_7"
                     android:textSize="12dp" />
-
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
-                    android:text="ফেনী পৌরসভার  মেয়র"
+                    android:text="মেয়র, ফেনী পৌরসভা,ফেনী"
                     android:textColor="@color/swipe_6"
                     android:textSize="10dp" />
 
@@ -103,6 +104,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView

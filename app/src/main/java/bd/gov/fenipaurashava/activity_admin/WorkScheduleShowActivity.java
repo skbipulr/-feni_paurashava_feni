@@ -184,7 +184,6 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-
     private void initFilData() throws ParseException {
 
         //date picker part

@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ComplainFetchAllActivity extends AppCompatActivity {
+public class ComplainListFetchActivity extends AppCompatActivity {
 
     private RecyclerView complainsRV;
     private ComplainFetchAllAdapter complainFetchAllAdapter;
@@ -79,7 +79,7 @@ public class ComplainFetchAllActivity extends AppCompatActivity {
                         swipeRefreshLayout.setRefreshing(false);
 
                     } else {
-                        Toast.makeText(ComplainFetchAllActivity.this, "server problem", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ComplainListFetchActivity.this, "server problem", Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
@@ -104,7 +104,7 @@ public class ComplainFetchAllActivity extends AppCompatActivity {
                         swipeRefreshLayout.setRefreshing(false);
 
                     } else {
-                        Toast.makeText(ComplainFetchAllActivity.this, "server problem", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ComplainListFetchActivity.this, "server problem", Toast.LENGTH_SHORT).show();
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
