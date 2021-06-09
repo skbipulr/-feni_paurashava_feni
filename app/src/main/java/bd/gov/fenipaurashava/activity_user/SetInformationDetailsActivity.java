@@ -36,7 +36,7 @@ public class SetInformationDetailsActivity extends AppCompatActivity {
         titleTV.setText(dataClass.getSubject());
         descriptionTV.setText(dataClass.getDescription());
 
-        String uri = "http://apis.digiins.gov.bd/district_app/public/information/"+dataClass.getPicture();
+        String uri = "http://fenimayor.digiins.gov.bd/district_app/public/information/"+dataClass.getPicture();
 
         Picasso.get().load(uri).placeholder(R.drawable.placeholder).into(imageViewIV);
 

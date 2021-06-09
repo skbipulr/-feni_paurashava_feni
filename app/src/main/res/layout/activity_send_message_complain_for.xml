@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context=".activity_user.SendMessageActivity">
+    tools:context=".activity_admin.SendMessageForComplainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

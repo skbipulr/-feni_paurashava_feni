@@ -205,7 +205,6 @@ public class SetInformationAdapter extends RecyclerView.Adapter<SetInformationAd
         TextView nameTV,mobileTV,addressTV,titleTV,descriptionTV;
         ImageView sendMessageIV,imageViewIV,deleteIV,referringIV;
 
-        LinearLayout controlLL;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -219,7 +218,7 @@ public class SetInformationAdapter extends RecyclerView.Adapter<SetInformationAd
             imageViewIV = itemView.findViewById(R.id.imageViewIV);
             deleteIV = itemView.findViewById(R.id.deleteIV);
             referringIV = itemView.findViewById(R.id.referringIV);
-            controlLL = itemView.findViewById(R.id.controlLL);
+
         }
     }
 }

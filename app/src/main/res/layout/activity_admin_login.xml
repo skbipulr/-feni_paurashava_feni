@@ -34,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             app:tint="@color/text1_color"
-            android:src="@drawable/admin_icon"/>
+            app:srcCompat="@drawable/admin_icon"/>
 
         <TextView
             android:layout_width="match_parent"

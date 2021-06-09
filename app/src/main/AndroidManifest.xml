@@ -124,12 +124,6 @@
             android:name=".activity_admin.AppointmentSubjectListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".activity_admin.ASubjectSaveActivity" />
-        <activity
-            android:name=".activity_user.AppointmentSaveSubjectActivityAM"
-            android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
             android:name=".activity_admin.EmployeeSaveActivity"
             android:screenOrientation="portrait"

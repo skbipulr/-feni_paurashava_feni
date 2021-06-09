@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_marginBottom="6dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/placeholder"
+            app:srcCompat="@drawable/placeholder"
             android:layout_height="100dp"/>
 
 
@@ -43,7 +43,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginTop="3dp"
-                    android:src="@drawable/ic_name_icon"
+                    app:srcCompat="@drawable/ic_name_icon"
                     app:tint="@color/grey_90" />
 
                 <TextView
@@ -77,7 +77,7 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginTop="3dp"
-                    android:src="@drawable/ic_mobile_icon"
+                    app:srcCompat="@drawable/ic_mobile_icon"
                     app:tint="@color/grey_90" />
 
                 <TextView
@@ -105,7 +105,7 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginTop="3dp"
-                android:src="@drawable/ic_address_icon"
+                app:srcCompat="@drawable/ic_address_icon"
                 app:tint="@color/grey_90" />
 
             <TextView
@@ -140,49 +140,42 @@
             android:textColor="@color/grey_60"
             android:textSize="14dp" />
 
+
+
         <LinearLayout
-            android:visibility="visible"
-            android:id="@+id/controlLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="horizontal">
+            android:background="@color/gradEnd4"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/sendMessageIV"
-                android:layout_marginStart="20dp"
-                android:layout_width="25dp"
-                android:background="?actionBarItemBackground"
+                android:layout_width="0dp"
                 android:layout_height="25dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                android:src="@drawable/ic_baseline_mail_outline_24"
-                app:tint="@color/green" />
+                android:layout_weight="1"
+                android:background="?actionBarItemBackground"
+                app:srcCompat="@drawable/ic_baseline_mail_outline_24"
+                app:tint="@color/white" />
 
             <ImageView
-                android:layout_marginStart="20dp"
                 android:id="@+id/deleteIV"
-                android:layout_width="25dp"
+                android:layout_width="0dp"
                 android:layout_height="25dp"
-                app:tint="@color/swipe_1"
+                android:layout_weight="1"
                 android:background="?actionBarItemBackground"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                android:src="@drawable/ic_baseline_delete_outline_24"
-                />
+                app:srcCompat="@drawable/ic_baseline_delete_outline_24"
+                app:tint="@color/white" />
 
             <ImageView
-                android:layout_marginStart="20dp"
                 android:id="@+id/referringIV"
-                android:layout_width="25dp"
+                android:layout_width="0dp"
                 android:layout_height="25dp"
+                android:layout_weight="1"
                 android:background="?actionBarItemBackground"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="6dp"
-                android:src="@drawable/ic_refer_icon"
-                />
-
+                app:srcCompat="@drawable/ic_refer_icon"
+                app:tint="@color/white" />
 
 
         </LinearLayout>
