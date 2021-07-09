@@ -48,7 +48,6 @@
 
             </LinearLayout>
 
-
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -132,7 +131,6 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>
