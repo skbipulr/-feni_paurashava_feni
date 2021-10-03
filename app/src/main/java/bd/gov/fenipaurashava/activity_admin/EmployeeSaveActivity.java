@@ -69,6 +69,16 @@ public class EmployeeSaveActivity extends AppCompatActivity implements DatePicke
         fieldInit();
         initField();
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        String user_id = sharedpreferences.getString(USER_ID,"");
+        String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
+
+        int use_id = Integer.parseInt(user_id);
+        int em_id = Integer.parseInt(employee_id);
+
+        Toast.makeText(this, "user_id: "+user_id+" em_id "+em_id, Toast.LENGTH_SHORT).show();
+//
+
         selectedForDateIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -220,7 +230,7 @@ public class EmployeeSaveActivity extends AppCompatActivity implements DatePicke
             int use_id = Integer.parseInt(user_id);
             int em_id = Integer.parseInt(employee_id);
 
-//            Toast.makeText(this, "user_id: "+user_id+" em_id "+em_id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "user_id: "+user_id+" em_id "+em_id, Toast.LENGTH_SHORT).show();
 //            Toast.makeText(this, "Common_id: "+Common.ADMIN_USER_ID+" Common_em_id "+Common.ADMIN_EMP_ID, Toast.LENGTH_SHORT).show();
 
             if (use_id== Common.ADMIN_USER_ID && em_id==Common.ADMIN_EMP_ID){
@@ -256,7 +266,6 @@ public class EmployeeSaveActivity extends AppCompatActivity implements DatePicke
 
                             Toast.makeText(EmployeeSaveActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
                             mDialog.dismiss();
-
 
                         } else if (response.code() == 203) {
                             Toast.makeText(EmployeeSaveActivity.this, "Fail", Toast.LENGTH_SHORT).show();

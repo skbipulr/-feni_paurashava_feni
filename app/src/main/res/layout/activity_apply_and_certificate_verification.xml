@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".activities.ApplyAndCertificateVerificationActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/sattusbar_color"
+            android:elevation="4dp">
+
+            <RelativeLayout
+                android:id="@+id/searchIconShowRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="?actionBarItemBackground"
+                    android:onClick="backBtn"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/white" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginRight="10dp"
+                        android:text="সকল আবেদন ও সনদ যাচাই"
+                        android:textColor="@android:color/white"
+                        android:textSize="18dp"
+                        tools:ignore="MissingPrefix" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="সনদ যাচাই করতে সঠিক তথ্য দিন।"
+                    android:textColor="@color/grey_60"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:elevation="32dp"-->
+            <!--                app:cardCornerRadius="6dp"-->
+            <!--                android:layout_marginBottom="24dp"-->
+            <!--                android:layout_height="wrap_content">-->
+
+            <!--               -->
+
+            <!--            </androidx.cardview.widget.CardView>-->
+
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/scannerView"-->
+            <!--                android:layout_width="40dp"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                app:tint="@color/grey_80"-->
+            <!--                android:foreground="?attr/selectableItemBackground"-->
+            <!--                android:layout_margin="@dimen/keyline_1_minus_8dp"-->
+            <!--                android:src="@drawable/ic_barcode_scanner"/>-->
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/scannerView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/grey_80"
+                android:foreground="?attr/selectableItemBackground"
+                android:scaleType="centerCrop"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="scanner.json"
+                app:lottie_loop="true" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="6dp"
+                android:onClick="checkButton"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/banglaRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="checkButton"
+                    android:text="বাংলা" />
+
+                <RadioButton
+                    android:id="@+id/englishRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="checkButton"
+                    android:text="English" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/edit_baground">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="2dp"
+                android:text=" ট্র্যাকিং/পিন/সনদ নং প্রদান করুন "
+                android:textColor="@color/grey_60"
+                android:textSize="16sp" />
+
+
+            <EditText
+                android:id="@+id/sonodNoET"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/edit_baground"
+                android:backgroundTint="@color/grey_5"
+                android:drawableRight="@drawable/ic_baseline_search_24"
+                android:hint="সনদ নং প্রদান করুন......"
+                android:inputType="number"
+                android:letterSpacing="0.1"
+                android:paddingLeft="10dp"
+                android:paddingEnd="10dp"
+                android:textSize="16dp" />
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/sonodNoET"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="45dp"-->
+            <!--                android:layout_marginLeft="15dp"-->
+            <!--                android:layout_marginRight="15dp"-->
+            <!--                android:drawableRight="@drawable/ic_baseline_search_24"-->
+            <!--                android:background="@drawable/edit_baground"-->
+            <!--                android:drawableTint="@color/grey_60"-->
+            <!--                android:hint="সনদ নং প্রদান করুন......"-->
+            <!--                android:paddingLeft="16dp"-->
+            <!--                android:inputType="numberDecimal"-->
+            <!--                android:paddingRight="10dp"-->
+            <!--                android:textSize="14dp" />-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/border_rec_shape"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="1dp"
+                android:padding="8sp"
+                android:text="নোট: আপনি যদি পূর্বে কোনো সনদ নিয়ে থাকেন অথবা কোনো সনদের আবেদন করে থাকেন, সার্চ বক্সে আপনার ন্যাশনাল আইডি নং অথবা জন্ম নিবন্ধন নং অথবা পাসপোর্ট নং অথবা পিন নং অথবা ট্র্যাকিং নং অথবা সনদ নং দিয়ে সার্চ করুন।"
+                android:textColor="@color/grey_60"
+                android:textSize="@dimen/from_text_size" />
+
+            <TextView
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:background="@drawable/login_button_bk"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="login"
+                android:text="সার্চ করুন"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

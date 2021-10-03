@@ -108,5 +108,6 @@
     <color name="gradStart7">#B340C4FF</color>
 
     <color name="solidCircle">#AAFFFFFF</color>
+    <color name="sattusbar_color">#3c7f42</color>
 
 </resources>

@@ -26,10 +26,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_admin.AdminDashboardActivity;
+import bd.gov.fenipaurashava.jonyAppModule.ApplyAndCertificateVerificationActivity;
+import bd.gov.fenipaurashava.jonyAppModule.SeeMoreApplicationActivity;
 
 public class UserDashboardActivity extends AppCompatActivity {
 
-    LinearLayout aboutCV, appointmentCV, complainCV, dailyWorkCV, gonosunaniCV, setInfoCV, stuffCV, unoMessageCV, adminCV;
+    LinearLayout aboutCV, appointmentCV, complainCV, dailyWorkCV, setInfoCV, stuffCV, unoMessageCV, adminCV,sonodJachaiLL;
 
     public static final String MyPREFERENCES = "MyPrefs";
     private SharedPreferences sharedpreferences;
@@ -93,11 +95,11 @@ public class UserDashboardActivity extends AppCompatActivity {
         appointmentCV = findViewById(R.id.appointmentCV);
         complainCV = findViewById(R.id.complainCV);
         dailyWorkCV = findViewById(R.id.dailtWorkCV);
-        gonosunaniCV = findViewById(R.id.gonoSunaniCV);
         setInfoCV = findViewById(R.id.setInfoCV);
         stuffCV = findViewById(R.id.stuffCV);
         unoMessageCV = findViewById(R.id.unoMessageCV);
         adminCV = findViewById(R.id.adminCV);
+        sonodJachaiLL = findViewById(R.id.sonodJachaiLL);
 
 
 
@@ -177,6 +179,14 @@ public class UserDashboardActivity extends AppCompatActivity {
                 startActivity(new Intent(UserDashboardActivity.this, MayorMessageActivity.class));
             }
         });
+
+        sonodJachaiLL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserDashboardActivity.this, ApplyAndCertificateVerificationActivity.class));
+
+            }
+        });
     }
 
 
@@ -215,10 +225,12 @@ public class UserDashboardActivity extends AppCompatActivity {
     }
 
     public void service(View view) {
-        String url = "http://fenipaurashava.gov.bd/";
-        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-        CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(this, Uri.parse(url));
+
+        startActivity(new Intent(UserDashboardActivity.this, SeeMoreApplicationActivity.class));
+//        String url = "http://fenipaurashava.gov.bd/";
+//        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+//        CustomTabsIntent customTabsIntent = builder.build();
+//        customTabsIntent.launchUrl(this, Uri.parse(url));
     }
 
     public void one_zero_nine_eight(View view) {

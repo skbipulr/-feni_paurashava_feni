@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Scanner">
+
+    <com.budiyev.android.codescanner.CodeScannerView
+        android:id="@+id/scannerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:frameAspectRatioHeight="1"
+        app:frameAspectRatioWidth="1"
+        app:frameColor="@android:color/white"
+        app:frameCornersRadius="0dp"
+        app:frameCornersSize="50dp"
+        app:frameSize="0.75"
+        app:autoFocusButtonColor="@color/swipe_1"
+        app:frameThickness="2dp"
+        app:flashButtonVisible="true"
+        app:autoFocusButtonVisible="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:maskColor="#77000000" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:visibility="visible"
+        android:layout_margin="16dp"
+        android:padding="5dp"
+        android:background="@drawable/scanner_back_cirlce_shape"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="?actionBarItemBackground"
+            android:clickable="true"
+            android:onClick="backBtn"
+            android:padding="2dp"
+            android:src="@drawable/ic_baseline_keyboard_backspace_24"
+            app:tint="@color/grey_60" />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

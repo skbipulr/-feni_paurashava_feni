@@ -10,7 +10,6 @@ import bd.gov.fenipaurashava.R;
 public class AboutJelaActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

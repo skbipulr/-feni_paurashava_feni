@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bd.gov.fenipaurashava">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -19,16 +20,19 @@
         android:theme="@style/Theme.ApnarJelaProsasok"
         android:usesCleartextTraffic="true">
         <activity
+            android:exported="true"
             android:name=".activity_admin.WorkScheduleEditDeleteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
         <activity
+            android:exported="true"
             android:name=".activity_admin.EditorWorkScheduleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
         <activity
+            android:exported="true"
             android:name=".activity_user.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar">
@@ -40,126 +44,154 @@
             </intent-filter>
         </activity>
         <activity
+            android:exported="true"
             android:name=".activity_admin.WorkScheduleShowActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.WorkScheduleDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AppointmentListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminCurdEmployeeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.ComplainSubjectListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.ComplainSubjectEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminCurdEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.SendMessageForAppintmentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminEmployeeForAppoinmentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.SetInformationListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.SendMessageForSetInformationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.SetInformationDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.WorkScheduleActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminEmployeeActivityForComplainRef"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.SendMessageForComplainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminEmployeeActivityForSetInformationRef"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AppointmentSubjectEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/EditorTheme"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.ComplainListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AppointmentSubjectListFetchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.EmployeeSaveActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminDashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.AdminLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_user.AppointmentOfMayorActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_user.ProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.MayorMessageActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.UserDashboardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.AboutJelaActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_user.WorkScheduleUserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
@@ -169,18 +201,47 @@
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_user.ComplainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
         <activity
+            android:exported="true"
             android:name=".activity_user.EmployeeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity
+            android:exported="true"
             android:name=".activity_admin.AdminEmployeeActivityList"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
+
+        <activity
+            android:exported="true"
+            android:name=".jonyAppModule.SeeMoreApplicationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"/>
+
+        <activity
+            android:exported="true"
+            android:name=".jonyAppModule.useractivity.ApplicationFormActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"/>
+
+        <activity
+            android:exported="true"
+            android:name=".jonyAppModule.Scanner"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar"/>
+
+        <activity
+            android:exported="true"
+            android:name=".jonyAppModule.ApplyAndCertificateVerificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"/>
+
+
     </application>
 
 </manifest>
