@@ -53,7 +53,7 @@ public class AdminEmployeeActivityList extends AppCompatActivity {
                 if (response.code()==200) {
                     EmployeeResponse employeeResponse = response.body();
 
-                    employeeList = employeeResponse.getData();
+                    employeeList = employeeResponse.getEmployeeData();
                     initEmployee();
                     swipeRefreshLayout.setRefreshing(false);
                     //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();

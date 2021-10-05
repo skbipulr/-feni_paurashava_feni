@@ -3,39 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
-    android:layout_marginBottom="6dp"
-    android:id="@+id/row_container"
-    android:background="@android:color/white">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="6dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginEnd="6dp"
+    android:layout_marginBottom="2dp"
+    android:background="?actionBarItemBackground"
+    android:backgroundTint="@color/grey_3"
+    android:elevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/grey_3"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="70dp"
-            android:layout_marginStart="16dp"
-            android:layout_height="70dp"
             android:id="@+id/employeeImageIV"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
+            android:layout_marginStart="16dp"
             android:src="@drawable/default_icon"
             app:cardCornerRadius="75dp">
 
         </de.hdodenhof.circleimageview.CircleImageView>
 
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="8dp"
             android:layout_marginRight="8dp"
+            android:background="@color/grey_3"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
 
@@ -61,21 +70,22 @@
 
 
                 <LinearLayout
+                    android:id="@+id/callLL"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/call_number_bg"
                     android:orientation="horizontal"
-                    android:paddingLeft="16dp"
+                    android:paddingLeft="8dp"
                     android:paddingTop="2dp"
                     android:paddingRight="16dp"
                     android:paddingBottom="2dp">
 
                     <ImageView
                         android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_marginTop="2dp"
-                        android:src="@drawable/mobile_64"
-                        app:tint="@color/grey_90" />
+                        android:layout_height="12dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/calling"
+                        />
 
                     <TextView
                         android:id="@+id/phoneNumberTV"
@@ -87,6 +97,7 @@
                         android:textSize="14dp" />
 
                     <ImageView
+                        android:visibility="gone"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:layout_marginStart="16dp"
@@ -97,30 +108,71 @@
                 </LinearLayout>
 
                 <LinearLayout
-
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:background="@drawable/call_number_bg"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="2dp">
 
                     <ImageView
                         android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_marginTop="4dp"
-                        android:src="@drawable/mail_64"
-                        app:tint="@color/grey_90" />
+                        android:layout_height="14dp"
+                        app:tint="#25AE88"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/pin"
+                        />
 
                     <TextView
                         android:id="@+id/emailTV"
-                        android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="example@gmail.com"
-                        android:textColor="@color/grey_40"
+                        android:text="০১৭৬২৬৮৭০০১"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textColor="@color/grey_60"
                         android:textSize="14dp" />
 
-
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="2dp"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/whats_app"
+                        app:tint="@color/green" />
                 </LinearLayout>
+
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:orientation="horizontal">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="15dp"-->
+                <!--                        android:layout_height="15dp"-->
+                <!--                        android:layout_marginTop="4dp"-->
+                <!--                        android:src="@drawable/mail_64"-->
+                <!--                        app:tint="@color/grey_90" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/emailTV"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginStart="5dp"-->
+                <!--                        android:layout_marginTop="2dp"-->
+                <!--                        android:lines="1"-->
+                <!--                        android:text="example@gmail.com"-->
+                <!--                        android:textColor="@color/grey_40"-->
+                <!--                        android:textSize="14dp" />-->
+
+
+                <!--                </LinearLayout>-->
 
 
             </LinearLayout>

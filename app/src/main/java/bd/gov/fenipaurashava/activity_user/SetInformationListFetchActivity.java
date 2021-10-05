@@ -57,9 +57,8 @@ public class SetInformationListFetchActivity extends AppCompatActivity {
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
-       // Toast.makeText(this, "user id "+use_id, Toast.LENGTH_SHORT).show();
 
-        if (use_id==Common.ADMIN_USER_ID){
+        if (user_id.equals(Common.ADMIN_USER_ID)){
 
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
             apiService.getInformationGetResponse(Common.APP_KEY,use_id,0).enqueue(new Callback<InformationGetResponse>() {
@@ -95,7 +94,7 @@ public class SetInformationListFetchActivity extends AppCompatActivity {
 
         }else {
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-            apiService.getInformationGetResponse(Common.APP_KEY,use_id,em_id).enqueue(new Callback<InformationGetResponse>() {
+            apiService.getInformationGetResponse(Common.APP_KEY,use_id,0).enqueue(new Callback<InformationGetResponse>() {
                 @Override
                 public void onResponse(Call<InformationGetResponse> call, Response<InformationGetResponse> response) {
 

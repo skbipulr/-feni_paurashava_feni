@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_user.EmployeeActivity;
 import bd.gov.fenipaurashava.activity_user.ProfileActivity;
+import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 
 import java.util.ArrayList;
@@ -54,13 +55,13 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
 
         Datum employee = employeeList.get(position);
 
-        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture()).placeholder(R.drawable.default_icon)
+        Picasso.get().load(Common.IMAGE_BASE_URL + employee.getPhoto()).placeholder(R.drawable.default_icon)
                 .into(holder.profileIV);
 
         holder.nameTV.setText(employee.getName());
-        holder.phoneNumberTV.setText(employee.getMobileNo());
-        holder.mailTV.setText(employee.getEmail());
-        holder.designationTV.setText(employee.getDesignation());
+        holder.phoneNumberTV.setText(employee.getMobile());
+        holder.mailTV.setText(String.valueOf(employee.getElectionArea()));
+        holder.designationTV.setText(employee.getDesignationName());
 
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -74,7 +75,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
         holder.callLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callButton(employee.getMobileNo());
+                callButton(employee.getMobile());
             }
         });
 

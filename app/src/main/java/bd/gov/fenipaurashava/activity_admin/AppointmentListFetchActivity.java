@@ -60,7 +60,7 @@ public class AppointmentListFetchActivity extends AppCompatActivity {
 
         if (use_id == Common.ADMIN_USER_ID) {
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
-            apiService.getAppointment(Common.APP_KEY, 0, use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
+            apiService.getAppointment(Common.APP_KEY, em_id, use_id).enqueue(new Callback<AppointmentFeatchResponse>() {
                 @Override
                 public void onResponse(Call<AppointmentFeatchResponse> call, Response<AppointmentFeatchResponse> response) {
 

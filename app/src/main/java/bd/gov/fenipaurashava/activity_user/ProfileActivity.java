@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 import com.squareup.picasso.Picasso;
 
@@ -20,7 +21,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProfileActivity extends AppCompatActivity {
 
     CircleImageView stuffImageIV;
-    TextView nameTV, phoneNumberTV, designationTV, emailTV, bcsBatchTV, dateTV;
+    TextView nameTV, phoneNumberTV, electionAreaTV, designationTV, emailTV, bcsBatchTV, dateTV,qualificationTV,addressTV;
 
     Datum employee = null;
     private ImageView facebookIV, twitterIV;
@@ -35,14 +36,16 @@ public class ProfileActivity extends AppCompatActivity {
         Intent i = getIntent();
         employee = (Datum) i.getSerializableExtra("employee");
 
-        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
+        Picasso.get().load(Common.IMAGE_BASE_URL + employee.getPhoto()).placeholder(R.drawable.default_icon)
                 .into(stuffImageIV);
         nameTV.setText(employee.getName());
-        phoneNumberTV.setText(employee.getMobileNo());
-        designationTV.setText(employee.getDesignation());
-        emailTV.setText(employee.getEmail());
-        bcsBatchTV.setText(employee.getBcsBatch());
-        dateTV.setText((String) employee.getJoiningDate());
+        phoneNumberTV.setText(employee.getMobile());
+        designationTV.setText(employee.getDesignationName());
+        emailTV.setText(String.valueOf(employee.getEmail()));
+        addressTV.setText(String.valueOf(employee.getAddress()));
+        qualificationTV.setText(String.valueOf(employee.getQualification()));
+        dateTV.setText((String) employee.getJoinDate());
+        electionAreaTV.setText((String) employee.getElectionArea());
 
     }
 
@@ -54,6 +57,9 @@ public class ProfileActivity extends AppCompatActivity {
         emailTV = findViewById(R.id.emailTV);
         bcsBatchTV = findViewById(R.id.bcsbatchTV);
         dateTV = findViewById(R.id.dateTV);
+        addressTV = findViewById(R.id.addressTV);
+        qualificationTV = findViewById(R.id.qualificationTV);
+        electionAreaTV = findViewById(R.id.electionAreaTV);
     }
 
     public void backBtn(View view) {
@@ -81,27 +87,27 @@ public class ProfileActivity extends AppCompatActivity {
         customTabsIntent.launchUrl(ProfileActivity.this, Uri.parse(url));
     }
 
-    public void facebookClick(View view) {
-
-        String facebook = (String) employee.getFbId();
-
-        if (facebook.isEmpty()) {
-            Toast.makeText(this, "This link is not available.", Toast.LENGTH_SHORT).show();
-
-        } else {
-            openTab((String) employee.getFbId());
-
-        }
-
-    }
-
-    public void twitterClick(View view) {
-        String twitter = (String) employee.getTweeterId();
-
-        if (twitter.isEmpty()) {
-            Toast.makeText(this, "This link is not available.", Toast.LENGTH_SHORT).show();
-        } else {
-            openTab((String) employee.getTweeterId());
-        }
-    }
+//    public void facebookClick(View view) {
+//
+//        String facebook = (String) employee.getFbId();
+//
+//        if (facebook.isEmpty()) {
+//            Toast.makeText(this, "This link is not available.", Toast.LENGTH_SHORT).show();
+//
+//        } else {
+//            openTab((String) employee.getFbId());
+//
+//        }
+//
+//    }
+//
+//    public void twitterClick(View view) {
+//        String twitter = (String) employee.getTweeterId();
+//
+//        if (twitter.isEmpty()) {
+//            Toast.makeText(this, "This link is not available.", Toast.LENGTH_SHORT).show();
+//        } else {
+//            openTab((String) employee.getTweeterId());
+//        }
+//    }
 }

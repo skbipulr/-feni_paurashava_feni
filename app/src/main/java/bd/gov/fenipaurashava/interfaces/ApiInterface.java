@@ -61,6 +61,12 @@ public interface ApiInterface {
                                             @Field("username") String usename,
                                             @Field("password") String password);
 
+    //employee/designation/2
+    @GET("employee/designation/{id}")
+    Call<EmployeeResponse> getDepartmentWiseEmployeeResponse(
+            @Header("app-key") String appKey,
+            @Path("id") String id);
+
     @FormUrlEncoded
     @POST("appointment/subject/save")
     Call<AppointmentSubjectSaveResponse> setAppointmentSubjectSaveResponse(
@@ -206,8 +212,8 @@ public interface ApiInterface {
     Call<WorkScheduleSaveResponse> setWorkScheduleSaveResponse(
             @Header("app-key") String appKey,
 
-            @Field("user_id") int user_id,
-            @Field("employee_id") int employee_id,
+            @Field("user_id") String user_id,
+            @Field("employee_id") String employee_id,
             @Field("subject") String subject,
             @Field("schedule_date") String user_schedule_dateid,
             @Field("place") String place,

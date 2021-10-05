@@ -2,6 +2,8 @@ package bd.gov.fenipaurashava.activity_user;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,6 +48,11 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
     private AppointmentSubjectSpinnerAdapter appointmentSubjectSpinnerAdapter;
     private ApiInterface apiService;
     private int subjectId;
+
+    public static final String MyPREFERENCES = "MyPrefs";
+    private SharedPreferences sharedpreferences;
+    public static final String USER_ID = "USER_ID";
+    public static final String EMPLOYEE_ID = "EMPLOYEE_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,11 +205,13 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
             final ProgressDialog mDialog = new ProgressDialog(AppointmentOfMayorActivity.this);
             mDialog.setMessage("Please waiting...");
             mDialog.show();
-
+            sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+            String user_id = sharedpreferences.getString(USER_ID,"");
+            String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
             int employeeId=0;
-            //   int id = Integer.parseInt(Common.USER_ID);
-            Call<AppointmentSaveResponse> call = apiInterface.setAppointmentSave("A1b1C2d32564kjhkjadu",
-                   0,subjectId,name,mobileNo,date,referring,address,details);
+               int e_id = Integer.parseInt(employee_id);
+            Call<AppointmentSaveResponse> call = apiInterface.setAppointmentSave(Common.APP_KEY,
+                    e_id,subjectId,name,mobileNo,date,referring,address,details);
 
             call.enqueue(new Callback<AppointmentSaveResponse>() {
                 @Override
@@ -211,13 +220,11 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
                     if (response.code() == 200) {
                         AppointmentSaveResponse meg = response.body();
 
-                       // subjectET.setText(null);
                         detailsET.setText(null);
                         nameET.setText(null);
                         mobileNoET.setText(null);
                         addressET.setText(null);
                         referringET.setText(null);
-                        // Toast.makeText(SignInActivity.this, ""+userAssessToken, Toast.LENGTH_LONG).show();
                         Toast.makeText(AppointmentOfMayorActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
                         mDialog.dismiss();
 

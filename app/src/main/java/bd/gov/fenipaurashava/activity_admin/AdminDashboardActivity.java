@@ -8,10 +8,12 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -28,6 +30,7 @@ import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_user.UserDashboardActivity;
 import bd.gov.fenipaurashava.activity_user.SetInformationListFetchActivity;
 import bd.gov.fenipaurashava.common.Common;
+import bd.gov.fenipaurashava.departmentAdmin.activites.DepartmentAdminActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdminDashboardActivity extends AppCompatActivity {
@@ -52,6 +55,8 @@ public class AdminDashboardActivity extends AppCompatActivity {
         init();
         getDataFromSharePreference();
         clickEvent();
+
+        Log.i("url", Common.IMAGE_BASE_URL + picture);
 
     }
 
@@ -96,8 +101,13 @@ public class AdminDashboardActivity extends AppCompatActivity {
         picture = sharedpreferences.getString(Common.USER_PICTURE, "");
         userNameTV.setText(userName);
         userDesignationTV.setText(userDesignation);
-        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + picture).placeholder(R.drawable.default_icon)
+        Picasso.get().load(Common.IMAGE_BASE_URL + picture).placeholder(R.drawable.default_icon)
                 .into(profileImageIV);
+
+        Log.d("url", Common.IMAGE_BASE_URL + picture);
+
+     //   Toast.makeText(AdminDashboardActivity.this, ""+Common.IMAGE_BASE_URL + picture, Toast.LENGTH_SHORT).show();
+
     }
 
     private void callButton(String mobileNumber) {
@@ -163,7 +173,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         adminStuffListCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminDashboardActivity.this, AdminEmployeeActivityList.class));
+                startActivity(new Intent(AdminDashboardActivity.this, DepartmentAdminActivity.class));
             }
         });
 

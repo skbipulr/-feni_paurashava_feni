@@ -60,6 +60,24 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:exported="true"
+            android:name=".departmentUser.activites.DepartmentListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+
+        <activity
+            android:exported="true"
+            android:name=".departmentAdmin.activites.DepartmentAdminActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+
+        <activity
+            android:exported="true"
+            android:name=".departmentAdmin.activites.DepartmentAdminListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+
+        <activity
+            android:exported="true"
             android:name=".activity_admin.AdminCurdEmployeeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"

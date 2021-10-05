@@ -47,26 +47,26 @@ public class AdminCurdEmployeeActivity extends AppCompatActivity {
         loadDataFromAPI();
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AdminCurdEmployeeActivity.this, EmployeeSaveActivity.class));
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(AdminCurdEmployeeActivity.this, EmployeeSaveActivity.class));
+//            }
+//        });
 
 
-        listener = new AdminCurdEmployeeAdapter.RecyclerViewCurdClickListener() {
-            @Override
-            public void onRowClick(View view, final int position) {
-
-                Datum employee =  employeeList.get(position);
-
-                Intent intent = new Intent(AdminCurdEmployeeActivity.this, AdminCurdEditorActivity.class);
-                intent.putExtra("employee", employee);
-                startActivity(intent);
-            }
-        };
+//        listener = new AdminCurdEmployeeAdapter.RecyclerViewCurdClickListener() {
+//            @Override
+//            public void onRowClick(View view, final int position) {
+//
+//                Datum employee =  employeeList.get(position);
+//
+//                Intent intent = new Intent(AdminCurdEmployeeActivity.this, AdminCurdEditorActivity.class);
+//                intent.putExtra("employee", employee);
+//                startActivity(intent);
+//            }
+//        };
     }
 
 
@@ -78,7 +78,7 @@ public class AdminCurdEmployeeActivity extends AppCompatActivity {
             public void onResponse(Call<EmployeeResponse> call, Response<EmployeeResponse> response) {
                 if (response.code() == 200) {
                     EmployeeResponse employeeResponse = response.body();
-                    employeeList = employeeResponse.getData();
+                    employeeList = employeeResponse.getEmployeeData();
                     initEmployee();
                     swipeRefreshLayout.setRefreshing(false);
                     //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();

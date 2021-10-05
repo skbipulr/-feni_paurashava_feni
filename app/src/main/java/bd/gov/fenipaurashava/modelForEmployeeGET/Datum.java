@@ -9,103 +9,157 @@ import java.io.Serializable;
 public class Datum implements Serializable {
 
 
-    private int image;
-
     @SerializedName("username")
     @Expose
     private Object username;
+    @SerializedName("designation_name")
+    @Expose
+    private String designationName;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private String id;
+    @SerializedName("employee_id")
+    @Expose
+    private String employeeId;
+    @SerializedName("device_id")
+    @Expose
+    private Object deviceId;
+    @SerializedName("nid")
+    @Expose
+    private String nid;
+    @SerializedName("email")
+    @Expose
+    private Object email;
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("employee_id")
+    @SerializedName("designation_id")
     @Expose
-    private Object employeeId;
-    @SerializedName("designation")
+    private String designationId;
+    @SerializedName("gender")
     @Expose
-    private String designation;
-    @SerializedName("mobile_no")
+    private String gender;
+    @SerializedName("marital_status")
     @Expose
-    private String mobileNo;
-    @SerializedName("email")
+    private String maritalStatus;
+    @SerializedName("date_of_birth")
     @Expose
-    private String email;
-    @SerializedName("bcs_batch")
+    private Object dateOfBirth;
+    @SerializedName("qualification")
     @Expose
-    private String bcsBatch;
-    @SerializedName("joining_date")
+    private String qualification;
+    @SerializedName("join_date")
     @Expose
-    private Object joiningDate;
-    @SerializedName("picture")
+    private Object joinDate;
+    @SerializedName("photo")
     @Expose
-    private String picture;
-    @SerializedName("fb_id")
+    private String photo;
+    @SerializedName("election_area")
     @Expose
-    private Object fbId;
-    @SerializedName("tweeter_id")
+    private Object electionArea;
+    @SerializedName("mobile")
     @Expose
-    private Object tweeterId;
-    @SerializedName("order_no")
+    private String mobile;
+    @SerializedName("address")
     @Expose
-    private Integer orderNo;
+    private Object address;
+    @SerializedName("district_id")
+    @Expose
+    private String districtId;
+    @SerializedName("upazila_id")
+    @Expose
+    private String upazilaId;
+    @SerializedName("postal_id")
+    @Expose
+    private String postalId;
+    @SerializedName("sequence")
+    @Expose
+    private String sequence;
+    @SerializedName("messages")
+    @Expose
+    private Object messages;
+    @SerializedName("is_active")
+    @Expose
+    private String isActive;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("deleted_at")
+    @Expose
+    private Object deletedAt;
     @SerializedName("created_by")
     @Expose
-    private Integer createdBy;
+    private String createdBy;
     @SerializedName("updated_by")
     @Expose
-    private Object updatedBy;
+    private String updatedBy;
     @SerializedName("created_by_ip")
     @Expose
     private String createdByIp;
     @SerializedName("updated_by_ip")
     @Expose
-    private Object updatedByIp;
+    private String updatedByIp;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
     @SerializedName("updated_at")
     @Expose
-    private Object updatedAt;
-    @SerializedName("deleted_at")
-    @Expose
-    private Object deletedAt;
+    private String updatedAt;
 
     public Object getUsername() {
         return username;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
-
-    public Datum(String name, String designation, String mobileNo, String email, int image) {
-        this.name = name;
-        this.designation = designation;
-        this.mobileNo = mobileNo;
-        this.email = email;
-        this.image = image;
-    }
-
-    public Datum(String name) {
-        this.name = name;
     }
 
     public void setUsername(Object username) {
         this.username = username;
     }
 
-    public Integer getId() {
+    public String getDesignationName() {
+        return designationName;
+    }
+
+    public void setDesignationName(String designationName) {
+        this.designationName = designationName;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public Object getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(Object deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public String getNid() {
+        return nid;
+    }
+
+    public void setNid(String nid) {
+        this.nid = nid;
+    }
+
+    public Object getEmail() {
+        return email;
+    }
+
+    public void setEmail(Object email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -116,99 +170,163 @@ public class Datum implements Serializable {
         this.name = name;
     }
 
-    public Object getEmployeeId() {
-        return employeeId;
+    public String getDesignationId() {
+        return designationId;
     }
 
-    public void setEmployeeId(Object employeeId) {
-        this.employeeId = employeeId;
+    public void setDesignationId(String designationId) {
+        this.designationId = designationId;
     }
 
-    public String getDesignation() {
-        return designation;
+    public String getGender() {
+        return gender;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
+    public String getMaritalStatus() {
+        return maritalStatus;
     }
 
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
-    public String getEmail() {
-        return email;
+    public Object getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDateOfBirth(Object dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getBcsBatch() {
-        return bcsBatch;
+    public String getQualification() {
+        return qualification;
     }
 
-    public void setBcsBatch(String bcsBatch) {
-        this.bcsBatch = bcsBatch;
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
     }
 
-    public Object getJoiningDate() {
-        return joiningDate;
+    public Object getJoinDate() {
+        return joinDate;
     }
 
-    public void setJoiningDate(Object joiningDate) {
-        this.joiningDate = joiningDate;
+    public void setJoinDate(Object joinDate) {
+        this.joinDate = joinDate;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public Object getFbId() {
-        return fbId;
+    public Object getElectionArea() {
+        return electionArea;
     }
 
-    public void setFbId(Object fbId) {
-        this.fbId = fbId;
+    public void setElectionArea(Object electionArea) {
+        this.electionArea = electionArea;
     }
 
-    public Object getTweeterId() {
-        return tweeterId;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setTweeterId(Object tweeterId) {
-        this.tweeterId = tweeterId;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public Integer getOrderNo() {
-        return orderNo;
+    public Object getAddress() {
+        return address;
     }
 
-    public void setOrderNo(Integer orderNo) {
-        this.orderNo = orderNo;
+    public void setAddress(Object address) {
+        this.address = address;
     }
 
-    public Integer getCreatedBy() {
+    public String getDistrictId() {
+        return districtId;
+    }
+
+    public void setDistrictId(String districtId) {
+        this.districtId = districtId;
+    }
+
+    public String getUpazilaId() {
+        return upazilaId;
+    }
+
+    public void setUpazilaId(String upazilaId) {
+        this.upazilaId = upazilaId;
+    }
+
+    public String getPostalId() {
+        return postalId;
+    }
+
+    public void setPostalId(String postalId) {
+        this.postalId = postalId;
+    }
+
+    public String getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String sequence) {
+        this.sequence = sequence;
+    }
+
+    public Object getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Object messages) {
+        this.messages = messages;
+    }
+
+    public String getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(String isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Object getDeletedAt() {
+        return deletedAt;
+    }
+
+    public void setDeletedAt(Object deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
-    public Object getUpdatedBy() {
+    public String getUpdatedBy() {
         return updatedBy;
     }
 
-    public void setUpdatedBy(Object updatedBy) {
+    public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
     }
 
@@ -220,11 +338,11 @@ public class Datum implements Serializable {
         this.createdByIp = createdByIp;
     }
 
-    public Object getUpdatedByIp() {
+    public String getUpdatedByIp() {
         return updatedByIp;
     }
 
-    public void setUpdatedByIp(Object updatedByIp) {
+    public void setUpdatedByIp(String updatedByIp) {
         this.updatedByIp = updatedByIp;
     }
 
@@ -236,19 +354,11 @@ public class Datum implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Object getUpdatedAt() {
+    public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Object updatedAt) {
+    public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public Object getDeletedAt() {
-        return deletedAt;
-    }
-
-    public void setDeletedAt(Object deletedAt) {
-        this.deletedAt = deletedAt;
     }
 }

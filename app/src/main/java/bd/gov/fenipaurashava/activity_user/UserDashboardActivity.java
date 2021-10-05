@@ -26,6 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_admin.AdminDashboardActivity;
+import bd.gov.fenipaurashava.departmentUser.activites.DepartmentListActivity;
 import bd.gov.fenipaurashava.jonyAppModule.ApplyAndCertificateVerificationActivity;
 import bd.gov.fenipaurashava.jonyAppModule.SeeMoreApplicationActivity;
 
@@ -169,7 +170,7 @@ public class UserDashboardActivity extends AppCompatActivity {
         stuffCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(UserDashboardActivity.this, EmployeeActivity.class));
+                startActivity(new Intent(UserDashboardActivity.this, DepartmentListActivity.class));
             }
         });
 

@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
 
     private static Retrofit retrofit = null;
-
-    private static final  String BASE_URL ="http://fenimayor.digiins.gov.bd/district_app/api/";
+    //http://fenimayor.digiins.gov.bd/district_app/api/employee
+    private static final String BASE_URL = "http://fenimayor.digiins.gov.bd/district_app/api/";
 
     public static Retrofit getRetrofit() {
 

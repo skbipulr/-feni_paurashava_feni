@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 
 import com.squareup.picasso.Picasso;
@@ -47,14 +48,14 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Datum employee = employeeList.get(position);
-        String image = "http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture();
+        String image = Common.IMAGE_BASE_URL + employee.getPhoto();
 
         Picasso.get().load(image).placeholder(R.drawable.default_icon)
                 .into(holder.profileIV);
         holder.nameTV.setText(employee.getName());
-        holder.phoneNumberTV.setText(employee.getMobileNo());
-        holder.mailTV.setText(employee.getEmail());
-        holder.designationTV.setText(employee.getDesignation());
+        holder.phoneNumberTV.setText(employee.getMobile());
+        holder.mailTV.setText(String.valueOf(employee.getAddress()));
+        holder.designationTV.setText(employee.getDesignationName());
     }
 
     @Override
@@ -62,7 +63,7 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
         return employeeList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         CircleImageView profileIV;
         TextView nameTV, phoneNumberTV, designationTV, mailTV;
 
@@ -78,18 +79,18 @@ public class AdminCurdEmployeeAdapter extends RecyclerView.Adapter<AdminCurdEmpl
             designationTV = itemView.findViewById(R.id.designationTV);
             mailTV = itemView.findViewById(R.id.emailTV);
 
-            mRowContainer = itemView.findViewById(R.id.row_container);
-            mListener = listener;
-            mRowContainer.setOnClickListener(this);
+//            mRowContainer = itemView.findViewById(R.id.row_container);
+//            mListener = listener;
+//            mRowContainer.setOnClickListener(this);
         }
 
 
-        @Override
-        public void onClick(View v) {
-            if (v.getId() == R.id.row_container) {
-                mListener.onRowClick(mRowContainer, getAdapterPosition());
-            }
-        }
+//        @Override
+//        public void onClick(View v) {
+//            if (v.getId() == R.id.row_container) {
+//                mListener.onRowClick(mRowContainer, getAdapterPosition());
+//            }
+//        }
 
     }
 

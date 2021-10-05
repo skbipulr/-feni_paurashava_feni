@@ -28,6 +28,7 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.activity_user.WorkScheduleActivity;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.common.RangeTimePickerDialog;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
@@ -68,7 +69,6 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-
 
         dateLL = findViewById(R.id.dateLL);
         dateTV = findViewById(R.id.dateTV);
@@ -257,7 +257,7 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
             apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
 
 
-            Call<WorkScheduleUpdateResponse> call = apiService.setWorkScheduleUpdateResponse(Common.APP_KEY, id_t, String.valueOf(Common.ADMIN_EMP_ID), user_id,workSubject, date, workPlace, workDetails);
+            Call<WorkScheduleUpdateResponse> call = apiService.setWorkScheduleUpdateResponse(Common.APP_KEY, id_t, String.valueOf(Common.ADMIN_EMP_ID), user_id, workSubject, date, workPlace, workDetails);
 
             call.enqueue(new Callback<WorkScheduleUpdateResponse>() {
                 @Override
@@ -268,6 +268,9 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
                     if (response.code() == 200) {
                         Toast.makeText(WorkScheduleEditDeleteActivity.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
+
+                        startActivity(new Intent(WorkScheduleEditDeleteActivity.this, WorkScheduleShowActivity.class));
+
                     } else if (response.code() == 203) {
                         Toast.makeText(WorkScheduleEditDeleteActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
@@ -303,8 +306,6 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
         String user_id = sharedpreferences.getString(USER_ID, "");
         String employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
 
-        // Toast.makeText(this, "user "+user_id+" employee"+employee_id, Toast.LENGTH_SHORT).show();
-
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
@@ -322,6 +323,9 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
 
                     if (response.code() == 200) {
                         Toast.makeText(WorkScheduleEditDeleteActivity.this, "" + response.body().getMessage() + "", Toast.LENGTH_SHORT).show();
+
+                        startActivity(new Intent(WorkScheduleEditDeleteActivity.this, WorkScheduleShowActivity.class));
+
                     } else if (response.code() == 203) {
                         Toast.makeText(WorkScheduleEditDeleteActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
@@ -427,7 +431,7 @@ public class WorkScheduleEditDeleteActivity extends AppCompatActivity implements
                 minute1 = minutes;
                 updateTime(hour1, minute1);
             }
-        }, hour , minute, false);
+        }, hour, minute, false);
         // timePickerDialog.setMin(hour + 1, minute);
         timePickerDialog.show();
     }

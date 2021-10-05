@@ -141,20 +141,20 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
         employee = (Datum) i.getSerializableExtra("employee");
 //password, order,facebookId,tweeterId,dataAndTime
         assert employee != null;
-        itemId = employee.getId();
+        itemId = Integer.parseInt(employee.getId());
         name = employee.getName();
-        email = employee.getEmail();
-        mobileNo = employee.getMobileNo();
-        designation = employee.getDesignation();
-        bcsBatch = employee.getBcsBatch();
+        email = String.valueOf(employee.getEmail());
+        mobileNo = employee.getMobile();
+        designation = employee.getDesignationName();
+       // bcsBatch = employee.getBcsBatch();
         userName = (String) employee.getUsername();
         password = passwordET.getText().toString().trim();
-        order = employee.getOrderNo();
+        //order = employee.get();
 
-        facebookId = (String) employee.getFbId();
-        tweeterId = (String) employee.getTweeterId();
-        dataAndTime = (String) employee.getJoiningDate();
-        picture = employee.getPicture();
+//        facebookId = (String) employee.getfa();
+//        tweeterId = (String) employee.getTweeterId();
+//        dataAndTime = (String) employee.getJoiningDate();
+//        picture = employee.getPicture();
 
         setDataFromIntentExtra();
     }
@@ -177,8 +177,8 @@ public class AdminCurdEditorActivity extends AppCompatActivity implements DatePi
             tweeterIdET.setText(tweeterId);
             dateTxt.setText(dataAndTime);
 
-            Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture())
-                    .placeholder(R.drawable.placeholder).into(getImageIV);
+//            Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.get())
+//                    .placeholder(R.drawable.placeholder).into(getImageIV);
         } else {
             getSupportActionBar().setTitle("Add");
         }

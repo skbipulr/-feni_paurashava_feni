@@ -300,11 +300,12 @@
                                     android:layout_marginBottom="4dp"
                                     android:onClick="one_six_zero"
                                     app:backgroundTint="@color/white"
-                                    app:fabCustomSize="35dp"
-                                    app:maxImageSize="@dimen/fb_image_size"
+                                    app:fabCustomSize="50dp"
+                                    app:maxImageSize="35dp"
                                     app:srcCompat="@drawable/dudok_icon_transperent"
                                     app:tint="@null"
                                     card_view:ignore="OnClick" />
+
 
 
                                 <TextView

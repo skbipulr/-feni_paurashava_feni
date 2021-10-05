@@ -70,7 +70,7 @@ public class AdminEmployeeActivityForComplainRef extends AppCompatActivity imple
             public void onResponse(Call<EmployeeResponse> call, Response<EmployeeResponse> response) {
                 if (response.code() == 200) {
                     EmployeeResponse employeeResponse = response.body();
-                    employeeList = employeeResponse.getData();
+                    employeeList = employeeResponse.getEmployeeData();
                     initEmployee();
                     swipeRefreshLayout.setRefreshing(false);
                     //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();
@@ -160,7 +160,7 @@ public class AdminEmployeeActivityForComplainRef extends AppCompatActivity imple
         int use_id = Integer.parseInt(user_id);
         int em_id = Integer.parseInt(employee_id);
 
-        int employeeId = employee.getId();
+        int employeeId = Integer.parseInt(employee.getId());
         int itemId = dataClass.getId();
 
         final ProgressDialog mDialog = new ProgressDialog(AdminEmployeeActivityForComplainRef.this);

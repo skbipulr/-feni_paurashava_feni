@@ -52,12 +52,12 @@ public class EmployeeAdapterList extends RecyclerView.Adapter<EmployeeAdapterLis
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Datum employee = employeeList.get(position);
-        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPicture()).placeholder(R.drawable.default_icon)
+        Picasso.get().load("http://fenimayor.digiins.gov.bd/district_app/public/employee/" + employee.getPhoto()).placeholder(R.drawable.default_icon)
                 .into(holder.profileIV);
         holder.nameTV.setText(employee.getName());
-        holder.phoneNumberTV.setText(employee.getMobileNo());
-        holder.mailTV.setText(employee.getEmail());
-        holder.designationTV.setText(employee.getDesignation());
+        holder.phoneNumberTV.setText(employee.getMobile());
+        holder.mailTV.setText(String.valueOf(employee.getEmail()));
+        holder.designationTV.setText(employee.getDesignationName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +71,7 @@ public class EmployeeAdapterList extends RecyclerView.Adapter<EmployeeAdapterLis
         holder.callLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callButton(employee.getMobileNo());
+                callButton(employee.getMobile());
             }
         });
 

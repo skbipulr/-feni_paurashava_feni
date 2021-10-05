@@ -66,7 +66,7 @@ public class AdminEmployeeForAppoinmentActivity extends AppCompatActivity implem
             public void onResponse(Call<EmployeeResponse> call, Response<EmployeeResponse> response) {
                 if (response.code() == 200) {
                     EmployeeResponse employeeResponse = response.body();
-                    employeeList = employeeResponse.getData();
+                    employeeList = employeeResponse.getEmployeeData();
                     initEmployee();
                     swipeRefreshLayout.setRefreshing(false);
                     //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();
@@ -151,7 +151,7 @@ public class AdminEmployeeForAppoinmentActivity extends AppCompatActivity implem
 
     private void createRefer(Datum employee) {
 
-       int employeeId =  employee.getId();
+       int employeeId = Integer.parseInt(employee.getId());
        int itemId = dataClass.getId();
 
         final ProgressDialog mDialog = new ProgressDialog(AdminEmployeeForAppoinmentActivity.this);

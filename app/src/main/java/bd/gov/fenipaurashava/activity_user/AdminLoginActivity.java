@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -87,8 +88,10 @@ public class AdminLoginActivity extends AppCompatActivity {
                         editor.putString(EMPLOYEE_ID, String.valueOf(employee_id));
                         editor.putString(Common.USER_NAME, String.valueOf(meg.getData().getName()));
                         editor.putString(Common.USER_DESIGNATION, String.valueOf(meg.getData().getDesignation()));
-                        editor.putString(Common.USER_PICTURE, String.valueOf(meg.getData().getPicture()));
+                        editor.putString(Common.USER_PICTURE, String.valueOf(meg.getData().getPhoto()));
                         editor.apply();
+
+                        Log.d("employee_id: ",employee_id);
 
                         editor.putBoolean("login", true).apply();
 

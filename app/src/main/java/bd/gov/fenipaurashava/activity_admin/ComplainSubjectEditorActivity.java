@@ -185,7 +185,7 @@ public class ComplainSubjectEditorActivity extends AppCompatActivity {
             int use_id = Integer.parseInt(user_id);
             int em_id = Integer.parseInt(employee_id);
 
-            if (use_id ==Common.ADMIN_USER_ID){
+            if (use_id == Common.ADMIN_USER_ID){
                 final ProgressDialog mDialog = new ProgressDialog(ComplainSubjectEditorActivity.this);
                 mDialog.setMessage("Please waiting...");
                 mDialog.show();

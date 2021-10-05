@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.activity_admin.AdminDashboardActivity;
+import bd.gov.fenipaurashava.activity_admin.WorkScheduleShowActivity;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.common.RangeTimePickerDialog;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
@@ -74,6 +77,8 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
 
     public void backBtn(View view) {
         onBackPressed();
+        startActivity(new Intent(WorkScheduleActivity.this, AdminDashboardActivity.class));
+        finish();
     }
 
 
@@ -105,24 +110,13 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
         RangeTimePickerDialog timePickerDialog = new RangeTimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minutes) {
-//                String amPm;
-//                if (hourOfDay>=12){
-//                    amPm = "PM";
-//                }else {
-//                    amPm = "AM";
-//                }
 
                 hour1 = hourOfDay;
                 minute1 = minutes;
-
                 updateTime(hour1, minute1);
 
-//                String dateTime = date + "  " + hourOfDay+":"+minute+amPm;
-//                dateTV.setText(dateTime);
-//                Toast.makeText(WorkScheduleActivity.this, ""+dateTime, Toast.LENGTH_LONG).show();
-//
             }
-        }, hour , minute, false);
+        }, hour, minute, false);
         // timePickerDialog.setMin(hour + 1, minute);
         timePickerDialog.show();
     }
@@ -165,9 +159,9 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
             int user_id = Integer.parseInt(u_id);
             int employee_id = Integer.parseInt(e_id);
 
-            if (user_id==Common.ADMIN_USER_ID && employee_id==Common.ADMIN_EMP_ID){
+            if (user_id == Common.ADMIN_USER_ID && employee_id == Common.ADMIN_EMP_ID) {
 
-                Call<WorkScheduleSaveResponse> call = apiService.setWorkScheduleSaveResponse(Common.APP_KEY, user_id, employee_id, workSubject, date, workPlace, workDetails);
+                Call<WorkScheduleSaveResponse> call = apiService.setWorkScheduleSaveResponse(Common.APP_KEY, u_id, e_id, workSubject, date, workPlace, workDetails);
 
                 call.enqueue(new Callback<WorkScheduleSaveResponse>() {
                     @Override
@@ -181,6 +175,8 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
                             workPlaceET.setText("");
                             workSubjectET.setText("");
                             dateTV.setText("");
+
+                            startActivity(new Intent(WorkScheduleActivity.this, WorkScheduleShowActivity.class));
 
                         } else if (response.code() == 203) {
                             Toast.makeText(WorkScheduleActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -200,10 +196,9 @@ public class WorkScheduleActivity extends AppCompatActivity implements DatePicke
                     }
                 });
 
-            }else {
+            } else {
                 Toast.makeText(this, "Your are not authorize person", Toast.LENGTH_SHORT).show();
             }
-
 
 
         }

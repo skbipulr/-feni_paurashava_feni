@@ -45,18 +45,18 @@ public class Data {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("mobile_no")
+    @SerializedName("mobile")
     @Expose
-    private String mobileNo;
+    private String mobile;
     @SerializedName("email")
     @Expose
     private String email;
     @SerializedName("designation")
     @Expose
     private String designation;
-    @SerializedName("picture")
+    @SerializedName("photo")
     @Expose
-    private Object picture;
+    private String photo;
 
     public String getId() {
         return id;
@@ -162,12 +162,12 @@ public class Data {
         this.name = name;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getEmail() {
@@ -186,12 +186,12 @@ public class Data {
         this.designation = designation;
     }
 
-    public Object getPicture() {
-        return picture;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setPicture(Object picture) {
-        this.picture = picture;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
 

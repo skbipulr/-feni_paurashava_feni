@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.activity_user.WorkScheduleActivity;
 import bd.gov.fenipaurashava.adapterForAPI.WorkScheduleFetchAdminAdapter;
 import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
@@ -46,7 +49,7 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
 
     private TextView fromDateTv, toDateTv;
     private ImageView fromDateBtn, toDateBtn;
-    private LinearLayout fromDataLL,toDataLL;
+    private LinearLayout fromDataLL, toDataLL;
 
     String userFromDate, userToDate, nFromDate, nToDate;
 
@@ -74,12 +77,20 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(WorkScheduleShowActivity.this, WorkScheduleActivity.class));
+            }
+        });
+
 
         listener = new WorkScheduleFetchAdminAdapter.RecyclerViewCurdClickListener() {
             @Override
             public void onRowClick(View view, final int position) {
 
-                Datum data =  scheduleList.get(position);
+                Datum data = scheduleList.get(position);
                 Intent intent = new Intent(WorkScheduleShowActivity.this, WorkScheduleEditDeleteActivity.class);
                 intent.putExtra("schedule", data);
                 startActivity(intent);
@@ -101,7 +112,7 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
     }
 
 
-    private void loadDataFromAPI() throws ParseException{
+    private void loadDataFromAPI() throws ParseException {
 
         apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
         Calendar calendar = Calendar.getInstance();
@@ -172,7 +183,7 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
         scheduleRV = findViewById(R.id.scheduleRV);
         LinearLayoutManager layoutManager
                 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        scheduleFetchAdapter = new WorkScheduleFetchAdminAdapter(this, scheduleList,listener);
+        scheduleFetchAdapter = new WorkScheduleFetchAdminAdapter(this, scheduleList, listener);
         scheduleRV.setLayoutManager(layoutManager);
         scheduleRV.setAdapter(scheduleFetchAdapter);
         swipeRefreshLayout.setRefreshing(false);
@@ -198,7 +209,7 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
 
 
         //fromDate
-        userFromDate = year + "/" + (month+1) + "/" + toDay;
+        userFromDate = year + "/" + (month + 1) + "/" + toDay;
         fromDateTv.setText(userFromDate);
 
         final DatePickerDialog.OnDateSetListener fromDateListener = new DatePickerDialog.OnDateSetListener() {
@@ -229,13 +240,13 @@ public class WorkScheduleShowActivity extends AppCompatActivity {
         });
 
         //toDate
-        userToDate = year+1+ "/" +(month+1)+ "/" + toDay;
+        userToDate = year + 1 + "/" + (month + 1) + "/" + toDay;
         toDateTv.setText(userToDate);
 
         final DatePickerDialog.OnDateSetListener toDateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int toDay) {
-                calendar.set(year, month, toDay+1);
+                calendar.set(year, month, toDay + 1);
                 userToDate = dateFormat.format(calendar.getTime());
                 toDateTv.setText(userToDate);
 

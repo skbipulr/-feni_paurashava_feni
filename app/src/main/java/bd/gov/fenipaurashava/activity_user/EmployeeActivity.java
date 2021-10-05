@@ -1,12 +1,14 @@
 package bd.gov.fenipaurashava.activity_user;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,38 +42,44 @@ public class EmployeeActivity extends AppCompatActivity {
     private ApiInterface apiService;
 
     public static final String MyPREFERENCES = "MyPrefs";
+    String id,departmentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee);
 
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+        departmentName = intent.getStringExtra("departmentName");
+        TextView designationTV = findViewById(R.id.designationTV);
+        designationTV.setText(departmentName);
+
         // initEmployee();
         initSwipeLayout();
         loadDataFromAPI();
 
-
-
     }
-
 
 
     private void loadDataFromAPI() {
         apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
 
-        apiService.getEmployeeResponse(Common.APP_KEY).enqueue(new Callback<EmployeeResponse>() {
+        apiService.getDepartmentWiseEmployeeResponse(Common.APP_KEY, id).enqueue(new Callback<EmployeeResponse>() {
             @Override
             public void onResponse(Call<EmployeeResponse> call, Response<EmployeeResponse> response) {
-                if (response.code()==200) {
+                if (response.code() == 200) {
                     EmployeeResponse employeeResponse = response.body();
 
-                    employeeList = employeeResponse.getData();
+                    employeeList = employeeResponse.getEmployeeData();
                     initEmployee();
                     swipeRefreshLayout.setRefreshing(false);
-                    //Toast.makeText(EmployeeActivity.this, ""+employeeList.size(), Toast.LENGTH_SHORT).show();
-                }
-                else if (response.code() == 203) {
+                    //  Toast.makeText(EmployeeActivity.this, ""+employeeResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                } else if (response.code() == 203) {
                     Toast.makeText(EmployeeActivity.this, "server problem", Toast.LENGTH_SHORT).show();
+                    swipeRefreshLayout.setRefreshing(false);
+                } else {
+                    Toast.makeText(EmployeeActivity.this, "Please wait for a movement...", Toast.LENGTH_SHORT).show();
                     swipeRefreshLayout.setRefreshing(false);
                 }
             }
@@ -112,6 +120,7 @@ public class EmployeeActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void initEmployee() {
         employeeRV = findViewById(R.id.employeeRV);
         LinearLayoutManager layoutManager
