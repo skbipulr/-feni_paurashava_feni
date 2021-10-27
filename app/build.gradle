@@ -14,8 +14,8 @@ android {
         applicationId "bd.gov.fenipaurashava"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 23
-        versionName "3.4"
+        versionCode 24
+        versionName "3.5"
         vectorDrawables.useSupportLibrary = true // For srcCompat
 
 
@@ -124,5 +124,12 @@ dependencies {
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
     implementation 'com.budiyev.android:code-scanner:2.1.0'
     implementation 'com.karumi:dexter:6.0.0'
-    
+
+
+    //location service
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.maps.android:android-maps-utils:0.5'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.maps:google-maps-services:0.2.9'
 }
