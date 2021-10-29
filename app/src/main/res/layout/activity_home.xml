@@ -353,7 +353,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:gravity="center"
-                                        android:text="মেয়রের দৈনন্দিন কর্মসুচি"
+                                        android:text="মেয়রের দৈনন্দিন কর্মসূচি"
                                         android:textColor="@color/grey_80"
                                         android:textSize="@dimen/flotingText_size" />
 
@@ -1432,7 +1432,7 @@
                                     android:layout_marginTop="5dp"
                                     android:layout_marginEnd="3dp"
                                     android:gravity="center"
-                                    android:text="পোষা প্রাণীর লাইসেন্সের"
+                                    android:text="পোষা প্রাণীর লাইসেন্স"
                                     android:textSize="12sp" />
 
                             </LinearLayout>

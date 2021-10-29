@@ -76,6 +76,7 @@ public class UserDashboardActivity extends AppCompatActivity {
     public static int REQUEST_CODE_FOR_LOCATION = 1;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +112,8 @@ public class UserDashboardActivity extends AppCompatActivity {
                         address = addressList.get(0).getAddressLine(0);
 
                         RelativeLayout bankRL,pharmaciesRL,thanaRL,fireStationRL;
+
+
 
                         searchNearByPlace(latitude,longitude,findViewById(R.id.bankRL),"Banks",address);
                         searchNearByPlace(latitude,longitude,findViewById(R.id.pharmaciesRL),"Pharmacies",address);
@@ -225,8 +228,8 @@ public class UserDashboardActivity extends AppCompatActivity {
 //    private double latitude;
 //    private double longitude;
 
-    public void searchNearByPlace(double latitude,double longitude, RelativeLayout floatingActionButton,String nearByPlaceName,String myLocation) {
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+    public void searchNearByPlace(double latitude,double longitude, RelativeLayout relativeLayout,String nearByPlaceName,String myLocation) {
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserDashboardActivity.this, ApplicationFormActivity.class);

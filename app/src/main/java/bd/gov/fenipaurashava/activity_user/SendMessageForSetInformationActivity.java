@@ -41,6 +41,7 @@ public class SendMessageForSetInformationActivity extends AppCompatActivity {
     public static final String USER_ID = "USER_ID";
     public static final String EMPLOYEE_ID = "EMPLOYEE_ID";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
