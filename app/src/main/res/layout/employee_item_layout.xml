@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:lines="1"
-                    android:text="কাউসার আজিজ"
+                    android:text=""
                     android:textColor="@color/swipe_2"
                     android:textSize="18dp" />
 
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:text="উপপরিচালক, স্থানীয় সরকার ও অতিরিক্ত জেলা ম্যাজিস্ট্রেট,নরসিংদী"
+                    android:text=""
                     android:textColor="@color/grey_60"
                     android:textSize="12sp"
                     tools:ignore="MissingPrefix" />
@@ -92,7 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="০১৭৬২৬৮৭০০১"
+                        android:text=""
                         android:textColor="@color/grey_60"
                         android:textSize="14dp" />
 
@@ -131,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:text="০১৭৬২৬৮৭০০১"
+                        android:text=""
                         android:ellipsize="end"
                         android:lines="1"
                         android:textColor="@color/grey_60"

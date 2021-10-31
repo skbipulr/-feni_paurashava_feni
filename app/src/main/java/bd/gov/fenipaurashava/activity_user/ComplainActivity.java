@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ import bd.gov.fenipaurashava.interfaces.ApiInterface;
 import bd.gov.fenipaurashava.modelForComplainSavePOST.ComplainSaveResponse;
 import bd.gov.fenipaurashava.modelForComplainSubjectFetchGET.ComplainSubjectFetchResponse;
 import bd.gov.fenipaurashava.modelForComplainSubjectFetchGET.Datum;
+import bd.gov.fenipaurashava.modelForSMSSendPOST.SMSSendResponse;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
 
 import java.util.ArrayList;
@@ -206,8 +208,8 @@ public class ComplainActivity extends AppCompatActivity {
                     if (response.isSuccessful() && response.body()!=null) {
                         ComplainSaveResponse meg = response.body();
 
-                        Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার অভিযোগটি জমা হয়েছে", Toast.LENGTH_LONG).show();
-                        mDialog.dismiss();
+                      //  Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার অভিযোগটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+
 
                         nameOneET.setText("");
                         nameTwoET.setText("");
@@ -215,6 +217,9 @@ public class ComplainActivity extends AppCompatActivity {
                         addressTwoET.setText("");
                         phoneNumberET.setText("");
                         complainDetailsET.setText("");
+
+                        createSendSMS();
+                        mDialog.dismiss();
 
                     } else if (response.code() == 203) {
                         Toast.makeText(ComplainActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -258,6 +263,45 @@ public class ComplainActivity extends AppCompatActivity {
 
     public void btnSubmit(View view) {
         createPublicHearing();
+    }
+
+    private void createSendSMS() {
+        final ProgressDialog mDialog = new ProgressDialog(this);
+        mDialog.setMessage("Please waiting...");
+        mDialog.show();
+
+        String message = "এক জন ব্যক্তি 'মেয়র ফেনী পৌরসভা' অ্যাপর মাধমে একটি অভিযোগ করেছেন \n অভিযোগটি হলো : \n"+ "অভিযোগকারীর নাম: " + nameOne + "\n" + "মোবাইল নং:" + phoneNumber+"\n\n"+"বিস্তারিত পেতে অ্যাপের এডমিন এ লগইন করুন।";
+        Call<SMSSendResponse> call = apiInterface.setSMSSendResponse(Common.APP_KEY, 1, Common.SMS_NUMBER, message);
+
+        call.enqueue(new Callback<SMSSendResponse>() {
+            @Override
+            public void onResponse(Call<SMSSendResponse> call, Response<SMSSendResponse> response) {
+
+                if (response.code() == 200) {
+                    SMSSendResponse meg = response.body();
+                    Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার অভিযোগটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                    mDialog.dismiss();
+
+                } else if (response.code() == 203) {
+                    Toast.makeText(ComplainActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                } else if (response.code() == 401) {
+                    Toast.makeText(ComplainActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                } else if (response.code() == 422) {
+                    Toast.makeText(ComplainActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SMSSendResponse> call, Throwable t) {
+                Log.d("error",t.getMessage());
+                mDialog.dismiss();
+            }
+        });
+
+
     }
 
 }

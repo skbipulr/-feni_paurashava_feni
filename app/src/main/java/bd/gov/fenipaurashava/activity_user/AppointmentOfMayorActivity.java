@@ -20,10 +20,12 @@ import bd.gov.fenipaurashava.AppointmentSpinnerItem;
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.adapter.AppointmentSubjectSpinnerAdapter;
 import bd.gov.fenipaurashava.common.Common;
+import bd.gov.fenipaurashava.common.NetworkCheck;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
 import bd.gov.fenipaurashava.modelForAppointmentSubjectGET.AppointmentSubjecResponse;
 import bd.gov.fenipaurashava.modelForAppointmentSubjectGET.Datum;
 import bd.gov.fenipaurashava.modelForDCAppointmentSavePOST.AppointmentSaveResponse;
+import bd.gov.fenipaurashava.modelForSMSSendPOST.SMSSendResponse;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
 
 import java.util.ArrayList;
@@ -159,7 +161,7 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
         //  String date = month + "/" + dayOfMonth + "/" + year;
-        int m  = month+1;
+        int m = month + 1;
         date = year + "-" + m + "-" + dayOfMonth;
         dateTxt.setText(date);
     }
@@ -178,7 +180,7 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
     }
 
     private void createDCAppoinment() {
-       // subject = subjectET.getText().toString().trim();
+        // subject = subjectET.getText().toString().trim();
         details = detailsET.getText().toString().trim();
         name = nameET.getText().toString().trim();
         address = addressET.getText().toString().trim();
@@ -197,21 +199,20 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
         } else if (mobileNo.isEmpty()) {
             mobileNoET.setError("required");
             mobileNoET.requestFocus();
-        }  else if (referring.isEmpty()) {
+        } else if (referring.isEmpty()) {
             referringET.setError("required");
             referringET.requestFocus();
-        }
-        else {
+        } else {
             final ProgressDialog mDialog = new ProgressDialog(AppointmentOfMayorActivity.this);
             mDialog.setMessage("Please waiting...");
             mDialog.show();
             sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-            String user_id = sharedpreferences.getString(USER_ID,"");
-            String employee_id = sharedpreferences.getString(EMPLOYEE_ID,"");
-            int employeeId=0;
-               int e_id = Integer.parseInt(employee_id);
+            String user_id = sharedpreferences.getString(USER_ID, "");
+            String employee_id = sharedpreferences.getString(EMPLOYEE_ID, "");
+            int employeeId = 0;
+            int e_id = Integer.parseInt(employee_id);
             Call<AppointmentSaveResponse> call = apiInterface.setAppointmentSave(Common.APP_KEY,
-                    e_id,subjectId,name,mobileNo,date,referring,address,details);
+                    e_id, subjectId, name, mobileNo, date, referring, address, details);
 
             call.enqueue(new Callback<AppointmentSaveResponse>() {
                 @Override
@@ -225,7 +226,8 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
                         mobileNoET.setText(null);
                         addressET.setText(null);
                         referringET.setText(null);
-                        Toast.makeText(AppointmentOfMayorActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                       // Toast.makeText(AppointmentOfMayorActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                        createSendSMS();
                         mDialog.dismiss();
 
 
@@ -244,7 +246,7 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
                 @Override
                 public void onFailure(Call<AppointmentSaveResponse> call, Throwable t) {
 
-                    Toast.makeText(AppointmentOfMayorActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
+               //     Toast.makeText(AppointmentOfMayorActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     mDialog.dismiss();
                 }
             });
@@ -252,7 +254,58 @@ public class AppointmentOfMayorActivity extends AppCompatActivity implements Dat
     }
 
     public void btnSubmit(View view) {
-        createDCAppoinment();
+
+        if (NetworkCheck.isConnect(AppointmentOfMayorActivity.this)) {
+            createDCAppoinment();
+        } else {
+            Toast.makeText(AppointmentOfMayorActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+    private void createSendSMS() {
+        final ProgressDialog mDialog = new ProgressDialog(this);
+        mDialog.setMessage("Please waiting...");
+        mDialog.show();
+
+        String message = "এক জন ব্যক্তি 'মেয়র ফেনী পৌরসভা' অ্যাপর মাধমে আপনার সাক্ষাৎকারের জন্য আবেদন করেছে: \n"  + "ব্যক্তির নাম : " + name + "\n" + "মোবাইল নং:" + mobileNo + "\n" + "ঠিকানা: " + address+"\n\n"+"বিস্তারিত পেতে অ্যাপের এডমিন এ লগইন করুন।";
+        Call<SMSSendResponse> call = apiInterface.setSMSSendResponse(Common.APP_KEY, 1, Common.SMS_NUMBER, message);
+
+        call.enqueue(new Callback<SMSSendResponse>() {
+            @Override
+            public void onResponse(Call<SMSSendResponse> call, Response<SMSSendResponse> response) {
+
+                if (response.code() == 200) {
+                    SMSSendResponse meg = response.body();
+
+                    //  Toast.makeText(ComplainActivity.this, "আপনার বার্তাটি পাঠানো হয়েছে", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(ComplainActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+// Toast.makeText(AppointmentOfMayorActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AppointmentOfMayorActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                    mDialog.dismiss();
+
+                } else if (response.code() == 203) {
+                    Toast.makeText(AppointmentOfMayorActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                } else if (response.code() == 401) {
+                    Toast.makeText(AppointmentOfMayorActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                } else if (response.code() == 422) {
+                    Toast.makeText(AppointmentOfMayorActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SMSSendResponse> call, Throwable t) {
+
+                Toast.makeText(AppointmentOfMayorActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                mDialog.dismiss();
+            }
+        });
+
+
     }
 
 }

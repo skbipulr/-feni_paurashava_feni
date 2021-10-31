@@ -14,8 +14,8 @@ android {
         applicationId "bd.gov.fenipaurashava"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 25
-        versionName "3.6"
+        versionCode 27
+        versionName "3.0.8"
         vectorDrawables.useSupportLibrary = true // For srcCompat
 
 

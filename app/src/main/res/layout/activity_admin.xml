@@ -154,7 +154,6 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="120dp"
                 android:layout_marginEnd="12dp"
-                android:layout_marginBottom="2dp"
                 app:cardBackgroundColor="@color/grey_5"
                 app:cardCornerRadius="4dp"
                 card_view:cardElevation="4sp"
@@ -434,17 +433,18 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:layout_marginTop="6dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="12dp"
+
                     android:layout_marginEnd="12dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/adminAppointmentFetchCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -472,7 +472,7 @@
                     <LinearLayout
                         android:id="@+id/adminStuffCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad1"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -509,7 +509,7 @@
                     <LinearLayout
                         android:id="@+id/adminStuffListCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad2"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -537,7 +537,7 @@
                     <LinearLayout
                         android:id="@+id/setInfoCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad3"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -574,7 +574,7 @@
                     <LinearLayout
                         android:id="@+id/workScheduleCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad4"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -602,7 +602,7 @@
                     <LinearLayout
                         android:id="@+id/adminComplainsCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad6"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -639,7 +639,7 @@
                     <LinearLayout
                         android:id="@+id/adminAppointmentSubjectCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad7"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -667,7 +667,7 @@
                     <LinearLayout
                         android:id="@+id/adminComplainSubjectCV"
                         android:layout_width="0dp"
-                        android:layout_height="80dp"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:background="@drawable/grad8"
                         android:foreground="?android:attr/selectableItemBackground"
@@ -693,6 +693,48 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/serviceCountCV"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:background="@drawable/grad2"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:src="@drawable/accounts" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="6dp"
+                            android:layout_marginEnd="8dp"
+                            android:gravity="center"
+                            android:text="নাগরিক সেবার হিসাব"
+                            android:textColor="@color/grey_80"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
 
 
             </LinearLayout>

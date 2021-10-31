@@ -19,8 +19,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.common.Common;
+import bd.gov.fenipaurashava.common.NetworkCheck;
 import bd.gov.fenipaurashava.interfaces.ApiInterface;
+import bd.gov.fenipaurashava.modelForSMSSendPOST.SMSSendResponse;
 import bd.gov.fenipaurashava.modelForSetInformationPOST.SetInformationSaveResponse;
 import bd.gov.fenipaurashava.webApi.RetrofitClient;
 
@@ -38,9 +42,9 @@ public class SetInformationActivity extends AppCompatActivity {
     private ImageView getImageIV;
     private LinearLayout selectedIV;
 
-    private EditText subjectET,descriptionET, nameET,addressET, mobileNoET;
+    private EditText subjectET, descriptionET, nameET, addressET, mobileNoET;
     TextView pictureTextTV;
-    String subject,details,name,address,mobileNo;
+    String subject, details, name, address, mobileNo;
     private ApiInterface apiInterface;
 
     private File uploadFile;
@@ -70,9 +74,9 @@ public class SetInformationActivity extends AppCompatActivity {
 
     private void takeImage() {
         ImagePicker.Companion.with(this)
-                .crop()	    			//Crop image(Optional), Check Customization for more option
-                .compress(1024)			//Final image size will be less than 1 MB(Optional)
-                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .crop()                    //Crop image(Optional), Check Customization for more option
+                .compress(1024)            //Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)    //Final image resolution will be less than 1080 x 1080(Optional)
                 .start();
     }
 
@@ -81,14 +85,14 @@ public class SetInformationActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == Activity.RESULT_OK) {
-          Uri uri =  data.getData();
-          String path = uri.getPath();
-          uploadFile = new File(path);
-            pictureTextTV.setText( uploadFile.getName());
-            if (uri != null){
+            Uri uri = data.getData();
+            String path = uri.getPath();
+            uploadFile = new File(path);
+            pictureTextTV.setText(uploadFile.getName());
+            if (uri != null) {
                 getImageIV.setImageURI(uri);
                 getImageIV.setVisibility(View.VISIBLE);
-            }else {
+            } else {
                 getImageIV.setVisibility(View.GONE);
             }
         }
@@ -97,7 +101,6 @@ public class SetInformationActivity extends AppCompatActivity {
     public void backBtn(View view) {
         onBackPressed();
     }
-
 
 
     //----------ruf-----------------
@@ -128,16 +131,13 @@ public class SetInformationActivity extends AppCompatActivity {
         } else if (name.isEmpty()) {
             nameET.setError("required");
             nameET.requestFocus();
-        }
-        else if (address.isEmpty()) {
+        } else if (address.isEmpty()) {
             addressET.setError("required");
             addressET.requestFocus();
-        }
-        else if (mobileNo.isEmpty()) {
+        } else if (mobileNo.isEmpty()) {
             mobileNoET.setError("required");
             mobileNoET.requestFocus();
-        }
-        else {
+        } else {
 
             RequestBody _name = RequestBody.create(MediaType.parse("text/plain"), name);
             RequestBody _subject = RequestBody.create(MediaType.parse("text/plain"), subject);
@@ -153,7 +153,7 @@ public class SetInformationActivity extends AppCompatActivity {
 
             //   int id = Integer.parseInt(Common.USER_ID);
             Call<SetInformationSaveResponse> call = apiInterface.setInformationSaveResponse("A1b1C2d32564kjhkjadu",
-                    _name,_subject,_address,_mobileNo,_details,_uploadFile);
+                    _name, _subject, _address, _mobileNo, _details, _uploadFile);
 
             call.enqueue(new Callback<SetInformationSaveResponse>() {
                 @Override
@@ -169,7 +169,8 @@ public class SetInformationActivity extends AppCompatActivity {
                         addressET.setText(null);
                         pictureTextTV.setText(null);
                         // Toast.makeText(SignInActivity.this, ""+userAssessToken, Toast.LENGTH_LONG).show();
-                        Toast.makeText(SetInformationActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(SetInformationActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                        createSendSMS();
                         mDialog.dismiss();
 
 
@@ -225,7 +226,54 @@ public class SetInformationActivity extends AppCompatActivity {
     }
 
     public void btnSubmit(View view) {
-        setInformation();
+        if (NetworkCheck.isConnect(SetInformationActivity.this)) {
+            setInformation();
+        } else {
+            Toast.makeText(SetInformationActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    private void createSendSMS() {
+        final ProgressDialog mDialog = new ProgressDialog(this);
+        mDialog.setMessage("Please waiting...");
+        mDialog.show();
+
+        String message = "এক জন ব্যক্তি 'মেয়র ফেনী পৌরসভা' অ্যাপর মাধমে একটি তথ্য দিয়েছে \n তথ্যটি হলো :\n" + subject + "\n" + "তথ্য দাতার নাম : " + name + "\n" + "মোবাইল নং:" + mobileNo + "\n" + "ঠিকানা: " + address+"\n\n"+"তথ্যের বিস্তারিত পেতে অ্যাপের এডমিন এ লগইন করুন।";
+
+        Call<SMSSendResponse> call = apiInterface.setSMSSendResponse(Common.APP_KEY, 1, Common.SMS_NUMBER, message);
+
+        call.enqueue(new Callback<SMSSendResponse>() {
+            @Override
+            public void onResponse(Call<SMSSendResponse> call, Response<SMSSendResponse> response) {
+
+                if (response.code() == 200) {
+                    SMSSendResponse meg = response.body();
+                    Toast.makeText(SetInformationActivity.this, "কংগ্রাচুলেশন, আপনার তথ্যটি জমা হয়েছে", Toast.LENGTH_LONG).show();
+                    mDialog.dismiss();
+
+
+                } else if (response.code() == 203) {
+                    Toast.makeText(SetInformationActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                } else if (response.code() == 401) {
+                    Toast.makeText(SetInformationActivity.this, "Unauthorized Access", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                } else if (response.code() == 422) {
+                    Toast.makeText(SetInformationActivity.this, "Validation Error", Toast.LENGTH_SHORT).show();
+                    mDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SMSSendResponse> call, Throwable t) {
+
+               // Toast.makeText(SetInformationActivity.this, "Failed " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                mDialog.dismiss();
+            }
+        });
+
+
     }
 
 }

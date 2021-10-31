@@ -67,7 +67,6 @@
                 android:background="@color/colorPrimary">
 
                 <ImageView
-                    android:onClick="facebookClick"
                     android:id="@+id/facebookIV"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -77,7 +76,6 @@
                     app:tint="@color/white" />
 
                 <ImageView
-                    android:onClick="twitterClick"
                     android:id="@+id/twitterIV"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
@@ -262,6 +260,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_marginTop="6dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

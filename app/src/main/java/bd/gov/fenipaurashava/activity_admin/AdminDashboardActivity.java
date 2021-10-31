@@ -30,6 +30,7 @@ import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_user.UserDashboardActivity;
 import bd.gov.fenipaurashava.activity_user.SetInformationListFetchActivity;
 import bd.gov.fenipaurashava.common.Common;
+import bd.gov.fenipaurashava.common.NetworkCheck;
 import bd.gov.fenipaurashava.departmentAdmin.activites.DepartmentAdminActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -39,6 +40,8 @@ public class AdminDashboardActivity extends AppCompatActivity {
             setInfoCV, adminStuffCV, adminAppointmentSubjectCV,
             adminComplainsCV, adminAppointmentFetchCV, adminComplainSubjectCV, adminStuffListCV,
             workScheduleCV, logoutLL;
+
+    LinearLayout serviceCountCV;
 
     private String userName, userDesignation, picture;
     private TextView userNameTV, userDesignationTV;
@@ -106,7 +109,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         Log.d("url", Common.IMAGE_BASE_URL + picture);
 
-     //   Toast.makeText(AdminDashboardActivity.this, ""+Common.IMAGE_BASE_URL + picture, Toast.LENGTH_SHORT).show();
+        //   Toast.makeText(AdminDashboardActivity.this, ""+Common.IMAGE_BASE_URL + picture, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -165,65 +168,88 @@ public class AdminDashboardActivity extends AppCompatActivity {
         adminStuffListCV = findViewById(R.id.adminStuffListCV);
         workScheduleCV = findViewById(R.id.workScheduleCV);
         logoutLL = findViewById(R.id.logoutLL);
+        serviceCountCV = findViewById(R.id.serviceCountCV);
 
         userNameTV = findViewById(R.id.userNameTV);
         userDesignationTV = findViewById(R.id.userDesignationTV);
         profileImageIV = findViewById(R.id.profileImageIV);
 
-        adminStuffListCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(AdminDashboardActivity.this, DepartmentAdminActivity.class));
+        serviceCountCV.setOnClickListener(view -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
+                startActivity(new Intent(AdminDashboardActivity.this, CitizenServiceCountActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        workScheduleCV.setOnClickListener(new View.OnClickListener() {
+        adminStuffListCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
+                    startActivity(new Intent(AdminDashboardActivity.this, DepartmentAdminActivity.class));
+                } else {
+                    Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        workScheduleCV.setOnClickListener(v -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
                 startActivity(new Intent(AdminDashboardActivity.this, WorkScheduleShowActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
         adminComplainSubjectCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminDashboardActivity.this, ComplainSubjectListFetchActivity.class));
+                if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
+                    startActivity(new Intent(AdminDashboardActivity.this, ComplainSubjectListFetchActivity.class));
+                } else {
+                    Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        adminAppointmentFetchCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        adminAppointmentFetchCV.setOnClickListener(v -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
                 startActivity(new Intent(AdminDashboardActivity.this, AppointmentListFetchActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        setInfoCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        setInfoCV.setOnClickListener(v -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
                 startActivity(new Intent(AdminDashboardActivity.this, SetInformationListFetchActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        adminComplainsCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        adminComplainsCV.setOnClickListener(v -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
                 startActivity(new Intent(AdminDashboardActivity.this, ComplainListFetchActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
 
-        adminAppointmentSubjectCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        adminAppointmentSubjectCV.setOnClickListener(v -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
                 startActivity(new Intent(AdminDashboardActivity.this, AppointmentSubjectListFetchActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 
-        adminStuffCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        adminStuffCV.setOnClickListener(v -> {
+            if (NetworkCheck.isConnect(AdminDashboardActivity.this)) {
                 startActivity(new Intent(AdminDashboardActivity.this, AdminCurdEmployeeActivity.class));
+            } else {
+                Toast.makeText(AdminDashboardActivity.this, "Please Check Your Internet Connection.", Toast.LENGTH_SHORT).show();
             }
         });
 

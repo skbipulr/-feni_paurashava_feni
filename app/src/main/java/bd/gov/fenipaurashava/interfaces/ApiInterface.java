@@ -1,6 +1,7 @@
 package bd.gov.fenipaurashava.interfaces;
 
 import bd.gov.fenipaurashava.modelAdminLoginPOST.LoginResponse;
+import bd.gov.fenipaurashava.modelCitizenServiceCount.CitizenServiceGet;
 import bd.gov.fenipaurashava.modelComplainDeletePOST.ComplainDeleteResponse;
 import bd.gov.fenipaurashava.modelComplainSubjectUpdatePOST.ComplainSubjectUpdateResponse;
 import bd.gov.fenipaurashava.modelComplainsubjectDeletePOST.ComplainSubjectDeleteResponse;
@@ -51,6 +52,12 @@ public interface ApiInterface {
 
     @GET("employee")
     Call<EmployeeResponse> getEmployeeResponse(@Header("app-key") String appKey);
+
+    @GET("admin/api/certificate/summary")
+    Call<CitizenServiceGet> getServiceCount();
+
+
+
 
     @GET("dc/message")
     Call<DCMessageResponse> getDCMessageResponse(@Header("app-key") String appKey);

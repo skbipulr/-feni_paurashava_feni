@@ -1,5 +1,8 @@
 package bd.gov.fenipaurashava.common;
- public class Common {
+
+public class Common {
+    public static final String SMS_NUMBER = "01717232829";
+    //public static final String SMS_NUMBER = "01724650247";
     public static String USER_ID;
 
     final public static String APP_KEY = "A1b1C2d32564kjhkjadu";

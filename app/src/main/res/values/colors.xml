@@ -110,4 +110,10 @@
     <color name="solidCircle">#AAFFFFFF</color>
     <color name="sattusbar_color">#3c7f42</color>
 
+    <color name="table_color_1">#c5e1a5</color>
+    <color name="table_color_2">#ffe0b2</color>
+    <color name="table_color_3">#ffcdd2</color>
+    <color name="table_color_4">#bbdefb</color>
+    <color name="table_color_5">#C2CAFF</color>
+
 </resources>

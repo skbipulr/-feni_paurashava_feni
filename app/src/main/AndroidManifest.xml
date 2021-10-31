@@ -56,6 +56,12 @@
             android:name=".activity_user.WorkScheduleDetailsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
+
+        <activity
+            android:exported="true"
+            android:name=".activity_admin.CitizenServiceCountActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
         <activity
             android:exported="true"
             android:name=".activity_admin.AppointmentListFetchActivity"
