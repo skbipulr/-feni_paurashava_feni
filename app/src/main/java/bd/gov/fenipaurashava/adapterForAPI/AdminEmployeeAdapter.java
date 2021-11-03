@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import bd.gov.fenipaurashava.R;
+import bd.gov.fenipaurashava.common.Common;
 import bd.gov.fenipaurashava.modelForEmployeeGET.Datum;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class AdminEmployeeAdapter extends RecyclerView.Adapter<AdminEmployeeAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view =  LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.admin_employee_item_layout,
+                .inflate(R.layout.employee_item_layout,
                         parent,false);
         return new ViewHolder(view);
     }
@@ -46,7 +47,7 @@ public class AdminEmployeeAdapter extends RecyclerView.Adapter<AdminEmployeeAdap
        Datum employee =  employeeList.get(position);
         String image = "http://fenimayor.digiins.gov.bd/district_app/public/employee/"+employee.getPhoto();
 
-        Picasso.get().load(image).placeholder(R.drawable.default_icon)
+        Picasso.get().load(Common.IMAGE_BASE_URL + employee.getPhoto()).placeholder(R.drawable.default_icon)
                 .into(holder.profileIV);
        holder.nameTV.setText(employee.getName());
        holder.phoneNumberTV.setText(employee.getMobile());

@@ -19,19 +19,94 @@
         <entry key="..\:/Users/skbip/OneDrive/Desktop/New folder/-feni_paurashava_feni/app/src/main/res/layout/admin_employee_item_layout.xml" value="0.1796875" />
         <entry key="..\:/Users/skbip/OneDrive/Desktop/New folder/-feni_paurashava_feni/app/src/main/res/layout/department_item_layout.xml" value="0.1796875" />
         <entry key="..\:/Users/skbip/OneDrive/Desktop/New folder/-feni_paurashava_feni/app/src/main/res/layout/employee_item_layout.xml" value="0.4466666666666667" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable-v24/dashboard_shape_admin.xml" value="0.22083333333333333" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable-v24/scanner_btn_shape.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/admin_icon.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/application_bg_shape.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/dashboard_shape.xml" value="0.22083333333333333" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/grad1.xml" value="0.19583333333333333" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/grad3.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic__4_hours.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_bad_review.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_complaint_list.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_contacts.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_date.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_license__1_.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_log_out_icon.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_married.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_meet.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_swastika.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/ic_tuscany.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/icon_bg_shape.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/login_button_bk.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/logout_bg_shape.xml" value="0.11302083333333333" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/nagorik_seba_shape.xml" value="0.19583333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/other_btn_bg.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/scanner_back_cirlce_shape.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/scanner_btn_shape.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/side_nav_bar.xml" value="0.11302083333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/sign_in_btn_bg.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/slider_bg.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/top_bg_shape.xml" value="0.22083333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/drawable/view_btn_bg.xml" value="0.22083333333333333" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_admin.xml" value="0.22" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_admin_employee_for_appoinment.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_appoiment_fatch_all.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_appointment_featch.xml" value="0.2046875" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_citizen_service_count.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_complain_featch.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_complain_fetch_all.xml" value="0.2046875" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_daily_work.xml" value="0.1796875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_editor.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_editor_subject_complain.xml" value="0.2046875" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_employee.xml" value="0.1796875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_employee_designation_list.xml" value="0.2046875" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_home.xml" value="0.16666666666666666" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_scanner.xml" value="0.2046875" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_see_more_application.xml" value="0.1796875" />
-        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_work_schedule.xml" value="0.5" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_send_message.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_set_information_fetch_all.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_stuff.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_uno_message.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_warish_application.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_work_schedule.xml" value="0.16666666666666666" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_work_schedule_details.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/activity_work_schedule_edit_delete.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admin_appointment_fetch_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admin_employee_item_layout.xml" value="0.4466666666666667" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admin_gonosunani_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admin_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admin_setinfo_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admin_work_schedule_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admon_stuff_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/admon_stuff_item_list_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/ambulance_and_blood_bank_call_dialog.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/appointment_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/appointment_subject_update_item_row.xml" value="0.22" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/complain_fetch_all_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/complain_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/custom_spinner_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/daily_activitys_item_layout.xml" value="0.1" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/daily_work_item.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/dc_message.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/department_item_layout.xml" value="0.2046875" />
         <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/employee_item_layout.xml" value="0.4466666666666667" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/fetch_appointment_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/gonosunani_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/home_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/image_slider_layout_item.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/nav_header_main.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/public_hearing_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/set_information_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/setinfo_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/stuff_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/layout/uno_message_item_layout.xml" value="0.2046875" />
+        <entry key="..\:/p/-feni_paurashava_feni/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
       </map>
     </option>
   </component>

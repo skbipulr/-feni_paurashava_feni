@@ -1,31 +1,20 @@
 package bd.gov.fenipaurashava.activity_admin;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.developer.kalert.KAlertDialog;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
-
 import bd.gov.fenipaurashava.R;
 import bd.gov.fenipaurashava.activity_user.UserDashboardActivity;
 import bd.gov.fenipaurashava.activity_user.SetInformationListFetchActivity;
@@ -35,13 +24,12 @@ import bd.gov.fenipaurashava.departmentAdmin.activites.DepartmentAdminActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AdminDashboardActivity extends AppCompatActivity {
-    private static final int REQUEST_CALL = 1;
-    LinearLayout
-            setInfoCV, adminStuffCV, adminAppointmentSubjectCV,
-            adminComplainsCV, adminAppointmentFetchCV, adminComplainSubjectCV, adminStuffListCV,
-            workScheduleCV, logoutLL;
 
-    LinearLayout serviceCountCV;
+
+    CardView setInfoCV, adminStuffCV, adminAppointmentSubjectCV,
+    adminComplainsCV, adminAppointmentFetchCV, adminComplainSubjectCV, adminStuffListCV,
+    workScheduleCV, serviceCountCV;
+    LinearLayout logoutLL;
 
     private String userName, userDesignation, picture;
     private TextView userNameTV, userDesignationTV;
@@ -49,6 +37,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     public static final String MyPREFERENCES = "MyPrefs";
     private SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,46 +98,8 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
         Log.d("url", Common.IMAGE_BASE_URL + picture);
 
-        //   Toast.makeText(AdminDashboardActivity.this, ""+Common.IMAGE_BASE_URL + picture, Toast.LENGTH_SHORT).show();
-
     }
 
-    private void callButton(String mobileNumber) {
-        if (mobileNumber.length() > 0) {
-            if (ContextCompat.checkSelfPermission(AdminDashboardActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions((Activity) AdminDashboardActivity.this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            } else {
-                String dail = "tel:" + mobileNumber;
-                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dail)));
-            }
-        }
-    }
-
-    //=============================call start==================================
-    public void one_six_zero(View view) {
-        callButton("106");
-    }
-
-    public void one_zero_nine(View view) {
-        callButton("109");
-    }
-
-    public void nine_nine_nine(View view) {
-        callButton("999");
-    }
-
-    public void three_three_three(View view) {
-        callButton("333");
-    }
-
-    public void one_zero_nine_eight(View view) {
-        callButton("1098");
-    }
-
-    public void one_zeri_nine_zero(View view) {
-        callDialogOpen();
-    }
-    //=============================call start==================================
 
     public void service(View view) {
         String url = "http://fenipaurashava.gov.bd/";
@@ -165,7 +116,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         adminComplainsCV = findViewById(R.id.adminComplainsCV);
         adminAppointmentFetchCV = findViewById(R.id.adminAppointmentFetchCV);
         adminComplainSubjectCV = findViewById(R.id.adminComplainSubjectCV);
-        adminStuffListCV = findViewById(R.id.adminStuffListCV);
+        adminStuffListCV = findViewById(R.id.adminDepartmentCV);
         workScheduleCV = findViewById(R.id.workScheduleCV);
         logoutLL = findViewById(R.id.logoutLL);
         serviceCountCV = findViewById(R.id.serviceCountCV);
@@ -255,46 +206,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     }
 
-    //================================calling dialog start============================
-    private void callDialogOpen() {
-        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-        CardView cancelCV;
-        View view = LayoutInflater.from(AdminDashboardActivity.this).inflate(R.layout.ambulance_and_blood_bank_call_dialog, null);
-        builder.setView(view);
-
-        final androidx.appcompat.app.AlertDialog dialog = builder.create();
-        dialog.show();
-
-        FloatingActionButton bloodBankFT = view.findViewById(R.id.bloodBankFT);
-        FloatingActionButton ambulanceServiceFT = view.findViewById(R.id.ambulanceServiceFT);
-        cancelCV = view.findViewById(R.id.cancelCV);
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        bloodBankFT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callButton("01842307080");
-            }
-        });
-
-        ambulanceServiceFT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callButton("01842307080");
-            }
-        });
-
-
-        cancelCV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-
-    }
-    //================================calling dialog end============================
 
     public void backBtn(View view) {
         startActivity(new Intent(this, UserDashboardActivity.class));
