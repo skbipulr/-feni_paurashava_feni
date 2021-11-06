@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -30,15 +31,25 @@ import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.databinding.DataBindingUtil;
 
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.gun0912.tedpermission.normal.TedPermission;
+import com.google.android.gms.tasks.Task;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,6 +71,7 @@ public class UserDashboardActivity extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs";
     private SharedPreferences sharedpreferences;
 
+    private static final int REQUEST_LOCATION = 88;
     LinearLayout adminCV, sonodJachaiLL;
     private final int REQUEST_CALL = 1;
     private FloatingActionButton ambulanceServiceFT, bloodBankFT;
@@ -89,55 +101,53 @@ public class UserDashboardActivity extends AppCompatActivity {
 
         clickEvent();
 
-        //==============for device location tracking====================
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        locationRequest = com.google.android.gms.location.LocationRequest.create()
-                .setPriority(com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(3000)
-                .setFastestInterval(1000);
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                super.onLocationResult(locationResult);
-                for (Location location : locationResult.getLocations()) {
+        getDeviceLocation();
 
-                    latitude = location.getLatitude();
-                    longitude = location.getLongitude();
-
-                    //  Log.d("mylocation", String.valueOf(latitude));
-                    try {
-                        List<Address> addressList = new Geocoder(UserDashboardActivity.this)
-                                .getFromLocation(latitude, longitude, 1);
-
-                        address = addressList.get(0).getAddressLine(0);
-
-                        RelativeLayout bankRL,pharmaciesRL,thanaRL,fireStationRL;
-
-
-
-                        searchNearByPlace(latitude,longitude,findViewById(R.id.bankRL),"Banks",address);
-                        searchNearByPlace(latitude,longitude,findViewById(R.id.pharmaciesRL),"Pharmacies",address);
-                        searchNearByPlace(latitude,longitude,findViewById(R.id.thanaRL),"thana",address);
-                        searchNearByPlace(latitude,longitude,findViewById(R.id.fireStationRL),"Fire+Service",address);
-                        searchNearByPlace(latitude,longitude,findViewById(R.id.hospitalRL),"Hospitals",address);
-                        searchNearByPlace(latitude,longitude,findViewById(R.id.atmBoothRL),"atm",address);
-
-                        //  searchView.setText(address);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_FOR_LOCATION);
-            return;
-        }
-        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
+//        //==============for device location tracking====================
+//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+//        locationRequest = com.google.android.gms.location.LocationRequest.create()
+//                .setPriority(com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY)
+//                .setInterval(3000)
+//                .setFastestInterval(1000);
+//        locationCallback = new LocationCallback() {
+//            @Override
+//            public void onLocationResult(LocationResult locationResult) {
+//                super.onLocationResult(locationResult);
+//                for (Location location : locationResult.getLocations()) {
+//
+//                    latitude = location.getLatitude();
+//                    longitude = location.getLongitude();
+//
+//                    //  Log.d("mylocation", String.valueOf(latitude));
+//                    try {
+//                        List<Address> addressList = new Geocoder(UserDashboardActivity.this)
+//                                .getFromLocation(latitude, longitude, 1);
+//
+//                        address = addressList.get(0).getAddressLine(0);
+//
+//                        searchNearByPlace(latitude,longitude,findViewById(R.id.bankRL),"Banks",address);
+//                        searchNearByPlace(latitude,longitude,findViewById(R.id.pharmaciesRL),"Pharmacies",address);
+//                        searchNearByPlace(latitude,longitude,findViewById(R.id.thanaRL),"thana",address);
+//                        searchNearByPlace(latitude,longitude,findViewById(R.id.fireStationRL),"Fire+Service",address);
+//                        searchNearByPlace(latitude,longitude,findViewById(R.id.hospitalRL),"Hospitals",address);
+//                        searchNearByPlace(latitude,longitude,findViewById(R.id.atmBoothRL),"atm",address);
+//
+//                        //  searchView.setText(address);
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        };
+//
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_FOR_LOCATION);
+//            return;
+//        }
+//        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
 
 
     }
@@ -145,39 +155,27 @@ public class UserDashboardActivity extends AppCompatActivity {
 
 
     private void clickEvent() {
-
-
         urlAndTitlePass(findViewById(R.id.nagorikSonodLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IlBZTEpVd1RpOUJMMitNUklaUjVzeFE9PSIsInZhbHVlIjoiZTBvNGN0VENMM1VQMEpGbWN1YUMzUT09IiwibWFjIjoiYmFiOTJlNmMwYmJiOTdiNzMyMmE3YjM0MGUxMTE3MGE4ZmMxOGE3MDk2NGU4N2NiNTQzNDBjMDk2OTI3ZDJkYSJ9", "নাগরিক আবেদন");
-        // urlAndTitlePass(findViewById(R.id.nagorikSonodLL),"https://www.google.com/maps/search/Restaurants/@23.4614226,91.1640978,15z/data=!3m1!4b1", "নাগরিক আবেদন");
 
         urlAndTitlePass(findViewById(R.id.tradLisenceLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6InR4ZTFvY0Y3ZFlrSnFFN2ZCTnFlRVE9PSIsInZhbHVlIjoiZEp1TjExXC9WQllcL0ZNUWJ5dUh1dkhBPT0iLCJtYWMiOiI1NzAwNjZhODA1NTA0MzM4NWQ4Y2M5YjY5MWUxZjI3NmU3MDdiMTc5YWNmYTNmZjliMzQ1Mjg3NDVmODg3NjJjIn0=", "ট্রেড লাইসেন্স আবেদন");
 
-
         urlAndTitlePass(findViewById(R.id.paribarikSonodLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IlQwcEhnMlQrRVdidWtZRnhHd3ROYXc9PSIsInZhbHVlIjoiTDQrelhpdGUxdzBjajNjVXRTWEdmdz09IiwibWFjIjoiYTA2NDQxM2EwODdkYjVhMGYxYjI2Y2RiOWVjYWM1OTEzZDk1NjQ2Nzc1ZjU4NDYwM2Q1NjljZWViNDllODA2YyJ9", "পারিবারিক সনদের আবেদন");
 
-
         urlAndTitlePass(findViewById(R.id.owarisSonodLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IjNrWGQwR3gyV1BcL1AzQ21nYjN0WEF3PT0iLCJ2YWx1ZSI6ImQyTDg5MFRLWmlBZHVjNjBadEo4Y1E9PSIsIm1hYyI6ImNhNDYzMTUyZTk4MDQxYTgyODViY2M0MDVkYmFjYjE0ZjM3NTUxOGYzZDQyYjllZWY1MzIxZWJmYWRhZjExM2MifQ==", "ওয়ারিশ সনদের আবেদন");
-
 
         urlAndTitlePass(findViewById(R.id.charitrikSonodLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IjE0N2dIelRxM1FyUGxFYkV6eURsZnc9PSIsInZhbHVlIjoiWDRrR0dBUHB1dCs0czlIQ1hGSzB2QT09IiwibWFjIjoiNWJlMjYyMGQ0ZDBkNDY0YTIxMmIzZTRjMjgzNmVmMzBkZjcwMjA3ZGE3YjJiZTEyNzIxYjY2NmFmNmFmNWI3NyJ9", "চারিত্রিক সনদের আবেদন");
 
         urlAndTitlePass(findViewById(R.id.obibahitoLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IlNaTFF1SXR2eHBhVEkyaU5TUGpLN0E9PSIsInZhbHVlIjoiS1lLc1JlZzFkc3hobmpleStkRXdlUT09IiwibWFjIjoiY2Q5MzMxMGZiYmMxOGRhMGFlZDMzMThjYWU1MzA0ZGZjZjRkNmE0YWIyOTg5Yjg0NDMxNzYzOWJjZDNjMTI3NiJ9", "অবিবাহিত সনদের আবেদন");
 
-
         urlAndTitlePass(findViewById(R.id.bibahitoLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IllybWc2akRmYUVuNkU3UzFkVnkzeWc9PSIsInZhbHVlIjoiZ2xzTkxTMXlnWXBxcnFSbGs3U1MzZz09IiwibWFjIjoiNzU3M2RkODc0NzI3MmIyODc4N2IzNTEwZGE4MmQ4ZmY3NDgwMTFlYzc0MzJkZjhkNDU1MWRmNWE2MGY0ZmVlZCJ9", "বিবাহিত সনদের আবেদন");
-
 
         urlAndTitlePass(findViewById(R.id.protibondhiLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6ImFHb0lnZVdqZnF0Ris4bHpRdUZBS0E9PSIsInZhbHVlIjoiSzM5NFwvOVFORlZvc1dQNzFPT2YrXC9BPT0iLCJtYWMiOiIwOTcyNzVlZjdhNTMyMGRiMDIwN2ViZjZhMjI2NTI0ZjBiODUwMzNiNGVkNjU5MzVhM2RlYmY3Mjk3NmI5YTYzIn0=", "প্রতিবন্ধী সনদের আবেদন");
 
-
         urlAndTitlePass(findViewById(R.id.punobibahNahowaLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6Ing0QlwvaDlabjBaaThIb2VtUHpLQkZRPT0iLCJ2YWx1ZSI6IkVrbmhJVFZockVVRm5kRndBTUd5amc9PSIsIm1hYyI6ImNmY2NlYzY4NTYxMTFkNzg4ZmM4MzI0OTBhMDgxYWQ1MmRiOWUxMDM1ZjVhNjYyYTU2ODBmNWFmNzg4MTJkM2IifQ==", "পুনঃ বিবাহ না হওয়া সনদের আবেদন");
-
 
         urlAndTitlePass(findViewById(R.id.voterIdChangeLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IlhLSzdRRGtuTHNEN0QwRFYwRTM0M0E9PSIsInZhbHVlIjoiRkFUUnlTcFlmd0d4QWtHckZPdzU3QT09IiwibWFjIjoiZjE5YWU5Y2ZlZDczNDc4NGEzZjgxNjRkMGRhMTMyZDAyYWQ0MDdjOWMxMjZkYTAwNzAzY2VkNmI1ZjFlNGY3MiJ9", "ভোটার আইডি স্থানান্তর সনদের আবেদন");
 
-
         urlAndTitlePass(findViewById(R.id.nodiVangonLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IkFnVVNUMFwvMFdVbHRRd3V6Wk85aVh3PT0iLCJ2YWx1ZSI6InZuVEVnN3N3TDROa2xGM05EWk4yOUE9PSIsIm1hYyI6ImQ5YWE1MDc4OTljNDU2ZDAxMmI0OWMxMTQ3OTI1N2Q2MGJhZGEzMmE5YmQ0NjRiNTQ2OWQxYmRkYTUwODA3M2QifQ==", "নদী ভাঙন সনদের আবেদন");
-
 
         urlAndTitlePass(findViewById(R.id.onApotiPotroLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6ImZnbzluRkF1Mm9QVzlRT1d6aG1NaWc9PSIsInZhbHVlIjoiV1c2V1RTaGJXSnB2ZE40aUYzR1FUQT09IiwibWFjIjoiOGNkMDJmZTg0NGYwMzc5NWJiNWU0NGEzZGQxOThkZGQyYjBmMWEwMWEyMWNkYjA3N2Q4NmI0YzYyN2Y2MzMxZCJ9", "অনাপত্তি পত্র আবেদন");
 
@@ -187,9 +185,7 @@ public class UserDashboardActivity extends AppCompatActivity {
 
         urlAndTitlePass(findViewById(R.id.mitoSonodLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6Im5yZVZBd0dPWVwvdm5FKys2WVV6ZVp3PT0iLCJ2YWx1ZSI6ImFFd3BqNTlOcFBoNVo2VVB3M2JuRGc9PSIsIm1hYyI6ImIzYTM3MDM5N2RlNzVlNTNjMjkyYjE3OTlmMjMxMzc4YmZjNTQ4ZDFhZDc2NWU1ZDcxMWJkMTE0MGY4MTNjMTEifQ==", "মৃত্যু সনদের আবেদন");
 
-
         urlAndTitlePass(findViewById(R.id.basikAyerPotayorLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IklMeW1aTlptSnBGbGFDcjhUZU4rREE9PSIsInZhbHVlIjoiN0QySU1jZnI5SWNnN0hhbTZjRW1wZz09IiwibWFjIjoiNGRiNWUzYTkyZjQ2N2M3OWZiNjM3NTVjYTAxODUzMDgxYjg1YjJmYTJhODliMzVlNzQ3ZjBjYjgwN2QyNWU1YiJ9", "বার্ষিক আয়ের প্রত্যয়ন আবেদন");
-
 
         urlAndTitlePass(findViewById(R.id.vumiHidSonodLL), "http://fenipaurashava.gov.bd/application/eyJpdiI6IlZmdUJRaVhncDkrVWVxWGF1Q2lYeXc9PSIsInZhbHVlIjoiNSthQUFPR0xkd2xZeGJLR2RpR3NMUT09IiwibWFjIjoiMDA3MjNmODEwYWUyNjlkOTA3YjY2MDQ3ZDg5YTRkNTQzZDc1ZGM5YzRmMWZkNzcxNjM5ZGYyOWYwZDRhYmU0NyJ9", "ভূমিহিন সনদের আবেদন");
 
@@ -227,11 +223,20 @@ public class UserDashboardActivity extends AppCompatActivity {
 
 //    private double latitude;
 //    private double longitude;
-
     public void searchNearByPlace(double latitude,double longitude, RelativeLayout relativeLayout,String nearByPlaceName,String myLocation) {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (ActivityCompat.checkSelfPermission(UserDashboardActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED ){
+                    getLocation();
+
+                }else {
+                    ActivityCompat.requestPermissions(UserDashboardActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_FOR_LOCATION);
+                }
+
                 Intent intent = new Intent(UserDashboardActivity.this, ApplicationFormActivity.class);
                 intent.putExtra("url", "https://www.google.com/maps/search/"+nearByPlaceName+"/@"+latitude+","+longitude+",15z/data=!3m1!4b1");
                 intent.putExtra("title", myLocation);
@@ -240,7 +245,6 @@ public class UserDashboardActivity extends AppCompatActivity {
         });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -358,7 +362,6 @@ public class UserDashboardActivity extends AppCompatActivity {
         });
     }
 
-
     private void callButton(String mobileNumber) {
         if (mobileNumber.length() > 0) {
             if (ContextCompat.checkSelfPermission(UserDashboardActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
@@ -371,13 +374,11 @@ public class UserDashboardActivity extends AppCompatActivity {
     }
 
     public void one_zeri_nine_zero(View view) {
-        //callButton("1090");
         callDialogOpen();
     }
 
     public void one_six_zero(View view) {
         callButton("106");
-
     }
 
     public void one_zero_nine(View view) {
@@ -388,17 +389,8 @@ public class UserDashboardActivity extends AppCompatActivity {
         callButton("999");
     }
 
-//    public void three_three_three(View view) {
-//        callButton("333");
-//    }
-
     public void service(View view) {
-
         startActivity(new Intent(UserDashboardActivity.this, SeeMoreApplicationActivity.class));
-//        String url = "http://fenipaurashava.gov.bd/";
-//        CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-//        CustomTabsIntent customTabsIntent = builder.build();
-//        customTabsIntent.launchUrl(this, Uri.parse(url));
     }
 
     public void one_zero_nine_eight(View view) {
@@ -407,7 +399,6 @@ public class UserDashboardActivity extends AppCompatActivity {
 
 
     private void callDialogOpen() {
-
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
         CardView saveCV, cancelCV;
         View view = LayoutInflater.from(UserDashboardActivity.this).inflate(R.layout.ambulance_and_blood_bank_call_dialog, null);
@@ -445,5 +436,105 @@ public class UserDashboardActivity extends AppCompatActivity {
 
 
     }
+
+    private void getDeviceLocation() {
+        //==============for device location tracking====================
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        locationRequest = com.google.android.gms.location.LocationRequest.create()
+                .setPriority(com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(3000)
+                .setFastestInterval(1000);
+
+        //-------------------
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+
+        Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(getApplicationContext())
+                .checkLocationSettings(builder.build());
+        result.addOnCompleteListener(task -> {
+
+            try {
+                LocationSettingsResponse response = task.getResult(ApiException.class);
+            } catch (ApiException e) {
+                switch (e.getStatusCode()){
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                        try {
+                            ResolvableApiException resolvableApiException = (ResolvableApiException)e;
+                            resolvableApiException.startResolutionForResult(UserDashboardActivity.this,REQUEST_LOCATION);
+                        } catch (IntentSender.SendIntentException sendIntentException) {
+                            sendIntentException.printStackTrace(); }
+                        break;
+                    case  LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        break;
+                }
+            }
+        });
+        //-------------------
+
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                super.onLocationResult(locationResult);
+                for (Location location : locationResult.getLocations()) {
+
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+
+                    //  Log.d("mylocation", String.valueOf(latitude));
+                    try {
+                        List<Address> addressList = new Geocoder(UserDashboardActivity.this)
+                                .getFromLocation(latitude, longitude, 1);
+
+                        address = addressList.get(0).getAddressLine(0);
+
+
+                        searchNearByPlace(latitude, longitude, findViewById(R.id.bankRL), "Banks", address);
+                        searchNearByPlace(latitude, longitude, findViewById(R.id.pharmaciesRL), "Pharmacies", address);
+                        searchNearByPlace(latitude, longitude, findViewById(R.id.thanaRL), "thana", address);
+                        searchNearByPlace(latitude, longitude, findViewById(R.id.fireStationRL), "Fire+Service", address);
+                        searchNearByPlace(latitude, longitude, findViewById(R.id.hospitalRL), "Hospitals", address);
+                        searchNearByPlace(latitude, longitude, findViewById(R.id.atmBoothRL), "atm", address);
+
+                        //  searchView.setText(address);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE_FOR_LOCATION);
+            return;
+        }
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
+
+    }
+    private void getLocation() {
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                //Toast.makeText(UserDashboardActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                Log.d("permission","permission Granted");
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(UserDashboardActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        TedPermission.create()
+                .setPermissionListener((com.gun0912.tedpermission.PermissionListener) permissionlistener)
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+                .check();
+
+    }
+
 
 }

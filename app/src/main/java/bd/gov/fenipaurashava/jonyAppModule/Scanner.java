@@ -1,8 +1,11 @@
 package bd.gov.fenipaurashava.jonyAppModule;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.customtabs.CustomTabsIntent;
+import androidx.core.content.ContextCompat;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
@@ -33,19 +37,21 @@ public class Scanner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
         scannView = findViewById(R.id.scannerView);
-        codeScanner = new CodeScanner(this,scannView);
+        codeScanner = new CodeScanner(this, scannView);
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
-            public void onDecoded(@NonNull final Result result) {
+            public void onDecoded(@NonNull Result result) {
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       // resultData.setText();
-                        openTab(result.getText());
+                        String url = result.getText();
+                        // resultData.setText();
+                        Log.d("url", result.getText());
+                        openTab(url);
                     }
                 });
 
