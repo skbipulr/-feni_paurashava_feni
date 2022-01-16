@@ -6,6 +6,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class Datum {
 
+    public Datum(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Datum() {
+    }
+
     @SerializedName("id")
     @Expose
     private Integer id;

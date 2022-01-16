@@ -101,11 +101,10 @@
                         android:orientation="vertical">
 
                         <Spinner
-                            android:layout_gravity="center_vertical"
                             android:id="@+id/complainOfDivisionsSpinner"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
-                            />
+                            android:layout_gravity="center_vertical" />
 
                     </LinearLayout>
 

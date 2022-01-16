@@ -66,6 +66,7 @@ public class EmployeeActivity extends AppCompatActivity {
         apiService = RetrofitClient.getRetrofit().create(ApiInterface.class);
 
         apiService.getDepartmentWiseEmployeeResponse(Common.APP_KEY, id).enqueue(new Callback<EmployeeResponse>() {
+
             @Override
             public void onResponse(Call<EmployeeResponse> call, Response<EmployeeResponse> response) {
                 if (response.code() == 200) {
